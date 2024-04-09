@@ -15,36 +15,35 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 
 export default function Page() {
   const [refreshNow, setRefreshNow] = useState(false);
-  const [subCategories, setSubCategories] = React.useState<any[]>([]);
 
-  const [currentPage, setCurrentPage] = useState(1);
-
+  const [components, setComponents] = React.useState<any[]>([]);
   React.useEffect(() => {
     const fetch = async () => {
-      let { data, error } = await supabase.from("Sub Category").select("*");
+      let { data, error } = await supabase.from("Component").select("*");
 
       if (error || !data) {
-        throw new Error("Failed to fetch sub categories");
+        throw new Error("Failed to fetch components");
       }
 
-      setSubCategories(data || []);
+      setComponents(data || []);
+      setRefreshNow(false);
     };
     fetch();
   }, [refreshNow]);
 
   const [isDeleting, setIsDeleting] = useState<boolean>(false);
-  const deleteSubCategory = async (id: number) => {
+  const deleteComponent = async (id: number) => {
     try {
       setIsDeleting(true);
-      const { error, data, status } = await supabase.from("Sub Category").delete().eq("id", id);
+      const { error, data, status } = await supabase.from("Component").delete().eq("id", id);
 
       setRefreshNow(!refreshNow);
       if (error || status !== 204) {
-        throw new Error("Failed to delete category");
+        throw new Error("Failed to delete component");
       }
-      toast.success(isDeleting ? "Category deleting" : "Category deleted successfully");
+      toast.success(isDeleting ? "Component deleting" : "Component deleted successfully");
     } catch (error) {
-      toast.error("Failed to delete category");
+      toast.error("Failed to delete component");
     } finally {
       setIsDeleting(false);
     }
@@ -92,12 +91,6 @@ export default function Page() {
     },
 
     {
-      accessorKey: "category",
-      header: "Category",
-      cell: ({ row }) => <div className="capitalize">{row.getValue("category")}</div>,
-    },
-
-    {
       id: "actions",
       enableHiding: false,
       header: "Action",
@@ -118,13 +111,13 @@ export default function Page() {
             <DropdownMenuContent align="end">
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
 
-              <Link href={`/categories/edit/${item.id}`}>
-                <DropdownMenuItem>Edit category</DropdownMenuItem>
+              <Link href={`/dashboard/components/edit/${item.id}`}>
+                <DropdownMenuItem>Edit component</DropdownMenuItem>
               </Link>
 
               <AlertDialog>
                 <AlertDialogTrigger asChild>
-                  <span className=" flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors hover:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50"> Delete category</span>
+                  <span className=" flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors hover:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50"> Delete component</span>
                 </AlertDialogTrigger>
                 <AlertDialogContent>
                   <AlertDialogHeader>
@@ -135,7 +128,7 @@ export default function Page() {
                     <AlertDialogCancel>Cancel</AlertDialogCancel>
                     <AlertDialogAction
                       className=" bg-red-500/90"
-                      onClick={() => deleteSubCategory(item.id)}>
+                      onClick={() => deleteComponent(item.id)}>
                       Continue
                     </AlertDialogAction>
                   </AlertDialogFooter>
@@ -149,7 +142,7 @@ export default function Page() {
   ];
 
   const table = useReactTable({
-    data: subCategories,
+    data: components,
     columns,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
@@ -186,8 +179,8 @@ export default function Page() {
         />
 
         <div className=" space-x-2">
-          <Link href={"/dashboard/sub-categories/create"}>
-            <Button>Create Category</Button>
+          <Link href={"/dashboard/components/create"}>
+            <Button>Create Component</Button>
           </Link>
 
           <DropdownMenu>
@@ -259,19 +252,12 @@ export default function Page() {
         <div className="space-x-2">
           <Button
             variant="outline"
-            size="sm"
-            onClick={() => setCurrentPage(currentPage - 1)}
-            // onClick={handlePreviousPage}
-            // disabled={currentPage === 1}
-          >
+            size="sm">
             Previous
           </Button>
           <Button
             variant="outline"
-            size="sm"
-            onClick={() => setCurrentPage(currentPage + 1)}
-            // disabled={currentPage === totalPages}
-          >
+            size="sm">
             Next
           </Button>
         </div>

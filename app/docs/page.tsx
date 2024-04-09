@@ -23,17 +23,21 @@ export default function Page({}: Props) {
     }, 2000);
   };
 
-  const [categories, setCategories] = useState<any[]>([]);
+  const [components, setComponents] = useState<any[]>([]);
 
   useEffect(() => {
     const fetch = async () => {
       let { data: Component, error } = await supabase.from("Component").select("*");
-      setCategories(Component || []);
+      setComponents(Component || []);
     };
     fetch();
   }, []);
 
-  console.log(categories);
+  console.log(components);
+
+
+
+  
 
   const code = `
     import { Separator } from "@/components/ui/separator"
@@ -63,7 +67,7 @@ export default function Page({}: Props) {
   const filename = "components/website/DocsSidebar.tsx";
   return (
     <>
-      {categories.map((component) => (
+      {components.map((component) => (
         <div key={component.id}>
           <div className=" flex items-center justify-end">
             <Button

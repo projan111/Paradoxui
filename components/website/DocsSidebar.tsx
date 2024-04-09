@@ -21,6 +21,26 @@ export function DocsSidebar({}: Props) {
 
   console.log(categories)
 
+
+
+  
+  const [components, setComponents] = React.useState<any[]>([]);
+
+  React.useEffect(() => {
+    const fetch = async () => {
+      let { data: Component, error } = await supabase.from("Component").select("*").select(`
+      *,
+      category (id, name),
+      subcategory (id, name)
+      `);
+      setComponents(Component || []);
+    };
+    fetch();
+  }, []);
+
+  console.log(components);
+
+
   return (
     <ScrollArea className=" h-screen  rounded-md border">
       <div className="p-4">

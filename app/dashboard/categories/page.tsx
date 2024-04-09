@@ -22,10 +22,16 @@ export default function Page() {
   React.useEffect(() => {
     const fetch = async () => {
       let { data, error } = await supabase.from("Category").select("*");
+
+      if (error || !data) {
+        throw new Error("Failed to fetch categories");
+      }
+
       setCategories(data || []);
+      setRefreshNow(false)
     };
     fetch();
-  }, []);
+  }, [refreshNow]);
 
   const [isDeleting, setIsDeleting] = useState<boolean>(false);
   const deleteCategory = async (id: number) => {
@@ -33,11 +39,12 @@ export default function Page() {
       setIsDeleting(true);
       const { error, data, status } = await supabase.from("Category").delete().eq("id", id);
 
-      setRefreshNow(!refreshNow);
       if (error || status !== 204) {
         throw new Error("Failed to delete category");
       }
+
       toast.success(isDeleting ? "Category deleting" : "Category deleted successfully");
+      setRefreshNow(false);
     } catch (error) {
       toast.error("Failed to delete category");
     } finally {

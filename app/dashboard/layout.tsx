@@ -1,10 +1,6 @@
 "use client";
 import { Menu, Settings, User2 } from "lucide-react";
 import { useState } from "react";
-// import { Button } from "@/components/ui/button";
-// import AdminNotification from "../dashboard/components/AdminNotification";
-// import AdminCircleUser from "../dashboard/components/AdminCircleUser";
-// import ThemeToggleButton from "../dashboard/ThemeToggleButton";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [isFullScreen, setIsFullScreen] = useState(false);
@@ -35,10 +31,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             variant="outline">
             <Menu className=" cursor-pointer " />
           </Button>
-          <div className=" flex space-x-4">
-            {/* <AdminNotification />
+          <div className=" flex items-center space-x-4">
+            <ThemeToggleButton />
             <AdminCircleUser />
-            <ThemeToggleButton /> */}
           </div>
         </div>
         <div className=" px-4 mt-8 ">{children}</div>
@@ -49,6 +44,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
 const navItems = [
   {
+    header: "Overview",
     name: "Dashboard",
     icon: <Settings size={15} />,
     href: "/dashboard",
@@ -56,6 +52,7 @@ const navItems = [
   },
 
   {
+    header: "Categores & Types",
     name: "Categories",
     icon: <User2 size={15} />,
     href: "",
@@ -65,15 +62,7 @@ const navItems = [
         title: "Categories",
         href: "/dashboard/categories",
       },
-    ],
-  },
 
-  {
-    name: "Sub Categories",
-    icon: <User2 size={15} />,
-    href: "",
-
-    subLinks: [
       {
         title: "Sub Categories",
         href: "/dashboard/sub-categories",
@@ -82,19 +71,15 @@ const navItems = [
   },
 
   {
+    header: "Blocks & Components",
     name: "Components ",
     icon: <User2 size={15} />,
     href: "",
 
     subLinks: [
       {
-        title: "Buttons",
-        href: "/",
-      },
-
-      {
-        title: "Cards",
-        href: "/cards",
+        title: "Components",
+        href: "/dashboard/components",
       },
     ],
   },
@@ -111,13 +96,15 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Collapsible from "react-collapsible";
 import { Button } from "@/components/ui/button";
+import ThemeToggleButton from "@/components/dashboard/ThemeToggleButton";
+import AdminCircleUser from "@/components/dashboard/AdminCircleUser";
 
 function CollapsibleTab({ item }: any) {
   const pathname = usePathname();
 
   return (
     <div className=" ">
-      <p className=" text-xs tracking-wider uppercase mb-2  mt-6 opacity-50 ">LAYOUTS & PAGES</p>
+      <p className=" text-xs tracking-wider uppercase mb-2  mt-6 opacity-50 ">{item.header}</p>
       <Collapsible
         transitionTime={100}
         triggerDisabled={item.isTriggerDisable}

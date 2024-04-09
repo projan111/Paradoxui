@@ -13,11 +13,11 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { supabase } from "@/utils/supabase/clientRepository";
 
 const formSchema = z.object({
-  name: z.string().min(5, {
-    message: "Sub category must be at least 5 characters.",
+  name: z.string().min(4, {
+    message: "Sub category must be at least 4 characters.",
   }),
 
-  category: z.coerce.number({
+  category: z.string({
     required_error: "Select the category.",
   }),
 
@@ -39,13 +39,12 @@ export default function Page() {
   }, []);
   console.log(categories);
 
-
   // Define your form
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
-      category: 0,
+      category: "",
       description: "",
     },
   });
@@ -102,11 +101,11 @@ export default function Page() {
               <Select
                 {...field}
                 onValueChange={field.onChange}
-                defaultValue={field.name.toString()}
-                value={field.value.toString()}>
+                defaultValue={field.name}
+                value={field.value}>
                 <FormControl>
                   <SelectTrigger>
-                    <SelectValue placeholder="Select a type" />
+                    <SelectValue placeholder="Select category" />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
