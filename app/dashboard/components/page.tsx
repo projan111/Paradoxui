@@ -14,6 +14,11 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 export default function Page() {
+  const [sorting, setSorting] = React.useState<SortingState>([]);
+  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
+  const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
+  const [rowSelection, setRowSelection] = React.useState({});
+
   const [refreshNow, setRefreshNow] = useState(false);
 
   const [components, setComponents] = React.useState<any[]>([]);
@@ -48,11 +53,6 @@ export default function Page() {
       setIsDeleting(false);
     }
   };
-
-  const [sorting, setSorting] = React.useState<SortingState>([]);
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
-  const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
-  const [rowSelection, setRowSelection] = React.useState({});
 
   const columns: ColumnDef<any>[] = [
     {
@@ -142,7 +142,7 @@ export default function Page() {
   ];
 
   const table = useReactTable({
-    data: components,
+    data: components || [],
     columns,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,

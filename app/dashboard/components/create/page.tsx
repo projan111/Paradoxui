@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { toast } from "sonner";
-import { ReloadIcon } from "@radix-ui/react-icons";
+
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { supabase } from "@/utils/supabase/clientRepository";
@@ -343,22 +343,22 @@ export default function Page() {
 
 const languages = [
   {
-    id: 0,
+    id: "0",
     name: "HTML",
   },
 
   {
-    id: 1,
+    id: "1",
     name: "CSS",
   },
 
   {
-    id: 2,
+    id: "2",
     name: "Javascript",
   },
 
   {
-    id: 3,
+    id: "3",
     name: "Typescript",
   },
 ];
