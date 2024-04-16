@@ -16,14 +16,14 @@ function Navbar({}: Props) {
           <span>Pricing</span>
         </div>
         {/* search  */}
-        <div className="px-3 py-[10px]  rounded-full border-[1px] text-primary-60 font-bold  border-primary-700 flex justify-between gap-3 items-center">
+        <div className="px-3 py-[10px]  rounded-full border-[1px] text-primary-60 font-bold  border-primary-800 flex justify-between gap-3 items-center">
           <div className="w-[20px] h-[20px] flex justify-center items-center">
             <Search className="w-full h-full object-cover object-center" />
           </div>
           <input
             type="text"
             placeholder="Search Components"
-            className="bg-transparent outline-none"
+            className="bg-transparent outline-none pt-1 text-[13px]"
           />
         </div>
       </div>

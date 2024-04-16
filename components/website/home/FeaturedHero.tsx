@@ -28,9 +28,9 @@ const featuredHero = [
     img: FeaturedHero3Image,
   },
 ];
-function FeatureHero({}: Props) {
+function FeaturedHero({}: Props) {
   return (
-    <div className="w-[80vw] mx-auto my-10">
+    <div className="w-[80vw] mx-auto text-[#FFFCE1] my-10">
       <div className="grid grid-cols-3 place-content-center place-items-center items-center">
         {/* cards  */}
 
@@ -58,11 +58,11 @@ function FeatureHero({}: Props) {
 
         {/* see more  */}
         <div className="w-[80vw] mt-10 mx-auto flex justify-center items-center gap-2">
-          <span className="text-[17px]">Paradox Hero Page</span>
-          <hr className="flex-grow  border-primary-700 h-0.1" />
+          <span className="text-[18px]">Paradox Hero Page</span>
+          <hr className="flex-grow  border-primary-800 h-0.1" />
           <div className="flex justify-center items-center gap-2">
-            <span>See more</span>
-            {/* <MoveRight width={10}/> */}
+            <span className="text-[15px]">See more</span>
+            <MoveRight width={15} />
           </div>
         </div>
       </div>
@@ -70,4 +70,4 @@ function FeatureHero({}: Props) {
   );
 }
 
-export default FeatureHero;
+export default FeaturedHero;
