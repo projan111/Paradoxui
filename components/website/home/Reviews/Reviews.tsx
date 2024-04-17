@@ -40,7 +40,7 @@ function Reviews({}: Props) {
         {reviews.map((item, index) => (
           <div
             key={index}
-            className="p-3 rounded-lg w-[24rem]  bg-primary-900 border-primary-800 border-2"
+            className="p-3 rounded-lg w-[24rem]  bg-primary-900 border-primary-800 hover:border-green-500 border-2"
           >
             <div className="flex flex-col gap-3">
               <span className="font-semibold text-[20px]">{item.name}</span>

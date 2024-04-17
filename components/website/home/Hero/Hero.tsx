@@ -31,7 +31,7 @@ function Hero({}: Props) {
     <div className="mt-[7rem] font-medium flex justify-center items-center gap-9 flex-col text-secondary-50">
       {/* intro  */}
       <div className="flex justify-center items-center flex-col gap-1">
-        <h1 className="text-5xl">Instantly amplify your Website</h1>
+        <h1 className="text-5xl font-semibold">Instantly amplify your Website</h1>
         <h2 className="text-4xl">
           looks <span className="text-5xl">10x</span>
           <span className="bg-gradient-to-r from-[#58FF0A] to-blue-300 bg-clip-text text-transparent">
@@ -45,8 +45,9 @@ function Hero({}: Props) {
       </p>
 
       {/* ecplore button  */}
-      <button className="bg-[#FFFCE1] px-7 py-[1rem] text-md rounded-full text-primary-800 font-semibold ">
-        Explore Components
+      {/* button explore  */}
+      <button className="w-[12rem] h-[3rem] text-center bg-secondary-50 rounded-full p-2 text-primary-800">
+        Explore components
       </button>
 
       {/* library  */}

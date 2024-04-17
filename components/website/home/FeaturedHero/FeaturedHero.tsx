@@ -1,4 +1,3 @@
-import { id } from "date-fns/locale";
 import React from "react";
 import FeaturedHero1Image from "@/public/images/featured-hero/hero1.png";
 import FeaturedHero2Image from "@/public/images/featured-hero/hero2.png";
@@ -30,9 +29,12 @@ const featuredHero = [
 ];
 function FeaturedHero({}: Props) {
   return (
-    <div className="text-secondary-50  mx-auto my-10">
+    <div className="text-secondary-50 text-center  mx-auto py-10">
+      {/* heading  */}
+      <h1 className=" font-semibold text-5xl">Find more beautiful sections</h1>
+
       {/* see more  */}
-      <div className="w-[80vw] mb-10 mx-auto flex justify-center items-center gap-2">
+      <div className="w-[80vw] mb-10 mx-auto mt-14 flex justify-center items-center gap-2">
         <span className="text-[18px]">Paradox Hero Page</span>
         <hr className="flex-grow  border-primary-800 h-0.1" />
         <div className="flex justify-center items-center gap-2">
