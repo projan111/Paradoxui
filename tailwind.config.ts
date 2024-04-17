@@ -2,12 +2,7 @@ import type { Config } from "tailwindcss";
 
 const config = {
   darkMode: ["class"],
-  content: [
-    "./pages/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-    "./app/**/*.{ts,tsx}",
-    "./src/**/*.{ts,tsx}",
-  ],
+  content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
   prefix: "",
   theme: {
     container: {
@@ -22,10 +17,8 @@ const config = {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        //background: "hsl(var(--background))",
-        background: "#000000",
+        background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -46,19 +39,30 @@ const config = {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
           //  text
-          '50': '#fff8db',
-          '100': '#fff4c0',
-          '200': '#ffe785',
-          '300': '#ffd23f',
-          '400': '#ffb90b',
-          '500': '#f49f00',
-          '600': '#d37700',
-          '700': '#a85200',
-          '800': '#8a4009',
-          '900': '#75340e',
-          '950': '#451903',
+          "50": "#fff8db",
+          "100": "#fff4c0",
+          "200": "#ffe785",
+          "300": "#ffd23f",
+          "400": "#ffb90b",
+          "500": "#f49f00",
+          "600": "#d37700",
+          "700": "#a85200",
+          "800": "#8a4009",
+          "900": "#75340e",
+          "950": "#451903",
+        },
+
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
         },
         accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
           //  green shades
           "50": "#f0ffe4",
           "100": "#ddffc5",
@@ -72,30 +76,6 @@ const config = {
           "900": "#1f5b0c",
           "950": "#0b3300",
         },
-
-        black: {
-          '50': '#f2f2f2', 
-          '100': '#e6e6e6', 
-          '200': '#bfbfbf', 
-          '300': '#999999', 
-          '400': '#4d4d4d', 
-          '500': '#000000', 
-          '600': '#000000', 
-          '700': '#000000', 
-          '800': '#000000', 
-          '900': '#000000', 
-          '950': '#000000'
-      },
-
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-       
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",

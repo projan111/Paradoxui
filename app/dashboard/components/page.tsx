@@ -14,6 +14,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import CreateComponentDialog from "./(components)/CreateComponentDialog";
 import EditComponentDialog from "./(components)/EditComponentDialog";
 import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
 
 export default function Page() {
   const [sorting, setSorting] = React.useState<SortingState>([]);
@@ -161,7 +162,7 @@ export default function Page() {
                   <AlertDialogFooter>
                     <AlertDialogCancel>Cancel</AlertDialogCancel>
                     <AlertDialogAction
-                      className=" bg-red-500/90"
+                      className=" bg-red-500/70  text-accent-200 hover:bg-red-500/90"
                       onClick={() => deleteComponent(item.id)}>
                       Continue
                     </AlertDialogAction>
@@ -197,6 +198,16 @@ export default function Page() {
   return (
     <div className="w-full">
       <div className="flex items-center justify-between py-4">
+
+      <Input
+          placeholder="Filter emails..."
+          value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
+          onChange={(event) =>
+            table.getColumn("email")?.setFilterValue(event.target.value)
+          }
+          className="max-w-sm"
+        />
+
         <div className=" space-x-2">
           <CreateComponentDialog setRefreshNow={setRefreshNow} />
 
