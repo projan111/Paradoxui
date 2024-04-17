@@ -28,7 +28,7 @@ function Hero({}: Props) {
     },
   ];
   return (
-    <div className="mt-[7rem] font-medium flex justify-center items-center gap-9 flex-col text-[#FFFCE1]">
+    <div className="mt-[7rem] font-medium flex justify-center items-center gap-9 flex-col text-secondary-50">
       {/* intro  */}
       <div className="flex justify-center items-center flex-col gap-1">
         <h1 className="text-5xl">Instantly amplify your Website</h1>

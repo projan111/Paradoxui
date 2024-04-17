@@ -4,13 +4,12 @@ import Image from "next/image";
 
 type Props = {};
 
-
 // const teamImage = [{
 //   img: ""
 // }]
 function Footer({}: Props) {
   return (
-    <div className="w-[80vw] mx-auto border-t-2 py-[2rem] border-zinc-800 text-[#FFFCE1]">
+    <div className=" mx-auto border-t-2 py-[2rem] border-zinc-800 text-secondary-50">
       <div className="flex justify-between items-center">
         {/* left part  */}
         <div className="flex w-[30%] gap-2 flex-col">

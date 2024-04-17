@@ -1,21 +1,25 @@
 "use client";
 
 import Navbar from "@/components/website/Navbar";
-import FeaturedComponents from "@/components/website/home/FeaturedComponents";
-import FeaturedHero from "@/components/website/home/FeaturedHero";
-import Hero from "@/components/website/home/Hero";
-import Reviews from "@/components/website/home/Reviews";
+
 import Footer from "@/components/website/Footer";
+import SelectFavourite from "@/components/website/home/SelectFavourite/SelectFavourite";
+import CollectComponents from "@/components/website/home/CollectComponents/CollectComponents";
+import Hero from "@/components/website/home/Hero/Hero";
+import FeaturedHero from "@/components/website/home/FeaturedHero/FeaturedHero";
+import Reviews from "@/components/website/home/Reviews/Reviews";
 
 // component sections path
 
 export default function Home() {
   return (
-    <main>
+    <main className="w-[80vw] mx-auto">
       <Navbar />
       <Hero />
+      {/* <FeaturedComponents /> */}
+      <SelectFavourite />
+      <CollectComponents />
       <FeaturedHero />
-      <FeaturedComponents />
       <Reviews />
       <Footer />
     </main>

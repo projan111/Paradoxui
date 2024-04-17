@@ -24,20 +24,7 @@ const config = {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-        accent: {
-          // green shades
-          "50": "#effef2",
-          "100": "#e0ffe7",
-          "200": "#b5fdc6",
-          "300": "#7cf99a",
-          "400": "#3cec67",
-          "500": "#13d443",
-          "600": "#09b033",
-          "700": "#0b8a2b",
-          "800": "#0f6c27",
-          "900": "#0e5923",
-          "950": "#01320f",
-        },
+
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -57,18 +44,32 @@ const config = {
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
-          // orange shades
-          "50": "#fffce1",
-          "100": "#fffac0",
-          "200": "#fff385",
-          "300": "#ffe43f",
-          "400": "#ffd00b",
-          "500": "#f4b600",
-          "600": "#d38b00",
-          "700": "#a86100",
-          "800": "#8a4c09",
-          "900": "#753e0e",
-          "950": "#451f03",
+          //  text
+          '50': '#fff8db',
+          '100': '#fff4c0',
+          '200': '#ffe785',
+          '300': '#ffd23f',
+          '400': '#ffb90b',
+          '500': '#f49f00',
+          '600': '#d37700',
+          '700': '#a85200',
+          '800': '#8a4009',
+          '900': '#75340e',
+          '950': '#451903',
+        },
+        accent: {
+          //  green shades
+          "50": "#f0ffe4",
+          "100": "#ddffc5",
+          "200": "#bcff91",
+          "300": "#8fff51",
+          "400": "#59fd0b",
+          "500": "#45e400",
+          "600": "#31b700",
+          "700": "#268a01",
+          "800": "#226c08",
+          "900": "#1f5b0c",
+          "950": "#0b3300",
         },
 
         destructive: {

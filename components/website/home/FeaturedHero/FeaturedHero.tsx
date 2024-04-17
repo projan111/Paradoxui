@@ -30,7 +30,16 @@ const featuredHero = [
 ];
 function FeaturedHero({}: Props) {
   return (
-    <div className="w-[80vw] mx-auto text-[#FFFCE1] my-10">
+    <div className="text-secondary-50  mx-auto my-10">
+      {/* see more  */}
+      <div className="w-[80vw] mb-10 mx-auto flex justify-center items-center gap-2">
+        <span className="text-[18px]">Paradox Hero Page</span>
+        <hr className="flex-grow  border-primary-800 h-0.1" />
+        <div className="flex justify-center items-center gap-2">
+          <span className="text-[15px]">See more</span>
+          <MoveRight width={15} />
+        </div>
+      </div>
       <div className="grid grid-cols-3 place-content-center place-items-center items-center">
         {/* cards  */}
 
@@ -55,16 +64,6 @@ function FeaturedHero({}: Props) {
             </div>
           </div>
         ))}
-
-        {/* see more  */}
-        <div className="w-[80vw] mt-10 mx-auto flex justify-center items-center gap-2">
-          <span className="text-[18px]">Paradox Hero Page</span>
-          <hr className="flex-grow  border-primary-800 h-0.1" />
-          <div className="flex justify-center items-center gap-2">
-            <span className="text-[15px]">See more</span>
-            <MoveRight width={15} />
-          </div>
-        </div>
       </div>
     </div>
   );
