@@ -31,7 +31,7 @@ const reviews = [
 ];
 function Reviews({}: Props) {
   return (
-    <div className="w-[80vw] flex text-[#FFFCE1]  border-zinc-800 justify-center items-center flex-col mx-auto my-10">
+    <div className=" flex text-secondary-50  border-zinc-800 justify-center items-center flex-col mx-auto my-10">
       {/* header  */}
       <span className="text-3xl font-semibold">Reviews</span>
 

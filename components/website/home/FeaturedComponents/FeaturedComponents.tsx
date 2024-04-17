@@ -8,7 +8,7 @@ type Props = {};
 
 function FeaturedComponents({}: Props) {
   return (
-    <div className="w-[80vw] text-[#FFFCE1] mx-auto my-10">
+    <div className="text-[#FFFCE1] mx-auto my-10">
       {/* components  */}
       <div className="grid grid-cols-2 place-content-center place-items-center items-center">
         {/* left part  */}
