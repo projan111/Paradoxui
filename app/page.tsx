@@ -8,7 +8,8 @@ import CollectComponents from "@/components/website/home/CollectComponents/Colle
 import Hero from "@/components/website/home/Hero/Hero";
 import FeaturedHero from "@/components/website/home/FeaturedHero/FeaturedHero";
 import Reviews from "@/components/website/home/Reviews/Reviews";
-
+import CombineComponents from "@/components/website/home/CombineComponents/CombineComponents";
+import FeaturedComponents from "@/components/website/home/FeaturedComponents/FeaturedComponents";
 // component sections path
 
 export default function Home() {
@@ -16,9 +17,10 @@ export default function Home() {
     <main className="w-[80vw] mx-auto">
       <Navbar />
       <Hero />
-      {/* <FeaturedComponents /> */}
+      <FeaturedComponents />
       <SelectFavourite />
       <CollectComponents />
+      <CombineComponents />
       <FeaturedHero />
       <Reviews />
       <Footer />
