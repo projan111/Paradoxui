@@ -13,7 +13,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       {!isFullScreen && (
         <div className={`${isFullScreen ? "" : "w-2/12"}  h-screen overflow-y-scroll  p-4`}>
           <p className=" text-3xl font-semibold  mb-8   ">Paradox UI</p>
-          <div className=" space-y-4 tracking-wider   ">
+          <div className=" space-y-4 tracking-wider    ">
             {navItems.map((item: any, index: number) => (
               <CollapsibleTab
                 key={index}
@@ -32,11 +32,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <Menu className=" cursor-pointer " />
           </Button>
           <div className=" flex items-center space-x-4">
-            <ThemeToggleButton />
+            {/* <ThemeToggleButton /> */}
             <AdminCircleUser />
           </div>
         </div>
-        <div className=" px-4 mt-8 ">{children}</div>
+        <div className=" px-4 mt-8  ">{children}</div>
       </div>
     </div>
   );
@@ -104,25 +104,25 @@ function CollapsibleTab({ item }: any) {
 
   return (
     <div className=" ">
-      <p className=" text-xs tracking-wider uppercase mb-2  mt-6 opacity-50 ">{item.header}</p>
+      <p className=" text-xs tracking-wider uppercase mb-2  mt-6 opacity-50  ">{item.header}</p>
       <Collapsible
         transitionTime={100}
         triggerDisabled={item.isTriggerDisable}
         trigger={
           <Link
             href={item.href}
-            className={`link ${pathname === item.href ? "bg-foreground/5  " : ""}  flex items-center gap-1  py-1.5 px-3 rounded-md opacity-85 `}>
-            <span className=" text-primary/95"> {item.icon} </span> {item.name} {item.subLinks?.length && <ChevronDown size={18} />}
+            className={`link ${pathname === item.href ? "bg-primary-400/20  " : ""}  flex items-center gap-1  py-1.5 px-3 rounded-md opacity-85 `}>
+            <span className=" "> {item.icon} </span> {item.name} {item.subLinks?.length && <ChevronDown size={18} />}
           </Link>
         }>
         <div className=" space-y-2 pt-4">
           {item.subLinks?.map((sublink: any, index: number) => (
             <div
               key={index}
-              className="flex flex-col  hover:bg-muted/5 rounded-md">
+              className="flex flex-col rounded-md">
               <Link
                 href={sublink.href}
-                className={`link ${pathname === sublink.href ? "bg-foreground/5" : ""} py-1.5 px-6 rounded-md  opacity-95  `}>
+                className={`link ${pathname === sublink.href ? "bg-primary-400/20" : ""} py-1.5 px-6 rounded-md  opacity-95  `}>
                 {sublink.title}
               </Link>
             </div>
