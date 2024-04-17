@@ -67,6 +67,9 @@
   }
 }
 
+body {
+  font-family: "Josefin Sans", sans-serif;
+}
 @layer base {
   * {
     @apply border-border;
@@ -75,5 +78,3 @@
     @apply bg-background text-foreground;
   }
 }
-
-
