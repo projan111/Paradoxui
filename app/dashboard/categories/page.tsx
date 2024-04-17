@@ -3,43 +3,41 @@ import * as React from "react";
 import { CaretSortIcon, ChevronDownIcon, DotsHorizontalIcon } from "@radix-ui/react-icons";
 import { ColumnDef, ColumnFiltersState, SortingState, VisibilityState, flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, useReactTable } from "@tanstack/react-table";
 import { Button } from "@/components/ui/button";
-import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuLabel, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
-import Link from "next/link";
 import { toast } from "sonner";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
 import { useState } from "react";
 import { supabase } from "@/utils/supabase/clientRepository";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import CategoryCreateDialog from "./(components)/CategoryCreateDialog";
+import CategoryEditDialog from "./(components)/CategoryEditDialog";
 
 export default function Page() {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
   const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = React.useState({});
+  const [currentPage, setCurrentPage] = useState(1);
 
   const [refreshNow, setRefreshNow] = useState(false);
   const [categories, setCategories] = React.useState<any[]>([]);
-
-  const [currentPage, setCurrentPage] = useState(1);
-
   React.useEffect(() => {
     const fetch = async () => {
       let { data, error } = await supabase.from("Category").select("*");
-
-      if (error || !data) {
+      if (error) {
         throw new Error("Failed to fetch categories");
       }
 
       setCategories(data || []);
-      setRefreshNow(false)
+      setRefreshNow(false);
     };
     fetch();
   }, [refreshNow]);
 
   const [isDeleting, setIsDeleting] = useState<boolean>(false);
-  const deleteCategory = async (id: number) => {
+  const deleteCatgory = async (id: number) => {
     try {
       setIsDeleting(true);
       const { error, data, status } = await supabase.from("Category").delete().eq("id", id);
@@ -48,16 +46,14 @@ export default function Page() {
         throw new Error("Failed to delete category");
       }
 
+      setRefreshNow(true);
       toast.success(isDeleting ? "Category deleting" : "Category deleted successfully");
-      setRefreshNow(false);
     } catch (error) {
       toast.error("Failed to delete category");
     } finally {
       setIsDeleting(false);
     }
   };
-
-
 
   const columns: ColumnDef<any>[] = [
     {
@@ -92,19 +88,13 @@ export default function Page() {
           </Button>
         );
       },
-      cell: ({ row }) => <div className="lowercase">{row.getValue("name")}</div>,
-    },
-
-    {
-      accessorKey: "href",
-      header: "Href",
-      cell: ({ row }) => <div className="capitalize">{row.getValue("href")}</div>,
+      cell: ({ row }) => <div>{row.getValue("name")}</div>,
     },
 
     {
       accessorKey: "description",
       header: "Description",
-      cell: ({ row }) => <div className="capitalize">{row.getValue("description")}</div>,
+      cell: ({ row }) => <div>{row.getValue("description")}</div>,
     },
 
     {
@@ -128,10 +118,10 @@ export default function Page() {
             <DropdownMenuContent align="end">
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
 
-              <Link href={`/categories/edit/${item.id}`}>
-                <DropdownMenuItem>Edit category</DropdownMenuItem>
-              </Link>
-
+              <CategoryEditDialog
+                id={item.id}
+                setRefreshNow={setRefreshNow}
+              />
               <AlertDialog>
                 <AlertDialogTrigger asChild>
                   <span className=" flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors hover:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50"> Delete category</span>
@@ -145,7 +135,7 @@ export default function Page() {
                     <AlertDialogCancel>Cancel</AlertDialogCancel>
                     <AlertDialogAction
                       className=" bg-red-500/90"
-                      onClick={() => deleteCategory(item.id)}>
+                      onClick={() => deleteCatgory(item.id)}>
                       Continue
                     </AlertDialogAction>
                   </AlertDialogFooter>
@@ -159,7 +149,7 @@ export default function Page() {
   ];
 
   const table = useReactTable({
-    data: categories || [],
+    data: (categories && categories) || [],
     columns,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
@@ -179,13 +169,6 @@ export default function Page() {
 
   return (
     <div className="w-full">
-      {/* <DynamicBreadcrumb
-        items={[
-          { name: "Dashboard", link: "/dashboard" },
-          { name: "Categories", link: "/categories", isCurrentPage: true },
-        ]}
-      /> */}
-
       {isDeleting && toast.success("Deleting ...")}
       <div className="flex items-center justify-between py-4">
         <Input
@@ -196,9 +179,7 @@ export default function Page() {
         />
 
         <div className=" space-x-2">
-          <Link href={"/dashboard/categories/create"}>
-            <Button>Create Category</Button>
-          </Link>
+          <CategoryCreateDialog setRefreshNow={setRefreshNow} />
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>

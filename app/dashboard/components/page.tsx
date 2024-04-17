@@ -12,6 +12,9 @@ import { useState } from "react";
 import { supabase } from "@/utils/supabase/clientRepository";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import CreateComponentDialog from "./(components)/CreateComponentDialog";
+import EditComponentDialog from "./(components)/EditComponentDialog";
+import { Badge } from "@/components/ui/badge";
 
 export default function Page() {
   const [sorting, setSorting] = React.useState<SortingState>([]);
@@ -20,18 +23,26 @@ export default function Page() {
   const [rowSelection, setRowSelection] = React.useState({});
 
   const [refreshNow, setRefreshNow] = useState(false);
-
   const [components, setComponents] = React.useState<any[]>([]);
   React.useEffect(() => {
     const fetch = async () => {
-      let { data, error } = await supabase.from("Component").select("*");
-
-      if (error || !data) {
-        throw new Error("Failed to fetch components");
+      let { data, error, status } = await supabase.from("Component").select(`
+      *,
+      category (
+        name
+      ),
+      subcategory(
+        name
+      )
+    `);
+      if (error) {
+        console.error("Failed to fetch components:", error.message);
+        return;
       }
 
-      setComponents(data || []);
-      setRefreshNow(false);
+      if (status === 200 && data) {
+        setComponents(data);
+      }
     };
     fetch();
   }, [refreshNow]);
@@ -42,10 +53,10 @@ export default function Page() {
       setIsDeleting(true);
       const { error, data, status } = await supabase.from("Component").delete().eq("id", id);
 
-      setRefreshNow(!refreshNow);
       if (error || status !== 204) {
         throw new Error("Failed to delete component");
       }
+      setRefreshNow(!refreshNow);
       toast.success(isDeleting ? "Component deleting" : "Component deleted successfully");
     } catch (error) {
       toast.error("Failed to delete component");
@@ -87,7 +98,31 @@ export default function Page() {
           </Button>
         );
       },
-      cell: ({ row }) => <div className="lowercase">{row.getValue("name")}</div>,
+      cell: ({ row }) => <div>{row.getValue("name")}</div>,
+    },
+
+    {
+      accessorKey: "previewUrl",
+      header: "Previuw URL",
+      cell: ({ row }) => (
+        <div>
+          <Link href={row.getValue("previewUrl")}>
+            <Badge variant="outline">Preview</Badge>
+          </Link>
+        </div>
+      ),
+    },
+
+    {
+      accessorKey: "category",
+      header: "Category",
+      cell: ({ row }: any) => <div>{row.getValue("category").name}</div>,
+    },
+
+    {
+      accessorKey: "subcategory",
+      header: "Sub Category",
+      cell: ({ row }: any) => <div>{row.getValue("subcategory").name}</div>,
     },
 
     {
@@ -111,10 +146,10 @@ export default function Page() {
             <DropdownMenuContent align="end">
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
 
-              <Link href={`/dashboard/components/edit/${item.id}`}>
-                <DropdownMenuItem>Edit component</DropdownMenuItem>
-              </Link>
-
+              <EditComponentDialog
+                id={item.id}
+                setRefreshNow={setRefreshNow}
+              />
               <AlertDialog>
                 <AlertDialogTrigger asChild>
                   <span className=" flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors hover:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50"> Delete component</span>
@@ -162,13 +197,6 @@ export default function Page() {
 
   return (
     <div className="w-full">
-      {/* <DynamicBreadcrumb
-        items={[
-          { name: "Dashboard", link: "/dashboard" },
-          { name: "Categories", link: "/categories", isCurrentPage: true },
-        ]}
-      /> */}
-
       {isDeleting && toast.success("Deleting ...")}
       <div className="flex items-center justify-between py-4">
         <Input
@@ -179,9 +207,7 @@ export default function Page() {
         />
 
         <div className=" space-x-2">
-          <Link href={"/dashboard/components/create"}>
-            <Button>Create Component</Button>
-          </Link>
+          <CreateComponentDialog setRefreshNow={setRefreshNow} />
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>

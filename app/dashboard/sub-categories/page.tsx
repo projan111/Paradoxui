@@ -12,45 +12,45 @@ import { useState } from "react";
 import { supabase } from "@/utils/supabase/clientRepository";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import CreateSubcategoryDialog from "./(components)/CreateSubcategoryDialog";
+import EditSubcategoryDialog from "./(components)/EditSubcategoryDialog";
 
 export default function Page() {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
   const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = React.useState({});
+  const [currentPage, setCurrentPage] = useState(1);
 
   const [refreshNow, setRefreshNow] = useState(false);
   const [subCategories, setSubCategories] = React.useState<any[]>([]);
-
-  const [currentPage, setCurrentPage] = useState(1);
-
   React.useEffect(() => {
     const fetch = async () => {
       let { data, error } = await supabase.from("Sub Category").select("*");
-
-      if (error || !data) {
-        throw new Error("Failed to fetch sub categories");
+      if (error) {
+        throw new Error("Failed to fetch sub-categories");
       }
 
       setSubCategories(data || []);
+      setRefreshNow(false);
     };
     fetch();
   }, [refreshNow]);
 
   const [isDeleting, setIsDeleting] = useState<boolean>(false);
-
   const deleteSubCategory = async (id: number) => {
     try {
       setIsDeleting(true);
       const { error, data, status } = await supabase.from("Sub Category").delete().eq("id", id);
 
-      setRefreshNow(!refreshNow);
       if (error || status !== 204) {
-        throw new Error("Failed to delete category");
+        throw new Error("Failed to delete sub-category");
       }
-      toast.success(isDeleting ? "Category deleting" : "Category deleted successfully");
+
+      setRefreshNow(true);
+      toast.success(isDeleting ? "Sub-category deleting" : "Sub-category deleted successfully");
     } catch (error) {
-      toast.error("Failed to delete category");
+      toast.error("Failed to delete sub-category");
     } finally {
       setIsDeleting(false);
     }
@@ -119,10 +119,10 @@ export default function Page() {
             <DropdownMenuContent align="end">
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
 
-              <Link href={`/categories/edit/${item.id}`}>
-                <DropdownMenuItem>Edit category</DropdownMenuItem>
-              </Link>
-
+              <EditSubcategoryDialog
+                id={item.id}
+                setRefreshNow={setRefreshNow}
+              />
               <AlertDialog>
                 <AlertDialogTrigger asChild>
                   <span className=" flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors hover:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50"> Delete category</span>
@@ -150,7 +150,7 @@ export default function Page() {
   ];
 
   const table = useReactTable({
-    data: subCategories || [],
+    data: (subCategories && subCategories) || [],
     columns,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
@@ -170,13 +170,6 @@ export default function Page() {
 
   return (
     <div className="w-full">
-      {/* <DynamicBreadcrumb
-        items={[
-          { name: "Dashboard", link: "/dashboard" },
-          { name: "Categories", link: "/categories", isCurrentPage: true },
-        ]}
-      /> */}
-
       {isDeleting && toast.success("Deleting ...")}
       <div className="flex items-center justify-between py-4">
         <Input
@@ -187,10 +180,7 @@ export default function Page() {
         />
 
         <div className=" space-x-2">
-          <Link href={"/dashboard/sub-categories/create"}>
-            <Button>Create Category</Button>
-          </Link>
-
+          <CreateSubcategoryDialog setRefreshNow={setRefreshNow} />
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button

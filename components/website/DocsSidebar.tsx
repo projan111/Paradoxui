@@ -55,7 +55,22 @@ export function DocsSidebar({}: Props) {
 
   console.log(components);
 
-  // Organize categories, subcategories, and components into a nested structure
+  // // Organize categories, subcategories, and components into a nested structure
+  // const nestedData = categories.map((category) => {
+  //   const categoryData = {
+  //     ...category,
+  //     subcategories: subCategories
+  //       .filter((subCategory) => subCategory.category === category.id)
+  //       .map((subCategory) => {
+  //         return {
+  //           ...subCategory,
+  //           components: components.filter((component) => component.category.id === category.id && component.subcategory.id === subCategory.id),
+  //         };
+  //       }),
+  //   };
+  //   return categoryData;
+  // });
+
   const nestedData = categories.map((category) => {
     const categoryData = {
       ...category,
@@ -64,12 +79,13 @@ export function DocsSidebar({}: Props) {
         .map((subCategory) => {
           return {
             ...subCategory,
-            components: components.filter((component) => component.category.id === category.id && component.subcategory.id === subCategory.id),
+            // Do not include components here
           };
         }),
     };
     return categoryData;
   });
+  
 
   console.log(nestedData);
 
@@ -81,27 +97,27 @@ export function DocsSidebar({}: Props) {
         {nestedData.map((category, index) => (
           <>
             <div key={index}>
-              <p className="font-medium  mt-6 mb-2">{category.name}</p>
+              <p className="font-medium  mt-6 mb-2 text-lg">{category.name}</p>
             </div>
             <Separator className="mb-2" />
 
             {category.subcategories.map((subcategory: any, index: number) => (
               <>
                 <div key={index}>
-                  <p className="text-sm mb-2 ml-2">{subcategory.name}</p>
+                  <Link href={`/docs/components/${subcategory.id}`} className="text-sm mb-2 ml-2 font-medium opacity-85 cursor-pointer">{subcategory.name}</Link>
                 </div>
 
-                {subcategory.components.map((component: any, index: number) => (
+                {/* {subcategory.components.map((component: any, index: number) => (
                   <>
                     <div key={index}>
                       <Link
-                        href={`/docs/components/${component.id}`}
+                        
                         className="text-xs mb-2 ml-4">
                         {component.name}
                       </Link>
                     </div>
                   </>
-                ))}
+                ))} */}
               </>
             ))}
           </>
