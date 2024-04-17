@@ -22,7 +22,8 @@ const config = {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
+        //background: "hsl(var(--background))",
+        background: "#000000",
         foreground: "hsl(var(--foreground))",
 
         primary: {
@@ -72,6 +73,20 @@ const config = {
           "950": "#0b3300",
         },
 
+        black: {
+          '50': '#f2f2f2', 
+          '100': '#e6e6e6', 
+          '200': '#bfbfbf', 
+          '300': '#999999', 
+          '400': '#4d4d4d', 
+          '500': '#000000', 
+          '600': '#000000', 
+          '700': '#000000', 
+          '800': '#000000', 
+          '900': '#000000', 
+          '950': '#000000'
+      },
+
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
@@ -80,10 +95,7 @@ const config = {
           DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",
         },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
+       
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
