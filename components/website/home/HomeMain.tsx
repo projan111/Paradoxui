@@ -13,7 +13,8 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import { any } from "zod";
+
+
 
 // register scroll trigger plugin
 gsap.registerPlugin(ScrollTrigger);
