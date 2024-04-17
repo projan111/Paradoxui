@@ -170,7 +170,14 @@ export default function Page() {
   return (
     <div className="w-full">
       <div className="flex items-center justify-between py-4">
-       
+      <Input
+          placeholder="Filter emails..."
+          value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
+          onChange={(event) =>
+            table.getColumn("email")?.setFilterValue(event.target.value)
+          }
+          className="max-w-sm"
+        />
 
         <div className=" space-x-2">
           <CategoryCreateDialog setRefreshNow={setRefreshNow} />

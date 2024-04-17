@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import "rsuite/dist/rsuite.css";
 * {
   margin: 0;
   padding: 0;
@@ -71,9 +70,6 @@
   }
 }
 
-body {
-  font-family: "Josefin Sans", sans-serif;
-}
 @layer base {
   * {
     @apply border-border;
@@ -81,8 +77,4 @@ body {
   body {
     @apply bg-background text-foreground;
   }
-}
-
-.no-scroll-bar {
-  overflow: hidden !important;
 }
