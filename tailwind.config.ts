@@ -1,13 +1,13 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
 
 const config = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-	],
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   prefix: "",
   theme: {
     container: {
@@ -24,14 +24,54 @@ const config = {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          // black shades
+          "50": "#f2f2f2",
+          "100": "#d9d9d9",
+          "200": "#d9d9d9",
+          "300": "#a6a6a6",
+          "400": "#8c8c8c",
+          "500": "#737373",
+          "600": "#595959",
+          "700": "#404040",
+          "800": "#262626",
+          "900": "#0d0d0d",
+          "950": "#002D00",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
+          //  text
+          '50': '#fff8db',
+          '100': '#fff4c0',
+          '200': '#ffe785',
+          '300': '#ffd23f',
+          '400': '#ffb90b',
+          '500': '#f49f00',
+          '600': '#d37700',
+          '700': '#a85200',
+          '800': '#8a4009',
+          '900': '#75340e',
+          '950': '#451903',
         },
+        accent: {
+          //  green shades
+          "50": "#f0ffe4",
+          "100": "#ddffc5",
+          "200": "#bcff91",
+          "300": "#8fff51",
+          "400": "#59fd0b",
+          "500": "#45e400",
+          "600": "#31b700",
+          "700": "#268a01",
+          "800": "#226c08",
+          "900": "#1f5b0c",
+          "950": "#0b3300",
+        },
+
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
@@ -75,6 +115,6 @@ const config = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-} satisfies Config
+} satisfies Config;
 
-export default config
+export default config;
