@@ -4,7 +4,6 @@ import { CaretSortIcon, ChevronDownIcon, DotsHorizontalIcon } from "@radix-ui/re
 import { ColumnDef, ColumnFiltersState, SortingState, VisibilityState, flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, useReactTable } from "@tanstack/react-table";
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { toast } from "sonner";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
@@ -177,7 +176,7 @@ export default function Page() {
   ];
 
   const table = useReactTable({
-    data: components || [],
+    data: components && components  || [],
     columns,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
@@ -197,15 +196,7 @@ export default function Page() {
 
   return (
     <div className="w-full">
-      {isDeleting && toast.success("Deleting ...")}
       <div className="flex items-center justify-between py-4">
-        <Input
-          placeholder="Search by name..."
-          value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
-          onChange={(event) => table.getColumn("email")?.setFilterValue(event.target.value)}
-          className="max-w-sm"
-        />
-
         <div className=" space-x-2">
           <CreateComponentDialog setRefreshNow={setRefreshNow} />
 
