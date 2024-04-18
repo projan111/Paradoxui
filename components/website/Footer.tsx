@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import ParadoxuiLogo from "@/public/images/paradoxui-logo.png";
 import Image from "next/image";
