@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import FeaturedHero1Image from "@/public/images/featured-hero/hero1.png";
 import FeaturedHero2Image from "@/public/images/featured-hero/hero2.png";
@@ -46,7 +47,7 @@ function FeaturedHero({}: Props) {
         {/* cards  */}
 
         {featuredHero.map((item, index) => (
-          <div className="p-3 rounded-lg w-[24rem] h-[20rem] bg-primary-800">
+          <div key={index} className="p-3 rounded-lg w-[24rem] h-[20rem] bg-primary-800">
             {/* image  */}
             <div className="w-full h-[16rem]">
               <Image

@@ -8,7 +8,7 @@ import { MonitorSmartphone, CodeXml, Clipboard, ClipboardList, CheckCheck } from
 import { useEffect, useState } from "react";
 import { supabase } from "@/utils/supabase/clientRepository";
 import { useParams } from "next/navigation";
-import Timeline1 from "@/components/Timeline1";
+
 import { Timeline } from "rsuite";
 
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";

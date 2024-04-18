@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import { Icon } from "@iconify/react";
 import { id } from "date-fns/locale";
@@ -54,7 +55,7 @@ function Hero({}: Props) {
       {/* library  */}
       <div className="w-full flex justify-center items-center gap-10">
         {heroIcon.map((item, index) => (
-          <div className="flex justify-center items-center gap-2">
+          <div key={index} className="flex justify-center items-center gap-2">
             <Icon icon={item.icon} style={{ color: "white" }} width={25} />
             <span className="text-lg pt-1">{item.name}</span>
           </div>
