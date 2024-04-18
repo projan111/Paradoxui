@@ -35,21 +35,21 @@ function Footer({}: Props) {
 
           <div className="flex justify-center items-center gap-2">
             <div className="rounded-full bg-white w-[3rem] h-[3rem]">
-              <img
+              <Image
                 src=""
                 alt=""
                 className="w-full h-full object-cover object-center"
               />
             </div>
             <div className="rounded-full bg-white w-[3rem] h-[3rem]">
-              <img
+              <Image
                 src=""
                 alt=""
                 className="w-full h-full object-cover object-center"
               />
             </div>
             <div className="rounded-full bg-white w-[3rem] h-[3rem]">
-              <img
+              <Image
                 src=""
                 alt=""
                 className="w-full h-full object-cover object-center"
@@ -57,7 +57,7 @@ function Footer({}: Props) {
             </div>
 
             <div className="rounded-full bg-white w-[3rem] h-[3rem]">
-              <img
+              <Image
                 src=""
                 alt=""
                 className="w-full h-full object-cover object-center"

@@ -89,13 +89,13 @@ export default function Page() {
           </Button>
         );
       },
-      cell: ({ row }) => <div className="lowercase">{row.getValue("name")}</div>,
+      cell: ({ row }) => <div >{row.getValue("name")}</div>,
     },
 
     {
       accessorKey: "category",
       header: "Category",
-      cell: ({ row }) => <div className="capitalize">{row.getValue("category")}</div>,
+      cell: ({ row }) => <div >{row.getValue("category")}</div>,
     },
 
     {
