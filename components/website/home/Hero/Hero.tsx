@@ -28,10 +28,12 @@ function Hero({}: Props) {
     },
   ];
   return (
-    <div className="mt-[7rem] font-medium flex justify-center items-center gap-9 flex-col text-secondary-50">
+    <div className="py-14 font-medium flex justify-center items-center gap-9 flex-col text-secondary-50">
       {/* intro  */}
       <div className="flex justify-center items-center flex-col gap-1">
-        <h1 className="text-5xl font-semibold">Instantly amplify your Website</h1>
+        <h1 className="text-5xl font-semibold">
+          Instantly amplify your Website
+        </h1>
         <h2 className="text-4xl">
           looks <span className="text-5xl">10x</span>
           <span className="bg-gradient-to-r from-[#58FF0A] to-blue-300 bg-clip-text text-transparent">
@@ -43,7 +45,6 @@ function Hero({}: Props) {
       <p className="text-[16px] font-medium">
         Easily add stylish, animated components to your site!
       </p>
-
       {/* ecplore button  */}
       {/* button explore  */}
       <button className="w-[12rem] h-[3rem] text-center bg-secondary-50 rounded-full p-2 text-primary-800">
