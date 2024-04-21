@@ -153,7 +153,7 @@ function HomeMain({}: Props) {
 
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <Hero />
       <FeaturedComponents featureContainerRef={featureContainerRef} />
       <SelectFavourite />
