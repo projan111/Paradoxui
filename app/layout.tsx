@@ -15,7 +15,7 @@ const josefin = Josefin_Sans({ subsets: ["latin"] });
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={josefin.className}>
+      <body className={josefin.className }>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
