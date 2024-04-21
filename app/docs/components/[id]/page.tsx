@@ -149,12 +149,12 @@ export default function Page({}: Props) {
                   <DialogContent className="sm:max-w-[1024px]">
                     <DialogHeader>
                       <DialogTitle>Something Instruction Here</DialogTitle>
-                      <DialogDescription>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores est repellendus illo et voluptas eligendi inventore accusantium deserunt nihil quam exercitationem itaque laborum tempore harum delectus perspiciatis, enim, facere quis minima! Provident reprehenderit voluptatibus doloribus quam, eaque eveniet exercitationem repellat.</DialogDescription>
+                      <DialogDescription>{component?.description}</DialogDescription>
                     </DialogHeader>
 
                     <CodeBlock
                       code={component?.code}
-                      language={component?.language}
+                      language={"jsx"}
                       theme={themes.oneDark}>
                       <div className="text-sm text-gray-700   absolute bottom-0 px-8 py-4  font-semibold flex ">{component?.filePathname}</div>
                       <button
