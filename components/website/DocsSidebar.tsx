@@ -85,14 +85,15 @@ export function DocsSidebar({}: Props) {
     };
     return categoryData;
   });
-  
 
   console.log(nestedData);
 
   return (
     <ScrollArea className=" h-screen  rounded-md border">
       <div className="p-4">
-        <h4 className="mb-4 text-sm font-medium leading-none">Tags</h4>
+        <h4 className="font-medium  mt-6 mb-2 text-lg">Getting Started</h4>
+        <p className="text-sm mb-2 ml-2 font-medium opacity-85 cursor-pointer">Introduction</p>
+        <p className="text-sm mb-2 ml-2 font-medium opacity-85 cursor-pointer">Installation</p>
 
         {nestedData.map((category, index) => (
           <>
@@ -104,7 +105,11 @@ export function DocsSidebar({}: Props) {
             {category.subcategories.map((subcategory: any, index: number) => (
               <>
                 <div key={index}>
-                  <Link href={`/docs/components/${subcategory.id}`} className="text-sm mb-2 ml-2 font-medium opacity-85 cursor-pointer">{subcategory.name}</Link>
+                  <Link
+                    href={`/docs/components/${subcategory.id}`}
+                    className="text-sm mb-2 ml-2 font-medium opacity-85 cursor-pointer">
+                    {subcategory.name}
+                  </Link>
                 </div>
 
                 {/* {subcategory.components.map((component: any, index: number) => (

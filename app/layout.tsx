@@ -4,6 +4,7 @@ import { Josefin_Sans } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./ThemeProvider";
 import { Toaster } from "sonner";
+import Navbar from "@/components/website/Navbar";
 
 const josefin = Josefin_Sans({ subsets: ["latin"] });
 
@@ -16,11 +17,16 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body className={josefin.className }>
+    <div className=" w-10/12 mx-auto">
+    <Navbar />
+    </div>
+
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange>
+          
           {children}
         </ThemeProvider>
         <Toaster />

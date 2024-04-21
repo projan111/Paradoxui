@@ -8,7 +8,7 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
         <DocsSidebar />
       </div>
 
-      <div className=" w-10/12">{children}</div>
+      <div className=" w-10/12 h-screen overflow-y-scroll">{children}</div>
     </section>
   );
 }
