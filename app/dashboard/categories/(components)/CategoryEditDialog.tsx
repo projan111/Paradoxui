@@ -28,7 +28,6 @@ const formSchema = z.object({
       message: "Name must be between 2-20 characters.",
     }),
 
-  description: z.string().optional(),
 });
 
 export default function CategoryEditDialog({ id, setRefreshNow }: Props) {
@@ -37,7 +36,6 @@ export default function CategoryEditDialog({ id, setRefreshNow }: Props) {
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
-      description: "",
     },
   });
 
@@ -67,7 +65,6 @@ export default function CategoryEditDialog({ id, setRefreshNow }: Props) {
     if (category) {
       form.reset({
         name: category.name || "",
-        description: category.description || "",
       });
     }
   }, [form, category]);
@@ -124,22 +121,7 @@ export default function CategoryEditDialog({ id, setRefreshNow }: Props) {
                 )}
               />
 
-              <FormField
-                control={form.control}
-                name="description"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>
-                      Category Description <OptionalLabel />
-                    </FormLabel>
-                    <Input
-                      placeholder="Write some dedcription here about the category."
-                      {...field}
-                    />
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+           
             </div>
 
             <div className=" flex justify-end mt-8">

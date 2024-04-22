@@ -25,8 +25,6 @@ const formSchema = z.object({
     .max(20, {
       message: "Name must be between 2-20 characters.",
     }),
-
-  description: z.string().optional(),
 });
 
 export default function CategoryCreateDialog({ setRefreshNow }: Props) {
@@ -35,7 +33,6 @@ export default function CategoryCreateDialog({ setRefreshNow }: Props) {
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
-      description: "",
     },
   });
 
@@ -90,22 +87,7 @@ export default function CategoryCreateDialog({ setRefreshNow }: Props) {
                 )}
               />
 
-              <FormField
-                control={form.control}
-                name="description"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>
-                      Category Description <OptionalLabel />
-                    </FormLabel>
-                    <Input
-                      placeholder="Write some dedcription here about the category."
-                      {...field}
-                    />
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+           
             </div>
 
             <div className=" flex justify-end mt-8">
