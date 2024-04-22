@@ -9,6 +9,13 @@
 ::-webkit-scrollbar {
   display: none;
 }
+
+.gradient-border {
+  border-width: 2px;
+  border-style: solid;
+  border-image: linear-gradient(to right, rgb(14, 224, 14), rgb(86, 86, 238)) 1;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -80,4 +87,8 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.post-blog-style h2 {
+  font-size: 15px;
 }

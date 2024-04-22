@@ -15,6 +15,8 @@ import { themes } from "prism-react-renderer";
 import { RotateCw } from "lucide-react";
 import { supabase } from "@/utils/supabase/clientRepository";
 import OptionalLabel from "@/components/dashboard/OptionalLabel";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 type Props = {
   setRefreshNow: React.Dispatch<React.SetStateAction<boolean>>;
@@ -63,6 +65,14 @@ export default function CreateComponentDialog({ setRefreshNow }: Props) {
     },
   });
 
+  const [value, setValue] = useState("");
+
+  const quillModules = {
+    toolbar: [[{ header: [1, 2, 3, false] }], ["bold", "italic", "underline", "strike", "blockquote"], [{ list: "ordered" }, { list: "bullet" }], ["link", "image"], [{ align: [] }], [{ color: [] }], ["code-block"], ["clean"]],
+  };
+
+  const quillFormats = ["header", "bold", "italic", "underline", "strike", "blockquote", "list", "bullet", "link", "image", "align", "color", "code-block"];
+
   const [categories, setCategories] = React.useState<any[]>([]);
   React.useEffect(() => {
     const fetch = async () => {
@@ -103,7 +113,11 @@ export default function CreateComponentDialog({ setRefreshNow }: Props) {
   const [isCreating, setIsCreating] = useState<boolean>(false);
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setIsCreating(true);
-    const { data, error, status } = await supabase.from("Component").insert([values]).select().single();
+    const { data, error, status } = await supabase
+      .from("Component")
+      .insert([{ ...values, description: value }])
+      .select()
+      .single();
 
     if (error) {
       toast.error(error.details || "An error occurred during create. Please try again.");
@@ -137,7 +151,7 @@ export default function CreateComponentDialog({ setRefreshNow }: Props) {
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className=" ">
+            className=" h-96 overflow-y-scroll">
             <div className="grid grid-cols-2 gap-4">
               <FormField
                 control={form.control}
@@ -265,6 +279,14 @@ export default function CreateComponentDialog({ setRefreshNow }: Props) {
                 </FormItem>
               )}
             />
+
+            {/* <ReactQuill
+              modules={quillModules}
+              formats={quillFormats}
+              theme="snow"
+              value={value}
+              onChange={setValue}
+            /> */}
 
             <>
               <div className=" flex justify-end mt-8 mb-4">
