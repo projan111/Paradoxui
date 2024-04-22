@@ -1,7 +1,8 @@
 "use client"
 import Image from "next/image";
 import React from "react";
-import ParadoxuiLogo from "@/public/images/paradoxui-logo.png";
+import ParadoxuiLogo from "@/public/newlogo-removebg-preview.png"
+// import ParadoxuiLogo from "@/public/newlogo-removebg-preview.png";
 import { Search } from "lucide-react";
 type Props = {};
 

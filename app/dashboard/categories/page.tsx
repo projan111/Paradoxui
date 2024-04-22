@@ -91,11 +91,7 @@ export default function Page() {
       cell: ({ row }) => <div>{row.getValue("name")}</div>,
     },
 
-    {
-      accessorKey: "description",
-      header: "Description",
-      cell: ({ row }) => <div>{row.getValue("description")}</div>,
-    },
+   
 
     {
       id: "actions",
