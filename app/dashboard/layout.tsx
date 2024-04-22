@@ -11,7 +11,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className=" flex">
       {!isFullScreen && (
-        <div className={`${isFullScreen ? "" : "w-2/12"}  h-screen overflow-y-scroll  p-4`}>
+        <div className={`${isFullScreen ? "" : "w-2/12"}  h-screen overflow-y-scroll  p-4 `}>
           <p className=" text-3xl font-semibold  mb-8   ">Paradox UI</p>
           <div className=" space-y-4 tracking-wider    ">
             {navItems.map((item: any, index: number) => (

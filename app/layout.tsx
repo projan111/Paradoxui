@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import type { Metadata } from "next";
 import { Josefin_Sans } from "next/font/google";
 import "./globals.css";
@@ -16,17 +16,17 @@ const josefin = Josefin_Sans({ subsets: ["latin"] });
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={josefin.className }>
-    <div className=" w-10/12 mx-auto">
-    <Navbar />
-    </div>
+      <body className={josefin.className}>
+        {/* <div className=" w-10/12 mx-auto">
+          <Navbar />
+        </div> */}
 
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange>
-          
+             
           {children}
         </ThemeProvider>
         <Toaster />

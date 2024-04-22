@@ -1,7 +1,7 @@
-"use client"
+"use client";
 import Image from "next/image";
 import React from "react";
-import ParadoxuiLogo from "@/public/newlogo-removebg-preview.png"
+import ParadoxuiLogo from "@/public/newlogo-removebg-preview.png";
 // import ParadoxuiLogo from "@/public/newlogo-removebg-preview.png";
 import { Search } from "lucide-react";
 type Props = {};
@@ -10,8 +10,12 @@ function Navbar({}: Props) {
   return (
     <div className="gap-10 mx-auto h-[5rem] border-b-[1px] text-secondary-50   border-x-primary-400 flex justify-between items-center">
       {/* logo  */}
-      <div className="flex justify-between items-center w-full px-20">
-        <Image src={ParadoxuiLogo} alt="paradoxui-logo" className="w-[9rem]" />
+      <div className="flex justify-between items-center w-full">
+        <Image
+          src={ParadoxuiLogo}
+          alt="paradoxui-logo"
+          className="w-[9rem]"
+        />
         {/* nav link  */}
         <div className="w-full flex ml-20 text-[16px] justify-start items-center font-bold  gap-10">
           <span>Components</span>

@@ -5,6 +5,8 @@ import { Separator } from "@/components/ui/separator";
 import { title } from "process";
 import { supabase } from "@/utils/supabase/clientRepository";
 import Link from "next/link";
+import { useParams } from "next/navigation";
+import { Dot } from "lucide-react";
 
 const tags = Array.from({ length: 50 }).map((_, i, a) => `v1.2.0-beta.${a.length - i}`);
 type Props = {};
@@ -71,6 +73,9 @@ export function DocsSidebar({}: Props) {
   //   return categoryData;
   // });
 
+  const params = useParams();
+  const currentSubCategoryId = params.id;
+
   const nestedData = categories.map((category) => {
     const categoryData = {
       ...category,
@@ -91,246 +96,47 @@ export function DocsSidebar({}: Props) {
   return (
     <ScrollArea className=" h-screen  rounded-md border">
       <div className="p-4">
-        <h4 className="font-medium  mt-6 mb-2 text-lg">Getting Started</h4>
-        <p className="text-sm mb-2 ml-2 font-medium opacity-85 cursor-pointer">Introduction</p>
-        <p className="text-sm mb-2 ml-2 font-medium opacity-85 cursor-pointer">Installation</p>
+        {/* <h4 className="font-medium  mt-6 mb-2 text-lg">Getting Started</h4>
+        <Link
+          href={"/introduction"}
+          className="text-sm mb-2 ml-2 font-medium opacity-85 cursor-pointer">
+          Introduction
+        </Link>
+        <p className="text-sm mb-2 ml-2 font-medium opacity-85 cursor-pointer">Installation</p> */}
 
         {nestedData.map((category, index) => (
           <>
             <div key={index}>
-              <p className="font-medium  mt-6 mb-2 text-lg">{category.name}</p>
+              <p className="font-medium  mt-8 mb-2 text-lg text-primary-100">{category.name}</p>
             </div>
             <Separator className="mb-2" />
 
-            {category.subcategories.map((subcategory: any, index: number) => (
+           <div className=" flex flex-col gap-4"> 
+           {category.subcategories.map((subcategory: any, index: number) => (
               <>
-                <div key={index}>
+                <div
+                  key={index}
+                  className=" flex ">
                   <Link
                     href={`/docs/components/${subcategory.id}`}
-                    className="text-sm mb-2 ml-2 font-medium opacity-85 cursor-pointer">
-                    {subcategory.name}
+                    className={`${currentSubCategoryId == subcategory.id ? " text-accent-600 font-semibold transform  translate-x-2  duration-500 ease-in-out  " : "font-medium text-primary-300 transition-transform duration-500 ease-in-out"} text-sm  opacity-85 cursor-pointer  flex items-center  `}>
+                    {currentSubCategoryId == subcategory.id && <Dot size={22} />} {subcategory.name}
+
+                    {index % 7 === 0 && (
+        <span className="ml-2 text-[10px] border px-2 py-0 rounded-md border-accent-500/25 bg-accent-500 bg-opacity-5 text-accent-500/80">
+          New
+        </span>
+      )}
+
+                    {/* <span className=" ml-2 text-[10px] border px-2 py-0 rounded-md border-accent-500/25 bg-accent-500 bg-opacity-5 text-accent-500/80 "> New</span> */}
                   </Link>
                 </div>
-
-                {/* {subcategory.components.map((component: any, index: number) => (
-                  <>
-                    <div key={index}>
-                      <Link
-                        
-                        className="text-xs mb-2 ml-4">
-                        {component.name}
-                      </Link>
-                    </div>
-                  </>
-                ))} */}
               </>
             ))}
+           </div>
           </>
         ))}
       </div>
     </ScrollArea>
   );
 }
-
-const elements = [
-  {
-    title: "Getting Started",
-    items: [
-      {
-        title: "Introduction",
-        href: "/docs/introduction",
-      },
-      {
-        title: "Installation",
-        href: "/docs/installation",
-      },
-      {
-        title: "Changelog",
-        href: "/docs/changelog",
-      },
-    ],
-  },
-  {
-    title: "Components",
-    items: [
-      {
-        title: "Button",
-        href: "/docs/button",
-      },
-      {
-        title: "Input",
-        href: "/docs/input",
-      },
-      {
-        title: "Textarea",
-        href: "/docs/textarea",
-      },
-      {
-        title: "Select",
-        href: "/docs/select",
-      },
-      {
-        title: "Checkbox",
-        href: "/docs/checkbox",
-      },
-      {
-        title: "Radio",
-        href: "/docs/radio",
-      },
-      {
-        title: "Switch",
-        href: "/docs/switch",
-      },
-      {
-        title: "Slider",
-        href: "/docs/slider",
-      },
-      {
-        title: "Tag",
-        href: "/docs/tag",
-      },
-      {
-        title: "Avatar",
-        href: "/docs/avatar",
-      },
-      {
-        title: "Badge",
-        href: "/docs/badge",
-      },
-      {
-        title: "Alert",
-        href: "/docs/alert",
-      },
-      {
-        title: "Modal",
-        href: "/docs/modal",
-      },
-      {
-        title: "Drawer",
-        href: "/docs/drawer",
-      },
-      {
-        title: "Popover",
-        href: "/docs/popover",
-      },
-      {
-        title: "Tooltip",
-        href: "/docs/tooltip",
-      },
-      {
-        title: "Menu",
-        href: "/docs/menu",
-      },
-      {
-        title: "Tabs",
-        href: "/docs/tabs",
-      },
-      {
-        title: "Pagination",
-        href: "/docs/pagination",
-      },
-      {
-        title: "Progress",
-        href: "/docs/progress",
-      },
-      {
-        title: "Spinner",
-        href: "/docs/spinner",
-      },
-      {
-        title: "Divider",
-        href: "/docs/divider",
-      },
-      {
-        title: "Skeleton",
-        href: "/docs/skeleton",
-      },
-      {
-        title: "Scroll Area",
-        href: "/docs/scroll-area",
-      },
-      {
-        title: "Transition",
-        href: "/docs/transition",
-      },
-      {
-        title: "Portal",
-        href: "/docs/portal",
-      },
-      {
-        title: "Toast",
-        href: "/docs/toast",
-      },
-      {
-        title: "Dialog",
-        href: "/docs/dialog",
-      },
-      {
-        title: "Confirm",
-        href: "/docs/confirm",
-      },
-      {},
-    ],
-  },
-  {
-    title: "Hooks",
-    items: [
-      {
-        title: "useModal",
-        href: "/docs/use-modal",
-      },
-      {
-        title: "useDrawer",
-        href: "/docs/use-drawer",
-      },
-      {
-        title: "usePopover",
-        href: "/docs/use-popover",
-      },
-      {
-        title: "useTooltip",
-        href: "/docs/use-tooltip",
-      },
-      {
-        title: "useMenu",
-        href: "/docs/use-menu",
-      },
-      {
-        title: "useTabs",
-        href: "/docs/use-tabs",
-      },
-      {
-        title: "usePagination",
-        href: "/docs/use-pagination",
-      },
-      {
-        title: "useProgress",
-        href: "/docs/use-progress",
-      },
-      {
-        title: "useScroll",
-        href: "/docs/use-scroll",
-      },
-      {
-        title: "useTransition",
-        href: "/docs/use-transition",
-      },
-      {
-        title: "usePortal",
-        href: "/docs/use-portal",
-      },
-      {
-        title: "useToast",
-        href: "/docs/use-toast",
-      },
-      {
-        title: "useDialog",
-        href: "/docs/use-dialog",
-      },
-      {
-        title: "useConfirm",
-        href: "/docs/use-confirm",
-      },
-    ],
-  },
-];
