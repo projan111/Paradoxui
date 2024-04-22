@@ -1,12 +1,30 @@
 import React from "react";
 import ParadoxuiLogo from "@/public/images/paradoxui-logo.png";
 import Image from "next/image";
+import LokiProfileImg from "@/public/images/team-profile/loki.png";
+import SubinProfileImg from "@/public/images/team-profile/subin.png";
+import HariProfileImg from "@/public/images/team-profile/hari.png";
 
 type Props = {};
+interface TeamMember {
+  id: string;
+  img: string; // Assuming these are URLs to the images
+}
 
-// const teamImage = [{
-//   img: ""
-// }]
+const teamImage: TeamMember[] = [
+  {
+    id: "0",
+    img: LokiProfileImg,
+  },
+  {
+    id: "1",
+    img: SubinProfileImg,
+  },
+  {
+    id: "2",
+    img: HariProfileImg,
+  },
+];
 function Footer({}: Props) {
   return (
     <div className=" mx-auto border-t-2 py-[3rem] border-zinc-800 text-secondary-50">
@@ -34,35 +52,14 @@ function Footer({}: Props) {
           <span className="">Out team</span>
 
           <div className="flex justify-center items-center gap-2">
-            <div className="rounded-full bg-white w-[3rem] h-[3rem]">
-              <img
-                src=""
+            {teamImage.map((item, index) => (
+              <Image
+                key={index}
+                src={item.img}
                 alt=""
                 className="w-full h-full object-cover object-center"
               />
-            </div>
-            <div className="rounded-full bg-white w-[3rem] h-[3rem]">
-              <img
-                src=""
-                alt=""
-                className="w-full h-full object-cover object-center"
-              />
-            </div>
-            <div className="rounded-full bg-white w-[3rem] h-[3rem]">
-              <img
-                src=""
-                alt=""
-                className="w-full h-full object-cover object-center"
-              />
-            </div>
-
-            <div className="rounded-full bg-white w-[3rem] h-[3rem]">
-              <img
-                src=""
-                alt=""
-                className="w-full h-full object-cover object-center"
-              />
-            </div>
+            ))}
           </div>
         </div>
         {/* right part  */}

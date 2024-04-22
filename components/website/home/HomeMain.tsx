@@ -106,7 +106,7 @@ function HomeMain({}: Props) {
     // timeline three
     const tl3 = gsap.timeline({
       scrollTrigger: {
-        markers: true,
+        // markers: true,
         trigger: combineContainerRef.current,
         start: "top 75%",
         end: "5% top",
