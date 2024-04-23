@@ -22,6 +22,7 @@ export default function Page() {
   const [rowSelection, setRowSelection] = React.useState({});
   const [currentPage, setCurrentPage] = useState(1);
 
+
   const [refreshNow, setRefreshNow] = useState(false);
   const [subCategories, setSubCategories] = React.useState<any[]>([]);
   React.useEffect(() => {
@@ -173,7 +174,7 @@ export default function Page() {
     <div className="w-full">
       <div className="flex items-center justify-between py-4">
         <Input
-          placeholder="Filter emails..."
+          placeholder="Search by name ..."
           value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
           onChange={(event) => table.getColumn("email")?.setFilterValue(event.target.value)}
           className="max-w-sm"
