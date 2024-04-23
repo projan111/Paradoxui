@@ -95,7 +95,7 @@ export function DocsSidebar({}: Props) {
 
   return (
     <ScrollArea className=" h-screen  rounded-md border">
-      <div className="p-4">
+      <div className="px-4">
         {/* <h4 className="font-medium  mt-6 mb-2 text-lg">Getting Started</h4>
         <Link
           href={"/introduction"}
@@ -107,33 +107,27 @@ export function DocsSidebar({}: Props) {
         {nestedData.map((category, index) => (
           <>
             <div key={index}>
-              <p className="font-medium  mt-8 mb-2 text-lg text-primary-100">{category.name}</p>
+              <p className="font-medium  mt-8 mb-2 text-lg text-secondary-50">{category.name}</p>
             </div>
             <Separator className="mb-2" />
 
-           <div className=" flex flex-col gap-4"> 
-           {category.subcategories.map((subcategory: any, index: number) => (
-              <>
-                <div
-                  key={index}
-                  className=" flex ">
-                  <Link
-                    href={`/docs/components/${subcategory.id}`}
-                    className={`${currentSubCategoryId == subcategory.id ? " text-accent-600 font-semibold transform  translate-x-2  duration-500 ease-in-out  " : "font-medium text-primary-300 transition-transform duration-500 ease-in-out"} text-sm  opacity-85 cursor-pointer  flex items-center  `}>
-                    {currentSubCategoryId == subcategory.id && <Dot size={22} />} {subcategory.name}
-
-                    {index % 7 === 0 && (
-        <span className="ml-2 text-[10px] border px-2 py-0 rounded-md border-accent-500/25 bg-accent-500 bg-opacity-5 text-accent-500/80">
-          New
-        </span>
-      )}
-
-                    {/* <span className=" ml-2 text-[10px] border px-2 py-0 rounded-md border-accent-500/25 bg-accent-500 bg-opacity-5 text-accent-500/80 "> New</span> */}
-                  </Link>
-                </div>
-              </>
-            ))}
-           </div>
+            <div className=" flex flex-col gap-4">
+              {category.subcategories.map((subcategory: any, index: number) => (
+                <>
+                  <div
+                    key={index}
+                    className=" flex ">
+                    <Link
+                      href={`/docs/components/${subcategory.id}`}
+                      className={`${currentSubCategoryId == subcategory.id ? " text-accent-600 font-semibold transform  translate-x-2  duration-500 ease-in-out  " : "font-medium text-secondary-50/80 transition-transform duration-500 ease-in-out"} text-sm  opacity-85 cursor-pointer  flex items-center  `}>
+                      {currentSubCategoryId == subcategory.id && <Dot size={22} />} {subcategory.name}
+                      {index % 7 === 0 && <span className="ml-2 text-[10px] border px-2 py-0 rounded-md border-accent-500/25 bg-accent-500 bg-opacity-5 text-accent-500/80">New</span>}
+                      {/* <span className=" ml-2 text-[10px] border px-2 py-0 rounded-md border-accent-500/25 bg-accent-500 bg-opacity-5 text-accent-500/80 "> New</span> */}
+                    </Link>
+                  </div>
+                </>
+              ))}
+            </div>
           </>
         ))}
       </div>

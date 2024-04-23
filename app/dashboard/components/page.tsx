@@ -200,7 +200,7 @@ export default function Page() {
       <div className="flex items-center justify-between py-4">
 
       <Input
-          placeholder="Filter emails..."
+          placeholder="Search by name ..."
           value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
             table.getColumn("email")?.setFilterValue(event.target.value)
