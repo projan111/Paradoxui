@@ -14,6 +14,7 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import Position from "rsuite/esm/internals/Overlay/Position";
 
 // register scroll trigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -28,183 +29,233 @@ function HomeMain({}: Props) {
   const webContainerRef = useRef(null);
 
   useGSAP(() => {
-    // timeline one
-    const tl1 = gsap.timeline({
+    // Determine the size category based on window width
+
+    //  timeline first
+    const tl1Head = gsap.timeline({
       scrollTrigger: {
+        trigger: selectContainerRef.current,
+        start: "top top",
+        end: "bottom top",
         // markers: true,
-        trigger: ".card-anim",
-        start: "top 50%",
-        end: "bottom -10%",
+        scrub: 0.2,
+        pin: true,
+      },
+    });
+    // select heading
+    tl1Head.from(".heading-select", {
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.3,
+      ease: "sine.in",
+    });
+
+    //  timeline second
+    const tl2Head = gsap.timeline({
+      scrollTrigger: {
+        trigger: collectContainerRef.current,
+        start: "top top",
+        end: "bottom top",
+        // markers: true,
+        scrub: 0.2,
+        pin: true,
+      },
+    });
+    // select heading
+    tl2Head.from(".heading-collect", {
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.3,
+      ease: "sine.in",
+    });
+
+    //  timeline third
+    const tl3Head = gsap.timeline({
+      scrollTrigger: {
+        trigger: combineContainerRef.current,
+        start: "top top",
+        end: "bottom top",
+        // markers: true,
+        scrub: 0.2,
+        pin: true,
+      },
+    });
+    // select heading
+    tl3Head.from(".heading-combine", {
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.3,
+      ease: "sine.in",
+    });
+
+    // component animation gsap
+    //  timeline first card
+    const tl1Card = gsap.timeline({
+      scrollTrigger: {
+        trigger: featureContainerRef.current,
+        start: "20% top",
+        end: "bottom top",
+        // markers: true,
         scrub: 0.2,
       },
     });
-    tl1.to(
+    // select card
+    tl1Card.to(
       ".card-anim",
       {
-        x: "-35%",
-        y: "180%",
-        scale: 0.9,
+        y: "85vh",
+        width: "40vw",
+        opacity: 0,
+        x: "-45%",
         ease: "sine.in",
-        duration: 8,
-      },
-      "first"
-    );
-
-    //  border color
-    tl1.to(
-      ".card-anim",
-      {
         borderColor: "green",
-        duration: 0.1,
       },
-      "first"
+      "select-card"
     );
-    tl1.from(".heading-select", {
-      opacity: 0,
-      duration: 2,
-      stagger: 0.3,
-    });
 
-    // timeline two
-    const tl2 = gsap.timeline({
+    // select card
+    tl1Card.from(
+      ".select-card",
+      {
+        delay: 0.5,
+        opacity: 0,
+        ease: "sine.in",
+      },
+      "select-card"
+    );
+
+    //  timeline second card
+    const tl2Card = gsap.timeline({
       scrollTrigger: {
+        trigger: selectContainerRef.current,
+        start: "50% top",
+        end: "bottom top",
         // markers: true,
-        trigger: collectContainerRef.current,
-        start: "top 50%",
-        end: "10% top",
-        scrub: 0.1,
+        scrub: 0.2,
       },
     });
-    tl2.to(
-      ".card-anim",
+    // select card
+    tl2Card.to(
+      ".select-card",
       {
-        y: "400%",
-        scale: 0.7,
-        ease: "sine.in",
-        rotate: "25deg",
-        duration: 5,
-      },
-      "second"
-    );
-
-    // for newsletter comp
-    tl2.to(
-      ".newsletter-anim",
-      {
-        marginLeft: "15rem",
-        opacity: 1,
-        top: "50%",
-        ease: "sine.in",
-        rotate: "-15deg",
-        borderColor: "green",
-        duration: 5,
-      },
-      "second"
-    );
-
-    // for navbar comp
-    tl2.to(
-      ".navbar-anim",
-      {
-        opacity: 1,
-        ease: "sine.in",
-        borderColor: "green",
-        duration: 5,
+        y: "100vh",
         rotate: 12,
-        top: "20%",
+        ease: "sine.in",
+        borderColor: "green",
+        opacity: 0,
       },
-      "second"
+      "collect-card"
     );
 
-    // collect text
-    tl2.from(".heading-collect", {
-      opacity: 0,
-      duration: 2,
-      stagger: 0.3,
-    });
-
-    // timeline three
-    const tl3 = gsap.timeline({
-      scrollTrigger: {
-        // markers: true,
-        trigger: combineContainerRef.current,
-        start: "top 75%",
-        end: "5% top",
-        scrub: 0.1,
-      },
-    });
-    // tl3.to(
-    //   webContainerRef.current,
-    //   {
-    //     background: "gray",
-    //     border: "none",
-    //     duration: 5,
-    //   },
-    //   "third"
-    // );
-
-    tl3.to(
-      ".card-anim",
+    // select card
+    tl2Card.from(
+      ".collect-card",
       {
-        y: "620%",
-        scale: 1,
+        delay: 0.5,
+        opacity: 0,
         ease: "sine.in",
-        rotate: "0",
-        border: "none",
-        duration: 5,
       },
-      "third"
+      "collect-card"
     );
-
-    // for newsletter comp
-    tl3.to(
-      ".newsletter-anim",
+    // collect card
+    tl2Card.from(
+      ".collect-news",
       {
-        top: "248%",
-        ease: "sine.in",
-        rotate: "0",
-        marginLeft: "10%",
-        borderColor: "#222222",
-        duration: 5,
-      },
-      "third"
-    );
-
-    // for navbar comp
-    tl3.to(
-      ".navbar-anim",
-      {
-        top: "145%",
-        ease: "sine.in",
+        delay: 1,
+        left: "5%",
         rotate: 0,
-        scale: 1,
-        border: "none",
-        duration: 5,
+        opacity: 0,
+        ease: "sine.in",
       },
-      "third"
+      "collect-comp"
     );
-    tl3.from(".heading-combine", {
-      opacity: 0,
-      duration: 2,
-      stagger: 0.3,
-    });
+    // collect card
+    tl2Card.from(
+      ".collect-nav",
+      {
+        delay: 1,
+        left: "20%",
+        rotate: 0,
+        opacity: 0,
+        ease: "sine.in",
+      },
+      "collect-comp"
+    );
 
-    // newsletter after on tl3
-    const news = gsap.timeline({
+    //  timeline second card
+    const tl3Card = gsap.timeline({
       scrollTrigger: {
-        // markers: true,
-        trigger: webContainerRef.current,
-        start: "top 75%",
-        end: "top 10%",
-        scrub: 0.1,
+        trigger: collectContainerRef.current,
+        start: "20% top",
+        end: "bottom top",
+        markers: true,
+        scrub: 0.2,
       },
     });
-    news.from(".slideNews-anim", {
-      opacity: 0,
-      ease: "sine.in",
-      right: "100%",
-      duration: 10,
-    });
+    // select card
+    tl3Card.to(
+      ".collect-card",
+      {
+        y: "120vh",
+        ease: "sine.in",
+        borderColor: "green",
+        opacity: 0,
+        rotate: 0,
+      },
+      "combine-card"
+    );
+    tl3Card.to(
+      ".collect-nav",
+      {
+        top: "120%",
+        scale: 1,
+        ease: "sine.in",
+        borderColor: "green",
+        opacity: 0,
+        rotate: 0,
+      },
+      "combine-card"
+    );
+    tl3Card.to(
+      ".collect-news",
+      {
+        top: "165%",
+        left: "30%",
+        ease: "sine.in",
+        opacity: 0,
+        rotate: 0,
+      },
+      "combine-card"
+    );
+
+    // select card
+    tl3Card.from(
+      ".combine-nav ",
+      {
+        delay: 0.1,
+        opacity: 0,
+        ease: "sine.in",
+      },
+      "combine-comp"
+    );
+    tl3Card.from(
+      ".combine-card",
+      {
+        delay: 0.1,
+        opacity: 0,
+        ease: "sine.in",
+      },
+      "combine-comp"
+    );
+    tl3Card.from(
+      ".combine-news",
+      {
+        delay: 0.1,
+        opacity: 0,
+        ease: "sine.in",
+      },
+      "combine-comp"
+    );
   });
 
   return (

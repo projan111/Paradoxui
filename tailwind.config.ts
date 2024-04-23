@@ -2,7 +2,12 @@ import type { Config } from "tailwindcss";
 
 const config = {
   darkMode: ["class"],
-  content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
+  content: [
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   prefix: "",
   theme: {
     container: {
@@ -17,7 +22,7 @@ const config = {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-       // background: "hsl(var(--background))",
+        // background: "hsl(var(--background))",
         background: "#0d0d0d",
         foreground: "hsl(var(--foreground))",
         primary: {
@@ -52,7 +57,19 @@ const config = {
           "900": "#75340e",
           "950": "#451903",
         },
-
+        green: {
+          50: "#8CF5D2",
+          100: "#79F3CB",
+          200: "#53F0BC",
+          300: "#2EEDAE",
+          400: "#13DF9B",
+          500: "#10B981",
+          600: "#0C855D",
+          700: "#075239",
+          800: "#031E15",
+          900: "#000000",
+          950: "#000000",
+        },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
@@ -107,7 +124,10 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    require("tailwindcss-debug-screens"),
+  ],
 } satisfies Config;
 
 export default config;

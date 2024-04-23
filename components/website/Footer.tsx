@@ -34,7 +34,7 @@ const teamImage: TeamMember[] = [
 ];
 function Footer({}: Props) {
   return (
-    <div className=" mx-auto border-t-2 py-[3rem] border-zinc-800 text-secondary-50">
+    <div className="xl:w-10/12 lg:w-11/12  mx-auto border-t-2 py-[3rem] border-zinc-800 text-secondary-50">
       <div className="flex justify-between items-center">
         {/* left part  */}
         <div className="flex w-[30%] gap-2 flex-col">

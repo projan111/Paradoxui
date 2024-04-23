@@ -36,7 +36,7 @@ function Hero({}: Props) {
     // },
   ];
   return (
-    <div className="font-medium pt-[5rem] h-[95vh] flex justify-center items-center gap-9 flex-col text-secondary-50">
+    <div className="font-medium pt-[5rem] h-[100vh] flex justify-center items-center gap-9 flex-col text-secondary-50">
       {/* intro  */}
       <div className="flex justify-center items-center flex-col ">
         <h1 className="text-5xl font-semibold">

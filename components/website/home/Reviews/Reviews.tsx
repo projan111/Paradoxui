@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import Image from "next/image";
 
@@ -37,15 +37,19 @@ function Reviews({}: Props) {
       <span className="text-3xl font-semibold">Reviews</span>
 
       {/* reviews  */}
-      <div className="w-[80vw]  grid grid-cols-3 gap-2 mt-10 mx-auto ">
+      <div className="grid md:grid-cols-2   lg:grid-cols-3 gap-2 mt-8 mx-auto">
         {reviews.map((item, index) => (
           <div
             key={index}
-            className="p-3 rounded-lg w-[24rem]  bg-primary-900 border-primary-800 hover:border-green-500 border-2"
+            className="p-3 rounded-lg  xl:w-[24rem] bg-primary-900 border-primary-800 hover:border-green-500 border-2"
           >
             <div className="flex flex-col gap-3">
-              <span className="font-semibold text-[20px]">{item.name}</span>
-              <p className="text-[18px] text-primary-200">{item.review}</p>
+              <span className="font-semibold text-[19px] xl:text-[20px]">
+                {item.name}
+              </span>
+              <p className=" text-[16px] xl:text-[18px] text-primary-200">
+                {item.review}
+              </p>
               <div className="flex gap-1 justify-start items-center">
                 <Star width={18} />
                 <Star width={18} />

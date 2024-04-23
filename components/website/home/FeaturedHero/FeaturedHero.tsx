@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import FeaturedHero1Image from "@/public/images/featured-hero/hero1.png";
 import FeaturedHero2Image from "@/public/images/featured-hero/hero2.png";
@@ -43,11 +43,14 @@ function FeaturedHero({}: Props) {
           <MoveRight width={15} />
         </div>
       </div>
-      <div className="grid grid-cols-3 place-content-center place-items-center items-center">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 place-content-center gap-5   place-items-center ">
         {/* cards  */}
 
         {featuredHero.map((item, index) => (
-          <div key={index} className="p-3 rounded-lg w-[24rem] h-[20rem] bg-primary-800">
+          <div
+            key={index}
+            className="p-3 rounded-lg lg:w-[18rem] xl:w-[24rem] h-[20rem] bg-primary-800"
+          >
             {/* image  */}
             <div className="w-full h-[16rem]">
               <Image
