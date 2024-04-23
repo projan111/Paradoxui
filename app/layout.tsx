@@ -17,7 +17,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body className={josefin.className}>
-        <div className=" w-10/12 mx-auto h-[10vh] ">
+        <div className=" w-10/12 mx-auto ">
           <Navbar />
         </div>
 
@@ -26,7 +26,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange>
-          <div className=" w-10/12 mx-auto  overflow-hidden h-[90vh] overflow-y-scroll">{children}</div>
+          <div className=" w-10/12 mx-auto  overflow-hidden overflow-y-scroll">{children}</div>
         </ThemeProvider>
         <Toaster />
       </body>
