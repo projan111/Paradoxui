@@ -19,7 +19,7 @@ function CollectComponents({ collectContainerRef }: any) {
           {"Collect other components".split(" ").map((w, i) => (
             <div className="inline-block" key={i}>
               {w.split("").map((c, i) => (
-                <span className="inline-block heading-collect">{c}</span>
+                <span key={i} className="inline-block heading-collect">{c}</span>
               ))}
               &nbsp;
             </div>

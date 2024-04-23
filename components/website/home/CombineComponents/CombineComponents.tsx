@@ -17,7 +17,7 @@ function CombineComponents({ combineContainerRef, webContainerRef }: any) {
             .map((w, i) => (
               <div className="inline-block" key={i}>
                 {w.split("").map((c, i) => (
-                  <span className="inline-block heading-combine">{c}</span>
+                  <span key={i} className="inline-block heading-combine">{c}</span>
                 ))}
                 &nbsp;
               </div>
