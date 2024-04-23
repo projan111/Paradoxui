@@ -17,7 +17,7 @@ function SelectFavourite({ selectContainerRef }: any) {
         {"Select your".split(" ").map((w, i) => (
           <div className="inline-block" key={i}>
             {w.split("").map((c, i) => (
-              <span className="inline-block heading-select">{c}</span>
+              <span key={i} className="inline-block heading-select">{c}</span>
             ))}
             &nbsp;
           </div>
@@ -27,7 +27,7 @@ function SelectFavourite({ selectContainerRef }: any) {
         {"favourite component".split(" ").map((w, i) => (
           <div className="inline-block" key={i}>
             {w.split("").map((c, i) => (
-              <span className="inline-block heading-select">{c}</span>
+              <span key={i} className="inline-block heading-select">{c}</span>
             ))}
             &nbsp;
           </div>

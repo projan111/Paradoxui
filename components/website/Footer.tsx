@@ -60,7 +60,7 @@ function Footer({}: Props) {
 
           <div className="flex justify-center items-center gap-2">
             {teamImage.map((item, index) => (
-              <div className="w-[3rem] h-[3rem] rounded-full overflow-hidden">
+              <div key={index} className="w-[3rem] h-[3rem] rounded-full overflow-hidden">
                 <Image
                   key={index}
                   src={item.img}
