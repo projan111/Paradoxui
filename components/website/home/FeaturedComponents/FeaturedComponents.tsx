@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import Image from "next/image";
 import { Component, Search } from "lucide-react";
@@ -78,4 +78,3 @@ function FeaturedComponents({ featureContainerRef }: any) {
 }
 
 export default FeaturedComponents;
-

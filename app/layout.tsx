@@ -6,6 +6,7 @@ import { ThemeProvider } from "./ThemeProvider";
 import { Toaster } from "sonner";
 import Navbar from "@/components/website/Navbar";
 import { cn } from "@/lib/utils";
+import Footer from "@/components/website/Footer";
 
 const josefin = Josefin_Sans({ subsets: ["latin"] });
 
@@ -24,7 +25,7 @@ export default function RootLayout({
           "debug-screens": process.env.NODE_ENV === "development",
         })}
       >
-        <div className=" w-10/12 mx-auto">
+        <div className="w-full mx-auto">
           <Navbar />
         </div>
 
@@ -34,8 +35,13 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="xl:w-10/12 lg:w-11/12 overflow-hidden mx-auto">{children}</div>
+          <div className="xl:w-10/12 lg:w-11/12 overflow-hidden mx-auto">
+            {children}
+          </div>
         </ThemeProvider>
+        <div className="w-full mx-auto">
+          <Footer />
+        </div>
         <Toaster />
       </body>
     </html>

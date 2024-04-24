@@ -17,7 +17,9 @@ function SelectFavourite({ selectContainerRef }: any) {
         {"Select your favourite component".split(" ").map((w, i) => (
           <div className="inline-block" key={i}>
             {w.split("").map((c, i) => (
-              <span className="inline-block heading-select">{c}</span>
+              <span key={i} className="inline-block heading-select">
+                {c}
+              </span>
             ))}
             &nbsp;
           </div>
@@ -25,7 +27,7 @@ function SelectFavourite({ selectContainerRef }: any) {
       </h1>
 
       {/* card  */}
-      <div className="select-card border-green-400 flex mx-auto justify-center items-center  flex-col gap-6  p-20 w-[40vw] rounded-2xl border-2 ">
+      <div className="select-card border-green-default flex mx-auto justify-center items-center  flex-col gap-6  p-20 w-[40vw] rounded-2xl border-2 ">
         <p className="text-[16px]">The road to freedom starts from here</p>
         <h2 className="text-3xl text-nowrap">
           Build awesome apps with <span>Paradoxui</span>.

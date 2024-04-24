@@ -29,8 +29,6 @@ function HomeMain({}: Props) {
   const webContainerRef = useRef(null);
 
   useGSAP(() => {
-    // Determine the size category based on window width
-
     //  timeline first
     const tl1Head = gsap.timeline({
       scrollTrigger: {
@@ -72,21 +70,217 @@ function HomeMain({}: Props) {
     //  timeline third
     const tl3Head = gsap.timeline({
       scrollTrigger: {
-        trigger: combineContainerRef.current,
+        trigger: ".main-container",
         start: "top top",
         end: "bottom top",
         // markers: true,
         scrub: 0.2,
-        pin: true,
+        pin: combineContainerRef.current,
       },
     });
+
     // select heading
     tl3Head.from(".heading-combine", {
       opacity: 0,
-      duration: 0.8,
+      duration: 0.3,
       stagger: 0.3,
       ease: "sine.in",
     });
+
+    // for skin theme
+    tl3Head.to(
+      ".website",
+      {
+        backgroundColor: "#F2EFE5",
+        ease: "sine.in",
+        duration: 0.8,
+      },
+      "skin"
+    );
+
+    tl3Head.to(
+      ".nav-logo",
+      {
+        fill: "black",
+        duration: 0.8,
+        ease: "sine.in",
+      },
+      "skin"
+    );
+    tl3Head.to(
+      ".combine-nav",
+      {
+        color: "#444444",
+        ease: "sine.in",
+        duration: 0.8,
+        borderBottom: "#444444",
+      },
+      "skin"
+    );
+    tl3Head.to(
+      ".nav-search",
+      {
+        color: "#272121",
+        borderColor: "#B0A695",
+        ease: "sine.in",
+        duration: 0.8,
+      },
+      "skin"
+    );
+    tl3Head.to(
+      ".search-input",
+      {
+        color: "#272121",
+        ease: "sine.in",
+        duration: 0.8,
+      },
+      "skin"
+    );
+    tl3Head.to(
+      ".combine-card",
+      {
+        color: "#272121",
+        ease: "sine.in",
+        duration: 0.8,
+      },
+      "skin"
+    );
+    tl3Head.to(
+      ".card-button1",
+      {
+        backgroundColor: "#B0A695",
+        ease: "sine.in",
+        duration: 0.8,
+      },
+      "skin"
+    );
+    tl3Head.to(
+      ".card-button2",
+      {
+        borderColor: "#393B44",
+        backgroundColor: "#393B44",
+        ease: "sine.in",
+        duration: 0.8,
+      },
+      "skin"
+    );
+    tl3Head.to(
+      ".combine-news",
+      {
+        color: "#393B44",
+        borderColor: "#B0A695",
+        ease: "sine.in",
+        duration: 0.8,
+      },
+      "skin"
+    );
+    tl3Head.to(
+      ".combine-scroll",
+      {
+        color: "black",
+        ease: "sine.in",
+        duration: 0.8,
+      },
+      "skin"
+    );
+
+    // third color theme
+    tl3Head.to(
+      ".website",
+      {
+        delay: 6,
+        backgroundColor: "#D9EDBF",
+        duration: 0.8,
+        ease: "sine.in",
+      },
+      "green"
+    );
+
+    tl3Head.to(
+      ".nav-logo",
+      {
+        fill: "black",
+        duration: 0.8,
+        ease: "sine.in",
+      },
+      "green"
+    );
+    tl3Head.to(
+      ".combine-nav",
+      {
+        color: "#444444",
+        ease: "sine.in",
+        duration: 0.8,
+        borderBottom: "#444444",
+      },
+      "green"
+    );
+    tl3Head.to(
+      ".nav-search",
+      {
+        color: "#272121",
+        borderColor: "#B0A695",
+        ease: "sine.in",
+        duration: 0.8,
+      },
+      "green"
+    );
+    tl3Head.to(
+      ".search-input",
+      {
+        color: "#272121",
+        ease: "sine.in",
+        duration: 0.8,
+      },
+      "green"
+    );
+    tl3Head.to(
+      ".combine-card",
+      {
+        color: "#272121",
+        ease: "sine.in",
+        duration: 0.8,
+      },
+      "green"
+    );
+    tl3Head.to(
+      ".card-button1",
+      {
+        backgroundColor: "#B0A695",
+        ease: "sine.in",
+        duration: 0.8,
+      },
+      "green"
+    );
+    tl3Head.to(
+      ".card-button2",
+      {
+        borderColor: "#393B44",
+        backgroundColor: "#393B44",
+        ease: "sine.in",
+        duration: 0.8,
+      },
+      "green"
+    );
+    tl3Head.to(
+      ".combine-news",
+      {
+        color: "#393B44",
+        borderColor: "#B0A695",
+        ease: "sine.in",
+        duration: 0.8,
+      },
+      "green"
+    );
+    tl3Head.to(
+      ".combine-scroll",
+      {
+        color: "black",
+        ease: "sine.in",
+        duration: 0.8,
+      },
+      "green"
+    );
 
     // component animation gsap
     //  timeline first card
@@ -96,7 +290,7 @@ function HomeMain({}: Props) {
         start: "20% top",
         end: "bottom top",
         // markers: true,
-        scrub: 0.2,
+        scrub: 0.5,
       },
     });
     // select card
@@ -105,10 +299,17 @@ function HomeMain({}: Props) {
       {
         y: "85vh",
         width: "40vw",
-        opacity: 0,
-        x: "-45%",
+        x: "-43%",
         ease: "sine.in",
-        borderColor: "green",
+        borderColor: "skin",
+      },
+      "select-card"
+    );
+    tl1Card.to(
+      ".card-anim",
+      {
+        delay: 0.2,
+        opacity: 0,
       },
       "select-card"
     );
@@ -117,7 +318,7 @@ function HomeMain({}: Props) {
     tl1Card.from(
       ".select-card",
       {
-        delay: 0.5,
+        delay: 0.6,
         opacity: 0,
         ease: "sine.in",
       },
@@ -128,20 +329,19 @@ function HomeMain({}: Props) {
     const tl2Card = gsap.timeline({
       scrollTrigger: {
         trigger: selectContainerRef.current,
-        start: "50% top",
+        start: "40% top",
         end: "bottom top",
         // markers: true,
-        scrub: 0.2,
+        scrub: 0.5,
       },
     });
     // select card
     tl2Card.to(
       ".select-card",
       {
-        y: "100vh",
+        y: "90vh",
         rotate: 12,
         ease: "sine.in",
-        borderColor: "green",
         opacity: 0,
       },
       "collect-card"
@@ -151,7 +351,7 @@ function HomeMain({}: Props) {
     tl2Card.from(
       ".collect-card",
       {
-        delay: 0.5,
+        delay: 0.4,
         opacity: 0,
         ease: "sine.in",
       },
@@ -161,25 +361,38 @@ function HomeMain({}: Props) {
     tl2Card.from(
       ".collect-news",
       {
-        delay: 1,
-        left: "5%",
+        left: "0",
+        top: "-5%",
         rotate: 0,
         opacity: 0,
         ease: "sine.in",
       },
-      "collect-comp"
+      "collect-card"
     );
     // collect card
     tl2Card.from(
       ".collect-nav",
       {
-        delay: 1,
-        left: "20%",
+        // delay: 1,
+        left: "50%",
+        top: "-5%",
         rotate: 0,
         opacity: 0,
         ease: "sine.in",
       },
-      "collect-comp"
+      "collect-card"
+    );
+    tl2Card.from(
+      ".collect-scroll",
+      {
+        // delay: 1,
+        right: "0",
+        top: "80%",
+        rotate: "360deg",
+        opacity: 0,
+        ease: "sine.in",
+      },
+      "collect-card"
     );
 
     //  timeline second card
@@ -188,39 +401,51 @@ function HomeMain({}: Props) {
         trigger: collectContainerRef.current,
         start: "20% top",
         end: "bottom top",
-        markers: true,
-        scrub: 0.2,
+        // markers: true,
+        scrub: 0.5,
       },
     });
     // select card
     tl3Card.to(
       ".collect-card",
       {
-        y: "120vh",
+        y: "125vh",
         ease: "sine.in",
-        borderColor: "green",
+
         opacity: 0,
         rotate: 0,
       },
       "combine-card"
     );
+
     tl3Card.to(
       ".collect-nav",
       {
         top: "120%",
         scale: 1,
         ease: "sine.in",
-        borderColor: "green",
+        opacity: 0,
+        rotate: 0,
+      },
+      "combine-card"
+    );
+
+    tl3Card.to(
+      ".collect-news",
+      {
+        top: "170%",
+        left: "30%",
+        ease: "sine.in",
         opacity: 0,
         rotate: 0,
       },
       "combine-card"
     );
     tl3Card.to(
-      ".collect-news",
+      ".collect-scroll",
       {
-        top: "165%",
-        left: "30%",
+        top: "174%",
+        left: "45%",
         ease: "sine.in",
         opacity: 0,
         rotate: 0,
@@ -259,7 +484,11 @@ function HomeMain({}: Props) {
   });
 
   return (
-    <div data-scroll-section data-scroll data-scroll-speed="0.3">
+    <div>
+      <div className="fixed top-0 left-0 z-[-20] h-screen w-full bg-black">
+        <div className="absolute bottom-0 left-0 right-0 top-0 h-screen w-full bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"></div>
+        <div className="absolute left-0 right-0 top-[-10%]  h-screen w-full bg-[radial-gradient(circle_400px_at_50%_300px,#fbfbfb36,#000)]"></div>
+      </div>
       {/* <Navbar /> */}
       <Hero />
       <FeaturedComponents featureContainerRef={featureContainerRef} />
@@ -271,7 +500,7 @@ function HomeMain({}: Props) {
       />
       <FeaturedHero />
       <Reviews />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

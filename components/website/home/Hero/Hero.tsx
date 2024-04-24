@@ -29,14 +29,10 @@ function Hero({}: Props) {
       name: "Framer Motion",
       icon: "tabler:brand-framer-motion",
     },
-    // {
-    //   id: 3,
-    //   name: "GSAP",
-    //   icon: gsapLogo,
-    // },
   ];
   return (
-    <div className="font-medium pt-[5rem] h-[100vh] flex justify-center items-center gap-9 flex-col text-secondary-50">
+    <div className=" font-medium pt-[5rem] h-[100vh] flex justify-center items-center gap-9 flex-col text-secondary-50">
+      
       {/* intro  */}
       <div className="flex justify-center items-center flex-col ">
         <h1 className="text-5xl font-semibold">
@@ -71,7 +67,7 @@ function Hero({}: Props) {
           </div>
         ))}
         <div className="flex text-secondary-50 justify-center items-center gap-2">
-          <Image className="" src={gsapLogo} alt="gsap-logo" width={20}/>
+          <Image className="" src={gsapLogo} alt="gsap-logo" width={20} />
           <span className="text-lg pt-1">GSAP</span>
         </div>
       </div>
