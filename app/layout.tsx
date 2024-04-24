@@ -5,6 +5,8 @@ import "./globals.css";
 import { ThemeProvider } from "./ThemeProvider";
 import { Toaster } from "sonner";
 import Navbar from "@/components/website/Navbar";
+import { cn } from "@/lib/utils";
+import Footer from "@/components/website/Footer";
 
 const josefin = Josefin_Sans({ subsets: ["latin"] });
 
@@ -16,8 +18,12 @@ const josefin = Josefin_Sans({ subsets: ["latin"] });
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={josefin.className}>
-        <div className=" w-10/12 mx-auto ">
+      <body
+        className={cn(josefin.className, {
+          "debug-screens": process.env.NODE_ENV === "development",
+        })}
+      >
+        <div className="w-full mx-auto">
           <Navbar />
         </div>
 
@@ -25,9 +31,15 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           attribute="class"
           defaultTheme="system"
           enableSystem
-          disableTransitionOnChange>
-          <div className=" w-10/12 mx-auto  overflow-hidden overflow-y-scroll">{children}</div>
+          disableTransitionOnChange
+        >
+          <div className="xl:w-10/12 lg:w-11/12 overflow-hidden mx-auto">
+            {children}
+          </div>
         </ThemeProvider>
+        <div className="w-full mx-auto">
+          <Footer />
+        </div>
         <Toaster />
       </body>
     </html>

@@ -34,8 +34,8 @@ const teamImage: TeamMember[] = [
 ];
 function Footer({}: Props) {
   return (
-    <div className=" mx-auto border-t-2 py-[3rem] border-zinc-800 text-secondary-50">
-      <div className="flex justify-between items-center">
+    <div className="w-full   border-t-2 py-[3rem] border-zinc-800 px-2 text-secondary-50">
+      <div className="flex w-full justify-between items-center px-[6rem]">
         {/* left part  */}
         <div className="flex w-[30%] gap-2 flex-col">
           {/* logo */}
@@ -60,7 +60,10 @@ function Footer({}: Props) {
 
           <div className="flex justify-center items-center gap-2">
             {teamImage.map((item, index) => (
-              <div key={index} className="w-[3rem] h-[3rem] rounded-full overflow-hidden">
+              <div
+                key={index}
+                className="w-[3rem] h-[3rem] rounded-full overflow-hidden"
+              >
                 <Image
                   key={index}
                   src={item.img}
