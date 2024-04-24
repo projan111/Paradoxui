@@ -22,11 +22,13 @@ export default function Page() {
   const [rowSelection, setRowSelection] = React.useState({});
   const [currentPage, setCurrentPage] = useState(1);
 
+
   const [refreshNow, setRefreshNow] = useState(false);
   const [subCategories, setSubCategories] = React.useState<any[]>([]);
   React.useEffect(() => {
     const fetch = async () => {
       let { data, error } = await supabase.from("Sub Category").select("*");
+
       if (error) {
         throw new Error("Failed to fetch sub-categories");
       }
@@ -89,13 +91,13 @@ export default function Page() {
           </Button>
         );
       },
-      cell: ({ row }) => <div >{row.getValue("name")}</div>,
+      cell: ({ row }) => <div>{row.getValue("name")}</div>,
     },
 
     {
       accessorKey: "category",
       header: "Category",
-      cell: ({ row }) => <div >{row.getValue("category")}</div>,
+      cell: ({ row }) => <div>{row.getValue("category")}</div>,
     },
 
     {
@@ -171,18 +173,15 @@ export default function Page() {
   return (
     <div className="w-full">
       <div className="flex items-center justify-between py-4">
-      <Input
-          placeholder="Filter emails..."
+        <Input
+          placeholder="Search by name ..."
           value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
-          onChange={(event) =>
-            table.getColumn("email")?.setFilterValue(event.target.value)
-          }
+          onChange={(event) => table.getColumn("email")?.setFilterValue(event.target.value)}
           className="max-w-sm"
         />
         <div className=" space-x-2">
           <CreateSubcategoryDialog setRefreshNow={setRefreshNow} />
 
-          
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button

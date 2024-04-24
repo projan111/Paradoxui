@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 * {
   margin: 0;
   padding: 0;
@@ -86,8 +87,4 @@
   body {
     @apply bg-background text-foreground;
   }
-}
-
-.post-blog-style h2 {
-  font-size: 15px;
 }

@@ -44,8 +44,12 @@ function Navbar({}: Props) {
       } `}
     >
       {/* logo  */}
-      <div className="flex justify-between items-center w-full px-20">
-        <Image src={ParadoxuiLogo} alt="paradoxui-logo" className="w-[9rem]" />
+      <div className="flex justify-between items-center w-full">
+        <Image
+          src={ParadoxuiLogo}
+          alt="paradoxui-logo"
+          className="w-[9rem]"
+        />
         {/* nav link  */}
         <div className="w-full flex ml-20 text-[16px] justify-start items-center font-bold  gap-10">
           <span>Components</span>
