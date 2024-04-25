@@ -484,24 +484,20 @@ function HomeMain({}: Props) {
   });
 
   return (
-    <div>
-      <div className="fixed top-0 left-0 z-[-20] h-screen w-full bg-black">
-        <div className="absolute bottom-0 left-0 right-0 top-0 h-screen w-full bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"></div>
-        <div className="absolute left-0 right-0 top-[-10%]  h-screen w-full bg-[radial-gradient(circle_400px_at_50%_300px,#fbfbfb36,#000)]"></div>
+    <>
+      <div className="overflow-hidden px-5">
+        <Hero />
+        <FeaturedComponents featureContainerRef={featureContainerRef} />
+        <SelectFavourite selectContainerRef={selectContainerRef} />
+        <CollectComponents collectContainerRef={collectContainerRef} />
+        <CombineComponents
+          combineContainerRef={combineContainerRef}
+          webContainerRef={webContainerRef}
+        />
+        <FeaturedHero />
+        <Reviews />
       </div>
-      {/* <Navbar /> */}
-      <Hero />
-      <FeaturedComponents featureContainerRef={featureContainerRef} />
-      <SelectFavourite selectContainerRef={selectContainerRef} />
-      <CollectComponents collectContainerRef={collectContainerRef} />
-      <CombineComponents
-        combineContainerRef={combineContainerRef}
-        webContainerRef={webContainerRef}
-      />
-      <FeaturedHero />
-      <Reviews />
-      {/* <Footer /> */}
-    </div>
+    </>
   );
 }
 
