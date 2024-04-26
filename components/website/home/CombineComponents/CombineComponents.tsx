@@ -43,10 +43,10 @@ function CombineComponents({ combineContainerRef, webContainerRef }: any) {
           </h1>
 
           {/* combine website   */}
-          <div className="website w-full relative border-2 border-primary-800   h-[75vh] rounded-2xl mt-5 ">
+          <div className="website w-full relative border-[1px] border-primary-700   h-[75vh] rounded-2xl mt-5 ">
             {/* navbar comp  */}
             <div
-              className="gap-10 w-[80vw] combine-nav  absolute mx-auto h-[5rem] border-b-[1.5px] text-secondary-50  border-x-primary-400 flex justify-between items-center   top-0 left-[50%] translate-x-[-50%]  backdrop-blur-md   shadow-sm bg-transparent text-md z-[999] font-poppins px-2 py-4  
+              className="gap-10 w-[80vw] combine-nav  absolute mx-auto h-[5rem] border-b-[1.5px] text-secondary-400  border-x-primary-400 flex justify-between items-center   top-0 left-[50%] translate-x-[-50%]  backdrop-blur-md   shadow-sm bg-transparent text-md z-[999] font-poppins px-2 py-4  
           "
             >
               {/* logo  */}
@@ -83,14 +83,14 @@ function CombineComponents({ combineContainerRef, webContainerRef }: any) {
                   <input
                     type="text"
                     placeholder="Search Components"
-                    className="search-input bg-transparent outline-none w-full h-full  text-secondary-50 text-[12px]"
+                    className="search-input bg-transparent outline-none w-full h-full  text-secondary-400 text-[12px]"
                   />
                 </div>
               </div>
             </div>
 
             {/* combine card  */}
-            <div className="combine-card text-secondary-50 absolute top-[48%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-[40vw] flex mx-auto  justify-center items-center   flex-col gap-6  p-20 rounded-2xl ">
+            <div className="combine-card text-secondary-400 absolute top-[48%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-[40vw] flex mx-auto  justify-center items-center   flex-col gap-6  p-20 rounded-2xl ">
               <p className="text-[16px]">
                 The road to freedom starts from here
               </p>
@@ -100,11 +100,11 @@ function CombineComponents({ combineContainerRef, webContainerRef }: any) {
               {/* buttons  */}
               <div className="flex justify-center items-center gap-2 text-[15px] font-semibold">
                 {/* button explore  */}
-                <button className="card-button1 w-[12rem] h-[3rem] text-center bg-secondary-50 rounded-full p-2 text-primary-800">
+                <button className="card-button1 w-[12rem] h-[3rem] hover:scale-[0.95] duration-500 text-center bg-secondary-400 rounded-full p-2 text-primary-800">
                   Explore components
                 </button>
                 {/* button search components  */}
-                <button className="card-button2 w-[13rem] flex justify-center items-center gap-2 h-[3rem] text-center border-primary-800 bg-primary-900 hover:border-green-500 border-2  rounded-full p-2 text-primary-100">
+                <button className="card-button2 w-[13rem] flex justify-center items-center gap-2 h-[3rem] text-center border-primary-700 bg-primary-900 hover:border-green-500 border-[1px]  rounded-full p-2 text-primary-100">
                   {/* icon search  */}
                   <div className="w-[20px] h-[20px] cursor-pointer flex justify-center items-center">
                     <Search className="w-full h-full object-cover object-center" />

@@ -103,8 +103,8 @@ export default function Page({}: Props) {
 
       {currentSubcategory && (
         <div className=" my-8">
-          <p className=" text-2xl font-medium text-secondary-50">{currentSubcategory.name}</p>
-          <p className=" font-medium  text-secondary-50">{currentSubcategory.description}</p>
+          <p className=" text-2xl font-medium text-secondary-400">{currentSubcategory.name}</p>
+          <p className=" font-medium  text-secondary-400">{currentSubcategory.description}</p>
         </div>
       )}
 
@@ -128,7 +128,7 @@ export default function Page({}: Props) {
                   <DialogTrigger asChild>
                     <Button
                       variant="ghost"
-                      className="border bg-primary-800 hover:bg-primary-800/50  text-secondary-50">
+                      className="border bg-primary-800 hover:bg-primary-800/50  text-secondary-400">
                       Preview
                     </Button>
                   </DialogTrigger>
@@ -150,13 +150,13 @@ export default function Page({}: Props) {
                   <DialogTrigger asChild>
                     <Button
                       variant="ghost"
-                      className="border bg-primary-800 hover:bg-primary-800/50  text-secondary-50">
+                      className="border bg-primary-800 hover:bg-primary-800/50  text-secondary-400">
                       View code
                     </Button>
                   </DialogTrigger>
                   <DialogContent className="sm:max-w-[1024px]">
                     <DialogHeader>
-                      <DialogTitle className="  text-secondary-50">Something Instruction Here</DialogTitle>
+                      <DialogTitle className="  text-secondary-400">Something Instruction Here</DialogTitle>
                       <DialogDescription className="post-blog-style text-primary-300">
                         {/* {parse(component?.description)} */}
                         {component?.description}
