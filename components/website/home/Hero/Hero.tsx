@@ -33,24 +33,24 @@ function Hero({}: Props) {
   ];
 
   return (
-    <div className=" font-medium pt-[6rem] md:pt-[5rem] md:h-[100vh] flex justify-center items-center gap-9 flex-col text-secondary-400">
+    <div className=" pt-[6rem] md:pt-[5rem] md:h-[100vh] flex justify-center items-center gap-9 flex-col text-secondary-500">
       {/* intro  */}
-      <div className="flex justify-center md:items-center md:text-center gap-5 flex-col ">
-        <h1 className="text-4xl md:text-5xl font-semibold">
-          Instantly amplify your Website <br /> looks
-          <span className="text-5xl">&nbsp;10x</span>
-          <span className="bg-gradient-to-r text-4xl md:text-5xl from-[#58FF0A] to-blue-300 bg-clip-text text-transparent">
+      <div className="flex font-bold text-[25px] md:text-5xl justify-center md:items-center md:text-center gap-5 flex-col ">
+        <h1 className="">
+          Instantly amplify <br /> your Website <br /> looks
+          <span className="text-4xl">&nbsp;10x</span>
+          <span className="bg-gradient-to-r  from-[#58FF0A] to-blue-300 bg-clip-text text-transparent">
             &nbsp;Beautiful.
           </span>
         </h1>
 
         {/* description  */}
-        <p className="text-[16px] font-medium">
+        <p className="text-[16px] font-medium text-secondary-400">
           Easily add stylish, animated components to your site!
         </p>
         {/* button explore  */}
-        <button className="w-[12rem] relative h-[3rem] text-center bg-secondary-400 overflow-hidden  cursor-pointer hover:scale-[0.96] duration-500   rounded-full p-2 text-primary-800">
-          <span className="">Explore components</span>
+        <button className="w-[12rem] relative h-[3rem] text-center bg-secondary-400 overflow-hidden  cursor-pointer hover:scale-[0.96] duration-500   rounded-full  text-primary-800">
+          <span className="text-sm">Explore components</span>
         </button>
       </div>
 
@@ -62,7 +62,9 @@ function Hero({}: Props) {
             className="flex text-secondary-400 justify-center items-center gap-2"
           >
             <Icon icon={item.icon} width={25} />
-            <span className="text-lg pt-1 text-nowrap">{item.name}</span>
+            <span className="text-sm md:text-lg pt-1 text-nowrap">
+              {item.name}
+            </span>
           </div>
         ))}
         <div className="flex text-secondary-400 justify-center items-center gap-1 md:gap-2">

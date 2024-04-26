@@ -15,9 +15,9 @@ function FeaturedComponents({ featureContainerRef }: any) {
       <span className="text-3xl">Paradoxui Components</span>
 
       {/* components  */}
-      <div className="w-full flex  mt-10 justify-center items-center gap-3">
+      <div className="w-full md:flex  mt-10 justify-center items-center gap-3">
         {/* left part  */}
-        <div className="w-[40%] flex flex-col gap-2 justify-center items-center">
+        <div className="md:w-[40%] w-full flex flex-col gap-2 justify-center items-center">
           {/* first row  */}
           <div className="flex w-full text-center justify-center items-center gap-2">
             <div className="w-full  gap-5   border-[1px] border-primary-700 rounded-xl h-[15rem] flex flex-col justify-center items-center p-2">
@@ -43,12 +43,12 @@ function FeaturedComponents({ featureContainerRef }: any) {
           </div>
         </div>
         {/* right part  */}
-        <div className="w-[60%] flex flex-col gap-2 justify-center items-center">
+        <div className="md:w-[60%] w-full flex flex-col gap-2 justify-center items-center">
           {/* first row  */}
-          <div className="flex w-full text-center justify-center items-center gap-2">
+          <div className="flex md:flex-row flex-col w-full text-center justify-center items-center gap-2">
             <div className="w-full overflow-hidden  border-[1px] border-primary-700 rounded-xl h-[18rem] flex flex-col gap-2 justify-center items-center p-2">
               <span className="">Card</span>
-              <div className="container noselect">
+              <div className=" container noselect">
                 <div className="canvas">
                   <div className="tracker tr-1"></div>
                   <div className="tracker tr-2"></div>
@@ -92,24 +92,26 @@ function FeaturedComponents({ featureContainerRef }: any) {
 
           {/* bottom part */}
           {/* card  */}
-          <div className="card-anim flex mx-auto justify-center items-center  flex-col gap-6 w-full p-20 rounded-2xl border-[1px] border-primary-700">
-            <p className="text-[16px]">The road to freedom starts from here</p>
-            <h2 className="text-3xl text-nowrap">
+          <div className="card-anim  border-primary-700  flex mx-auto justify-center items-center  flex-col gap-6  p-20 w-full rounded-2xl border-[1px] ">
+            <p className="text-[17px] md:text-[16px]">
+              The road to freedom starts from here
+            </p>
+            <h2 className="text-sm md:text-3xl text-nowrap">
               Build awesome apps with <span>Paradoxui</span>.
             </h2>
             {/* buttons  */}
-            <div className="flex justify-cente items-center gap-2 text-[15px] font-semibold">
+            <div className="flex md:flex-row flex-col justify-center  items-center gap-2 text-[15px] font-semibold">
               {/* button explore  */}
-              <button className="w-[12rem] h-[3rem] text-center bg-secondary-400 hover:scale-[0.95] cursor-pointer duration-500 rounded-full p-2 text-primary-800">
+              <button className="w-[11rem] md:w-[12rem] h-[2rem] md:h-[3rem] text-sm text-center bg-secondary-400 rounded-full p-2 text-primary-800">
                 Explore components
               </button>
               {/* button search components  */}
-              <button className="w-[13rem] flex justify-center items-center gap-2 h-[3rem] text-center border-primary-700 bg-primary-900 hover:border-green-500 border-[1px]  rounded-full p-2 text-primary-100">
+              <button className="w-[11rem] md:w-[12rem] h-[2rem] md:h-[3rem] text-sm flex justify-center items-center gap-2  text-center border-primary-700 bg-primary-900 hover:border-green-500 border-[1px]  rounded-full p-2 text-primary-100">
                 {/* icon search  */}
-                <div className="w-[20px] h-[20px] cursor-pointer flex justify-center items-center">
+                <div className="md:w-[20px] w-[15px] h-[15px] md:h-[20px] cursor-pointer flex justify-center items-center">
                   <Search className="w-full h-full object-cover object-center" />
                 </div>
-                <span className="text-nowrap">Explore components</span>
+                <span className="text-nowrap text-sm ">Explore components</span>
               </button>
             </div>
           </div>

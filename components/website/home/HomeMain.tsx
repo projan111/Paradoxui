@@ -72,7 +72,7 @@ function HomeMain({}: Props) {
       scrollTrigger: {
         trigger: ".main-container",
         start: "top top",
-        end: "bottom top",
+        end: "1000% top",
         // markers: true,
         scrub: 0.2,
         pin: combineContainerRef.current,
@@ -83,7 +83,7 @@ function HomeMain({}: Props) {
     tl3Head.from(".heading-combine", {
       opacity: 0,
       duration: 0.3,
-      stagger: 0.3,
+      stagger: 0.2,
       ease: "sine.in",
     });
 
@@ -91,6 +91,7 @@ function HomeMain({}: Props) {
     tl3Head.to(
       ".website",
       {
+        // delay: 4,
         backgroundColor: "#F2EFE5",
         ease: "sine.in",
         duration: 0.8,
@@ -113,10 +114,21 @@ function HomeMain({}: Props) {
         color: "#444444",
         ease: "sine.in",
         duration: 0.8,
-        borderBottom: "#444444",
+        borderColor: "#DDDDDD",
       },
       "skin"
     );
+
+    tl3Head.to(
+      ".combine-menu",
+      {
+        color: "black",
+        ease: "sine.in",
+        duration: 0.8,
+      },
+      "skin"
+    );
+
     tl3Head.to(
       ".nav-search",
       {
@@ -184,22 +196,12 @@ function HomeMain({}: Props) {
       "skin"
     );
 
-    // third color theme
+    //  for green theme
     tl3Head.to(
       ".website",
       {
-        delay: 6,
+        delay: 4,
         backgroundColor: "#D9EDBF",
-        duration: 0.8,
-        ease: "sine.in",
-      },
-      "green"
-    );
-
-    tl3Head.to(
-      ".nav-logo",
-      {
-        fill: "black",
         duration: 0.8,
         ease: "sine.in",
       },
@@ -208,78 +210,228 @@ function HomeMain({}: Props) {
     tl3Head.to(
       ".combine-nav",
       {
+        delay: 4,
         color: "#444444",
         ease: "sine.in",
         duration: 0.8,
-        borderBottom: "#444444",
+        borderColor: "#B2B2B2",
       },
       "green"
+    );
+
+    // tl3Head.to(
+    //   ".nav-logo",
+    //   {
+    //     fill: "black",
+    //     duration: 0.8,
+    //     ease: "sine.in",
+    //   },
+    //   "green"
+    // );
+    // tl3Head.to(
+    //   ".combine-nav",
+    //   {
+    //     color: "#444444",
+    //     ease: "sine.in",
+    //     duration: 0.8,
+    //     borderBottom: "#444444",
+    //   },
+    //   "green"
+    // );
+    // tl3Head.to(
+    //   ".nav-search",
+    //   {
+    //     color: "#272121",
+    //     borderColor: "#B0A695",
+    //     ease: "sine.in",
+    //     duration: 0.8,
+    //   },
+    //   "green"
+    // );
+    // tl3Head.to(
+    //   ".search-input",
+    //   {
+    //     color: "#272121",
+    //     ease: "sine.in",
+    //     duration: 0.8,
+    //   },
+    //   "green"
+    // );
+    // tl3Head.to(
+    //   ".combine-card",
+    //   {
+    //     color: "#272121",
+    //     ease: "sine.in",
+    //     duration: 0.8,
+    //   },
+    //   "green"
+    // );
+    // tl3Head.to(
+    //   ".card-button1",
+    //   {
+    //     backgroundColor: "#B0A695",
+    //     ease: "sine.in",
+    //     duration: 0.8,
+    //   },
+    //   "green"
+    // );
+    // tl3Head.to(
+    //   ".card-button2",
+    //   {
+    //     borderColor: "#393B44",
+    //     backgroundColor: "#393B44",
+    //     ease: "sine.in",
+    //     duration: 0.8,
+    //   },
+    //   "green"
+    // );
+
+    // tl3Head.to(
+    //   ".combine-scroll",
+    //   {
+    //     color: "black",
+    //     ease: "sine.in",
+    //     duration: 0.8,
+    //   },
+    //   "green"
+    // );
+
+    // third color theme
+    tl3Head.to(
+      ".website",
+      {
+        delay: 4,
+        backgroundColor: "#D5EEFF",
+        duration: 0.8,
+        ease: "sine.in",
+      },
+      "blue"
+    );
+
+    tl3Head.to(
+      ".nav-logo",
+      {
+        delay: 4,
+        fill: "black",
+        duration: 0.8,
+        ease: "sine.in",
+      },
+      "blue"
+    );
+    tl3Head.to(
+      ".combine-nav",
+      {
+        delay: 4,
+        color: "#444444",
+        ease: "sine.in",
+        duration: 0.8,
+        borderColor: "#DDDDDD",
+      },
+      "blue"
     );
     tl3Head.to(
       ".nav-search",
       {
+        delay: 4,
         color: "#272121",
         borderColor: "#B0A695",
         ease: "sine.in",
         duration: 0.8,
       },
-      "green"
+      "blue"
     );
     tl3Head.to(
       ".search-input",
       {
+        delay: 4,
         color: "#272121",
         ease: "sine.in",
         duration: 0.8,
       },
-      "green"
+      "blue"
     );
     tl3Head.to(
       ".combine-card",
       {
+        delay: 4,
         color: "#272121",
         ease: "sine.in",
         duration: 0.8,
       },
-      "green"
+      "blue"
     );
     tl3Head.to(
       ".card-button1",
       {
-        backgroundColor: "#B0A695",
+        delay: 4,
+        backgroundColor: "#B7C9F2",
         ease: "sine.in",
         duration: 0.8,
       },
-      "green"
+      "blue"
     );
     tl3Head.to(
       ".card-button2",
       {
+        delay: 4,
         borderColor: "#393B44",
         backgroundColor: "#393B44",
         ease: "sine.in",
         duration: 0.8,
       },
-      "green"
+      "blue"
     );
-    tl3Head.to(
-      ".combine-news",
-      {
-        color: "#393B44",
-        borderColor: "#B0A695",
-        ease: "sine.in",
-        duration: 0.8,
-      },
-      "green"
-    );
+
     tl3Head.to(
       ".combine-scroll",
       {
+        delay: 4,
         color: "black",
         ease: "sine.in",
         duration: 0.8,
       },
-      "green"
+      "blue"
+    );
+    // third color theme
+    tl3Head.to(
+      ".website",
+      {
+        delay: 4,
+        backgroundColor: "#fce9c4",
+        duration: 0.8,
+        ease: "sine.in",
+      },
+      "brown"
+    );
+    tl3Head.to(
+      ".combine-nav",
+      {
+        delay: 4,
+        borderColor: "#F3EFE0",
+        duration: 0.8,
+        ease: "sine.in",
+      },
+      "brown"
+    );
+    tl3Head.to(
+      ".card-button1",
+      {
+        delay: 4,
+        backgroundColor: "#D1BB9E",
+        duration: 0.8,
+        ease: "sine.in",
+      },
+      "brown"
+    );
+    tl3Head.to(
+      ".website",
+      {
+        delay: 2,
+        opacity: 0.7,
+        duration: 0.5,
+        ease: "sine.in",
+      },
+      "hide"
     );
 
     // component animation gsap
@@ -373,7 +525,6 @@ function HomeMain({}: Props) {
     tl2Card.from(
       ".collect-nav",
       {
-        // delay: 1,
         left: "50%",
         top: "-5%",
         rotate: 0,
@@ -385,7 +536,6 @@ function HomeMain({}: Props) {
     tl2Card.from(
       ".collect-scroll",
       {
-        // delay: 1,
         right: "0",
         top: "80%",
         rotate: "360deg",
