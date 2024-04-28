@@ -33,11 +33,11 @@ function Hero({}: Props) {
   ];
 
   return (
-    <div className=" pt-[6rem] md:pt-[5rem] md:h-[100vh] flex justify-center items-center gap-9 flex-col text-secondary-500">
+    <div className="pt-[4rem] h-[80vh] md:h-[100vh] flex justify-center items-center gap-9 flex-col text-secondary-500">
       {/* intro  */}
-      <div className="flex font-bold text-[25px] md:text-5xl justify-center md:items-center md:text-center gap-5 flex-col ">
-        <h1 className="">
-          Instantly amplify <br /> your Website <br /> looks
+      <div className="flex  text-[25px] md:text-5xl justify-center items-center text-center gap-5 flex-col ">
+        <h1 className="font-bold">
+          Instantly amplify your Website <br /> looks
           <span className="text-4xl">&nbsp;10x</span>
           <span className="bg-gradient-to-r  from-[#58FF0A] to-blue-300 bg-clip-text text-transparent">
             &nbsp;Beautiful.
@@ -45,24 +45,24 @@ function Hero({}: Props) {
         </h1>
 
         {/* description  */}
-        <p className="text-[16px] font-medium text-secondary-400">
+        <p className="text-[15px]  text-secondary-400">
           Easily add stylish, animated components to your site!
         </p>
         {/* button explore  */}
-        <button className="w-[12rem] relative h-[3rem] text-center bg-secondary-400 overflow-hidden  cursor-pointer hover:scale-[0.96] duration-500   rounded-full  text-primary-800">
+        <button className="w-[10rem] md:w-[12rem] font-semibold relative h-[2.5rem] md:h-[3rem] mx-auto flex justify-center items-center text-center bg-secondary-400 overflow-hidden  cursor-pointer hover:scale-[0.96] duration-500   rounded-full  text-primary-800">
           <span className="text-sm">Explore components</span>
         </button>
       </div>
 
       {/* library  */}
-      <div className="w-full flex justify-start md:justify-center flex-wrap  items-center gap-4 md:gap-10 mt-4">
+      <div className="w-full flex  justify-center flex-wrap  items-center gap-4 md:gap-10 mt-4">
         {heroIcon.map((item, index) => (
           <div
             key={index}
             className="flex text-secondary-400 justify-center items-center gap-2"
           >
-            <Icon icon={item.icon} width={25} />
-            <span className="text-sm md:text-lg pt-1 text-nowrap">
+            <Icon icon={item.icon} />
+            <span className="text-[15px] md:text-[17px] pt-1 text-nowrap">
               {item.name}
             </span>
           </div>

@@ -12,8 +12,10 @@ function PricingPackage({}: Props) {
         {packageData.map((item, index) => (
           <div
             key={index}
-            className={`border-[1px] flex justify-start items-start p-4 gap-4 scale-[0.95] hover:scale-[1] duration-500 flex-col   ${
-              item.highlight ? "border-green-500 " : "border-primary-700"
+            className={` bg-primary-900 custom-shadow flex justify-start items-start p-4 gap-4 scale-[0.95] hover:scale-[1] duration-500 flex-col   ${
+              item.highlight
+                ? "border-green-500 border-[1px]"
+                : "border-primary-700"
             } rounded-2xl w-full md::w-[20vw] md:h-[75vh] relative shadow-md hover:shadow-primary-800`}
           >
             <span className="text-[13px] text-secondary-600">{item.title}</span>

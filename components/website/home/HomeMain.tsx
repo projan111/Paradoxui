@@ -72,7 +72,7 @@ function HomeMain({}: Props) {
       scrollTrigger: {
         trigger: ".main-container",
         start: "top top",
-        end: "1000% top",
+        end: "950% top",
         // markers: true,
         scrub: 0.2,
         pin: combineContainerRef.current,
@@ -91,7 +91,7 @@ function HomeMain({}: Props) {
     tl3Head.to(
       ".website",
       {
-        // delay: 4,
+        // delay: 3.5,
         backgroundColor: "#F2EFE5",
         ease: "sine.in",
         duration: 0.8,
@@ -200,7 +200,7 @@ function HomeMain({}: Props) {
     tl3Head.to(
       ".website",
       {
-        delay: 4,
+        delay: 3.5,
         backgroundColor: "#D9EDBF",
         duration: 0.8,
         ease: "sine.in",
@@ -210,7 +210,7 @@ function HomeMain({}: Props) {
     tl3Head.to(
       ".combine-nav",
       {
-        delay: 4,
+        delay: 3.5,
         color: "#444444",
         ease: "sine.in",
         duration: 0.8,
@@ -300,7 +300,7 @@ function HomeMain({}: Props) {
     tl3Head.to(
       ".website",
       {
-        delay: 4,
+        delay: 3.5,
         backgroundColor: "#D5EEFF",
         duration: 0.8,
         ease: "sine.in",
@@ -311,7 +311,7 @@ function HomeMain({}: Props) {
     tl3Head.to(
       ".nav-logo",
       {
-        delay: 4,
+        delay: 3.5,
         fill: "black",
         duration: 0.8,
         ease: "sine.in",
@@ -321,7 +321,7 @@ function HomeMain({}: Props) {
     tl3Head.to(
       ".combine-nav",
       {
-        delay: 4,
+        delay: 3.5,
         color: "#444444",
         ease: "sine.in",
         duration: 0.8,
@@ -332,7 +332,7 @@ function HomeMain({}: Props) {
     tl3Head.to(
       ".nav-search",
       {
-        delay: 4,
+        delay: 3.5,
         color: "#272121",
         borderColor: "#B0A695",
         ease: "sine.in",
@@ -343,7 +343,7 @@ function HomeMain({}: Props) {
     tl3Head.to(
       ".search-input",
       {
-        delay: 4,
+        delay: 3.5,
         color: "#272121",
         ease: "sine.in",
         duration: 0.8,
@@ -353,7 +353,7 @@ function HomeMain({}: Props) {
     tl3Head.to(
       ".combine-card",
       {
-        delay: 4,
+        delay: 3.5,
         color: "#272121",
         ease: "sine.in",
         duration: 0.8,
@@ -363,7 +363,7 @@ function HomeMain({}: Props) {
     tl3Head.to(
       ".card-button1",
       {
-        delay: 4,
+        delay: 3.5,
         backgroundColor: "#B7C9F2",
         ease: "sine.in",
         duration: 0.8,
@@ -373,7 +373,7 @@ function HomeMain({}: Props) {
     tl3Head.to(
       ".card-button2",
       {
-        delay: 4,
+        delay: 3.5,
         borderColor: "#393B44",
         backgroundColor: "#393B44",
         ease: "sine.in",
@@ -385,7 +385,7 @@ function HomeMain({}: Props) {
     tl3Head.to(
       ".combine-scroll",
       {
-        delay: 4,
+        delay: 3.5,
         color: "black",
         ease: "sine.in",
         duration: 0.8,
@@ -396,7 +396,7 @@ function HomeMain({}: Props) {
     tl3Head.to(
       ".website",
       {
-        delay: 4,
+        delay: 3.5,
         backgroundColor: "#fce9c4",
         duration: 0.8,
         ease: "sine.in",
@@ -406,7 +406,7 @@ function HomeMain({}: Props) {
     tl3Head.to(
       ".combine-nav",
       {
-        delay: 4,
+        delay: 3.5,
         borderColor: "#F3EFE0",
         duration: 0.8,
         ease: "sine.in",
@@ -416,7 +416,7 @@ function HomeMain({}: Props) {
     tl3Head.to(
       ".card-button1",
       {
-        delay: 4,
+        delay: 3.5,
         backgroundColor: "#D1BB9E",
         duration: 0.8,
         ease: "sine.in",
@@ -450,10 +450,9 @@ function HomeMain({}: Props) {
       ".card-anim",
       {
         y: "85vh",
-        width: "40vw",
+        scale: 0.8,
         x: "-43%",
         ease: "sine.in",
-        borderColor: "skin",
       },
       "select-card"
     );
