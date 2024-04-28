@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef } from "react";
-import { ChevronsDown } from "lucide-react";
+import { ChevronsDown, Menu } from "lucide-react";
 
 import { Search } from "lucide-react";
 import { useGSAP } from "@gsap/react";
@@ -21,13 +21,13 @@ function CombineComponents({ combineContainerRef, webContainerRef }: any) {
   });
   return (
     <>
-      <div className="main-container ">
+      <div className="main-container">
         <div
           ref={combineContainerRef}
           className=" text-[#FFFCE1] relative  text-center mx-auto py-10"
         >
           {/* heading  */}
-          <h1 className=" font-semibold text-5xl mt-[5rem]">
+          <h1 className=" font-semibold text-3xl  md:text-4xl xl:text-5xl mt-[5rem]">
             {` Combine them and make a beatiful hero section`
               .split(" ")
               .map((w, i) => (
@@ -43,20 +43,20 @@ function CombineComponents({ combineContainerRef, webContainerRef }: any) {
           </h1>
 
           {/* combine website   */}
-          <div className="website w-full relative border-[1px] border-primary-700   h-[75vh] rounded-2xl mt-5 ">
+          <div className="website w-full relative overflow-hidden border-[1px] border-primary-700   h-[75vh] rounded-2xl mt-5 ">
             {/* navbar comp  */}
             <div
-              className="gap-10 w-[80vw] combine-nav  absolute mx-auto h-[5rem] border-b-[1.5px] text-secondary-400  border-x-primary-400 flex justify-between items-center   top-0 left-[50%] translate-x-[-50%]  backdrop-blur-md   shadow-sm bg-transparent text-md z-[999] font-poppins px-2 py-4  
+              className="gap-10 w-full combine-nav  absolute mx-auto h-[5rem] border-b-[1.5px] text-secondary-400  border-primary-800 flex justify-between items-center   top-0 left-[50%] translate-x-[-50%]  backdrop-blur-md    text-md  font-poppins px-2 py-4  
           "
             >
               {/* logo  */}
-              <div className="flex justify-between items-center w-full px-20">
+              <div className="flex justify-between items-center w-full px-1 md:px-20">
                 <svg
                   id="Layer_1"
                   data-name="Layer 1"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 513.93 75.17"
-                  className="w-[15rem] nav-logo"
+                  className="md:w-[15rem] w-[6rem] nav-logo"
                   fill="white"
                 >
                   <path d="m142.3,20.52c-.74-1.92-1.95-3.54-3.63-4.86-1.69-1.32-3.93-2.33-6.74-3.02-2.8-.7-6.27-1.05-10.4-1.05h-1.01v6.05h1.8c1.97,0,3.78.11,5.44.32,1.65.22,3.19.65,4.61,1.3,1.41.65,2.55,1.62,3.42,2.92.86,1.29,1.29,2.95,1.29,4.96s-.39,3.76-1.19,5.08c-.79,1.32-1.87,2.33-3.24,3.02-1.36.7-2.86,1.18-4.5,1.44-1.63.27-3.45.4-5.47.4h-2.16v-19.44h-6.77v48.24h6.77v-22.75h3.89c2.69,0,5.17-.3,7.45-.9,2.28-.6,4.29-1.54,6.01-2.81,1.73-1.27,3.09-2.92,4.07-4.93.99-2.02,1.48-4.42,1.48-7.2,0-2.59-.37-4.85-1.12-6.77" />
@@ -71,54 +71,64 @@ function CombineComponents({ combineContainerRef, webContainerRef }: any) {
                   <polygon points="56.91 34.88 42.6 23.74 39.98 27.11 53.43 37.58 53.42 37.58 53.44 37.59 39.98 48.07 42.6 51.44 58.22 39.27 58.22 35.9 56.91 34.88" />
                 </svg>
                 {/* nav link  */}
-                <div className="w-full flex ml-20 text-[16px] justify-start items-center font-bold  gap-10">
+                <div
+                  className="w-full 
+        hidden md:flex ml-20 text-[16px] justify-start items-center font-bold  gap-10"
+                >
                   <span>Components</span>
                   <span>Pricing</span>
                 </div>
                 {/* search  */}
-                <div className="nav-search px-3 py-[10px]  w-[20rem]  rounded-full border-[1px] text-primary-60 font-bold  border-primary-500 flex justify-between gap-3 items-center">
+                <div className="px-3 hidden  py-[10px] w-[20rem]  rounded-full border-[1px] text-primary-60 font-bold  border-primary-700 md:flex justify-between gap-3 items-center">
                   <div className="w-[20px] h-[20px] cursor-pointer flex justify-center items-center">
                     <Search className="w-full h-full object-cover object-center" />
                   </div>
                   <input
                     type="text"
                     placeholder="Search Components"
-                    className="search-input bg-transparent outline-none w-full h-full  text-secondary-400 text-[12px]"
+                    className="bg-transparent outline-none w-full h-full  text-secondary-400 text-[12px]"
                   />
+                </div>
+                <div className="combine-menu text-secondary-500 md:hidden">
+                  <Menu />
                 </div>
               </div>
             </div>
 
             {/* combine card  */}
-            <div className="combine-card text-secondary-400 absolute top-[48%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-[40vw] flex mx-auto  justify-center items-center   flex-col gap-6  p-20 rounded-2xl ">
-              <p className="text-[16px]">
+            <div className="combine-card text-secondary-400 absolute top-[48%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-full md:w-[40vw] flex mx-auto  justify-center items-center   flex-col gap-6  md:p-20 rounded-2xl ">
+              <p className="text-[17px] md:text-[16px]">
                 The road to freedom starts from here
               </p>
-              <h2 className="text-3xl text-nowrap">
-                Build awesome apps with <span>Paradoxui</span>.
+              <h2 className="text-sm md:text-3xl text-nowrap">
+                {" "}
+                <span className="bg-gradient-to-r  from-[#58FF0A] to-blue-300 bg-clip-text text-transparent"></span>
+                Build awesome apps with <span className="">Paradoxui</span>.
               </h2>
               {/* buttons  */}
-              <div className="flex justify-center items-center gap-2 text-[15px] font-semibold">
+              <div className="flex md:flex-row flex-col justify-center  items-center gap-2 text-[15px] font-semibold">
                 {/* button explore  */}
-                <button className="card-button1 w-[12rem] h-[3rem] hover:scale-[0.95] duration-500 text-center bg-secondary-400 rounded-full p-2 text-primary-800">
+                <button className="w-[11rem] md:w-[12rem] h-[2rem] md:h-[3rem] text-sm text-center bg-secondary-400 rounded-full p-2 text-primary-800">
                   Explore components
                 </button>
                 {/* button search components  */}
-                <button className="card-button2 w-[13rem] flex justify-center items-center gap-2 h-[3rem] text-center border-primary-700 bg-primary-900 hover:border-green-500 border-[1px]  rounded-full p-2 text-primary-100">
+                <button className="w-[11rem] md:w-[12rem] h-[2rem] md:h-[3rem] text-sm flex justify-center items-center gap-2  text-center border-primary-700 bg-primary-900 hover:border-green-500 border-[1px]  rounded-full p-2 text-primary-100">
                   {/* icon search  */}
-                  <div className="w-[20px] h-[20px] cursor-pointer flex justify-center items-center">
+                  <div className="md:w-[20px] w-[15px] h-[15px] md:h-[20px] cursor-pointer flex justify-center items-center">
                     <Search className="w-full h-full object-cover object-center" />
                   </div>
-                  <span className="text-nowrap">Explore components</span>
+                  <span className="text-nowrap text-sm ">
+                    Explore components
+                  </span>
                 </button>
               </div>
             </div>
 
             {/* scroll  */}
-            <div className="absolute combine-scroll bottom-[5%] border-none left-[50%] -translate-x-[50%] w-[3.5rem] h-[4rem] rounded-xl border-[2px] text-[13px]  border-green-default flex justify-center items-center">
+            <div className="absolute combine-scroll bottom-[16%] md:bottom-[5%] border-none left-[50%] -translate-x-[50%] w-[3.5rem] h-[4rem] rounded-xl border-[2px] text-[13px]  border-green-default flex justify-center items-center">
               <div className="flex justify-center items-center flex-col gap-1">
                 <span className="font-semibold">Scroll</span>
-                <ChevronsDown ref={scrollIconRef} />
+                <ChevronsDown ref={scrollIconRef} className="scroll-icon" />
               </div>
             </div>
           </div>

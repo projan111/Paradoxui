@@ -8,12 +8,12 @@ function PricingPackage({}: Props) {
   return (
     <div className="w-full mb-20 justify-center items-center">
       {/* packages  */}
-      <div className="w-full flex justify-center items-center flex-col md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 place-content-center place-items-center mx-auto gap-2">
+      <div className="w-full flex justify-center items-center flex-col md:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 place-content-center place-items-center mx-auto gap-2">
         {packageData.map((item, index) => (
           <div
             key={index}
             className={`border-[1px] flex justify-start items-start p-4 gap-4 scale-[0.95] hover:scale-[1] duration-500 flex-col   ${
-              item.highlight ? "border-green-500" : "border-primary-700"
+              item.highlight ? "border-green-500 " : "border-primary-700"
             } rounded-2xl w-full md::w-[20vw] md:h-[75vh] relative shadow-md hover:shadow-primary-800`}
           >
             <span className="text-[13px] text-secondary-600">{item.title}</span>
@@ -61,8 +61,8 @@ function PricingPackage({}: Props) {
 
             {/* button  */}
             <button
-              className={`w-[70%] text-nowrap text-[14px] font-semibold  md:absolute md:bottom-[3%] md:left-[50%] md:-translate-x-[50%] h-[2.5rem] text-center    bg-secondary-400 ${
-                item.highlight ? "bg-green-400" : ""
+              className={`w-[70%] text-nowrap text-[14px] font-semibold  md:absolute md:bottom-[3%] md:left-[50%] md:-translate-x-[50%] h-[2.5rem] text-center    ${
+                item.highlight ? "bg-green-400" : "bg-secondary-400"
               } overflow-hidden  cursor-pointer hover:scale-[0.96] duration-500   rounded-full p-2 text-primary-800`}
             >
               <span>Get started</span>

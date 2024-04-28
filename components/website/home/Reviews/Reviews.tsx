@@ -67,7 +67,7 @@ function Reviews({}: Props) {
   return (
     <div className="overflow-hidden w-[75vw] flex justify-center items-center text-secondary-400  flex-col mx-auto py-10">
       {/* header  */}
-      <span className="text-3xl font-semibold">Reviews</span>
+      <span className="text-3xl  md:text-4xl xl:text-5xl font-semibold">Reviews</span>
 
       {/* reviews  */}
       <div

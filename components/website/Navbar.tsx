@@ -38,7 +38,7 @@ function Navbar({}: Props) {
   }, [visible, prevYPosition]);
   return (
     <div
-      className={`w-full gap-10 mx-auto h-[4.5rem] border-b-[1px] overflow-hidden  hover:text-secondary-400 duration-500   border-x-primary-400 flex justify-between items-center  fixed top-0 left-[50%] -translate-x-[50%] backdrop-blur-sm    transition  shadow-sm  text-md z-[999]  font-poppins px-2 py-4  ${
+      className={`w-full gap-10 mx-auto h-[3.5rem] border-b-[1px] overflow-hidden  hover:text-secondary-400 duration-500   border-x-primary-400 flex justify-between items-center  fixed top-0 left-[50%] -translate-x-[50%] backdrop-blur-sm    transition  shadow-sm  text-md z-[999]  font-poppins px-2 py-4  ${
         visible ? `` : ` -translate-y-[100%]`
       } `}
     >
@@ -78,7 +78,7 @@ function Navbar({}: Props) {
           />
         </div>
 
-        <div className="text-secondary-500 md:hidden">
+        <div className="text-secondary-500 scale-[0.95] md:hidden">
           <Menu />
         </div>
       </div>

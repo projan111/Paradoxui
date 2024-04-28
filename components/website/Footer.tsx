@@ -76,7 +76,7 @@ function Footer({}: Props) {
           </div>
         </div>
         {/* right part  */}
-        <div className="w-full lg:w-[30%] mt-10 text-start md:text-right text-xl flex flex-col gap-2 md:gap-3">
+        <div className="w-full lg:w-[30%] mt-10 text-start md:text-right text-lg flex flex-col gap-2 md:gap-3">
           <span>Components</span>
           <span>Pricing</span>
           <span>Facebook</span>
