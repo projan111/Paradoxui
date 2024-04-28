@@ -27,7 +27,7 @@ function CombineComponents({ combineContainerRef, webContainerRef }: any) {
           className=" text-[#FFFCE1] relative  text-center mx-auto py-10"
         >
           {/* heading  */}
-          <h1 className=" font-semibold text-3xl  md:text-4xl xl:text-5xl mt-[5rem]">
+          <h1 className=" font-semibold text-3xl  md:text-4xl mt-[3rem]">
             {` Combine them and make a beatiful hero section`
               .split(" ")
               .map((w, i) => (
@@ -43,10 +43,10 @@ function CombineComponents({ combineContainerRef, webContainerRef }: any) {
           </h1>
 
           {/* combine website   */}
-          <div className="website w-full relative overflow-hidden border-[1px] border-primary-700   h-[75vh] rounded-2xl mt-5 ">
+          <div className="website w-full relative  overflow-hidden border-[1px] border-primary-700  h-[70vh] md:h-[75vh] rounded-2xl mt-5 ">
             {/* navbar comp  */}
             <div
-              className="gap-10 w-full combine-nav  absolute mx-auto h-[5rem] border-b-[1.5px] text-secondary-400  border-primary-800 flex justify-between items-center   top-0 left-[50%] translate-x-[-50%]  backdrop-blur-md    text-md  font-poppins px-2 py-4  
+              className="gap-10 w-full combine-nav  absolute mx-auto h-[4rem] border-b-[1.5px] text-secondary-400  border-primary-800 flex justify-between items-center   top-0 left-[50%] translate-x-[-50%]  backdrop-blur-md    text-md  font-poppins px-2 py-4  
           "
             >
               {/* logo  */}
@@ -73,7 +73,7 @@ function CombineComponents({ combineContainerRef, webContainerRef }: any) {
                 {/* nav link  */}
                 <div
                   className="w-full 
-        hidden md:flex ml-20 text-[16px] justify-start items-center font-bold  gap-10"
+        hidden md:flex ml-20 text-[14px] justify-start items-center font-bold  gap-10"
                 >
                   <span>Components</span>
                   <span>Pricing</span>

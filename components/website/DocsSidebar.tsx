@@ -94,7 +94,7 @@ export function DocsSidebar({}: Props) {
   console.log(nestedData);
 
   return (
-    <ScrollArea className=" h-screen  rounded-md border">
+    <ScrollArea className="h-screen rounded-md border">
       <div className="px-4">
         {/* <h4 className="font-medium  mt-6 mb-2 text-lg">Getting Started</h4>
         <Link
@@ -107,16 +107,16 @@ export function DocsSidebar({}: Props) {
         {nestedData.map((category, index) => (
           <>
             <div key={index}>
-              <p className="font-medium  mt-8 mb-2 text-lg text-secondary-400">{category.name}</p>
+              <p className="font-medium  mt-4 mb-2 text-lg text-secondary-400">{category.name}</p>
             </div>
             <Separator className="mb-2" />
 
-            <div className=" flex flex-col gap-4">
+            <div className="flex flex-col gap-4">
               {category.subcategories.map((subcategory: any, index: number) => (
                 <>
                   <div
                     key={index}
-                    className=" flex ">
+                    className="flex">
                     <Link
                       href={`/docs/components/${subcategory.id}`}
                       className={`${currentSubCategoryId == subcategory.id ? " text-accent-600 font-semibold transform  translate-x-2  duration-500 ease-in-out  " : "font-medium text-secondary-400/80 transition-transform duration-500 ease-in-out"} text-sm  opacity-85 cursor-pointer  flex items-center  `}>

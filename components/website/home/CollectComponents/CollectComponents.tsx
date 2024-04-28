@@ -27,10 +27,10 @@ function CollectComponents({ collectContainerRef }: any) {
     <>
       <div
         ref={collectContainerRef}
-        className="text-[#FFFCE1]  text-center mx-auto h-[120vh]  z-[-2] py-10 "
+        className="text-[#FFFCE1] relative  text-center mx-auto h-[120vh]  z-[-2] py-10 "
       >
         {/* heading  */}
-        <h1 className="font-semibold text-3xl  md:text-4xl xl:text-5xl mt-[5rem] mb-5">
+        <h1 className="font-semibold text-3xl  md:text-4xl mt-[5rem] mb-4">
           {"Collect other components".split(" ").map((w, i) => (
             <div className="inline-block" key={i}>
               {w.split("").map((c, i) => (
@@ -44,7 +44,7 @@ function CollectComponents({ collectContainerRef }: any) {
         </h1>
 
         {/* card  */}
-        <div className="collect-card border-green-default flex mx-auto justify-center mt-14 items-center  flex-col gap-6  p-20 w-full md:w-[40vw] rotate-12 rounded-2xl border-[1px] ">
+        <div className="collect-card bg-primary-900 hover:border-[1px] custom-shadow  flex mx-auto justify-center mt-14 items-center  flex-col gap-6  p-20 w-full md:w-[40vw] rotate-12 rounded-2xl border-[1px] ">
           <p className="text-[17px] md:text-[16px]">
             The road to freedom starts from here
           </p>
@@ -69,7 +69,7 @@ function CollectComponents({ collectContainerRef }: any) {
         </div>
 
         {/* navbar comp  */}
-        <div className="collect-nav absolute top-[25%] border-green-default rotate-[-2deg]  w-full scale-[0.8]  md:scale-[0.6] border-[3px]  rounded-xl">
+        <div className="collect-nav absolute top-[25%] bg-primary-900 hover:border-[1px] custom-shadow  rotate-[-2deg]  w-full scale-[0.8]  md:scale-[0.6] border-[3px]  rounded-xl">
           <div className="gap-10 mx-auto h-[5rem] border-b-[1px] text-secondary-400   border-x-primary-400 flex justify-between items-center">
             {/* logo  */}
             <div className="flex justify-between items-center w-full px-5 md:px-[7.5rem]">
@@ -112,7 +112,7 @@ function CollectComponents({ collectContainerRef }: any) {
 
         {/* newsletter comp  */}
         <div className="absolute collect-news translate-x-[-50%] top-[50%] rotate-[-12deg] left-[20%] z-20">
-          <div className=" flex  justify-center w-[25rem] absolute top-[20%] left-9   flex-col p-3 rounded-2xl  items-start border-[2px] border-green-default">
+          <div className=" flex  justify-center w-[25rem] absolute top-[20%] left-9   flex-col p-3 rounded-2xl  items-start border-[2px] bg-primary-900 hover:border-[1px] custom-shadow ">
             <span className="text-[16px]">Newsletter</span>
             <span className="text-[13px] text-primary-300">
               Last message sent an hour ago
@@ -121,7 +121,7 @@ function CollectComponents({ collectContainerRef }: any) {
           </div>
         </div>
         {/* scroll circle  */}
-        <div className="absolute collect-scroll top-[60%] right-[50%] w-[2.5rem] md:w-[3.5rem] md:h-[4rem] h-[3.5rem] p-1 rounded-xl border-[2px] text-[10px] md:text-[13px]  border-green-default flex justify-center items-center">
+        <div className="absolute collect-scroll top-[60%] right-[50%] w-[2.5rem] md:w-[3.5rem] md:h-[4rem] h-[3.5rem] p-1 rounded-xl border-[2px] text-[10px] md:text-[13px]  bg-primary-900 hover:border-[1px] custom-shadow  flex justify-center items-center">
           <div className="flex justify-center items-center flex-col gap-1">
             <span className="font-semibold">Scroll</span>
             <ChevronsDown ref={scrollIconRef} className="scroll-icon" />

@@ -50,7 +50,7 @@ function FeaturedHero({}: Props) {
   return (
     <div className="text-secondary-400  flex justify-center items-center flex-col text-center  mx-auto py-10">
       {/* heading  */}
-      <h1 className=" font-semibold text-3xl md:text-4xl xl:text-5xl">
+      <h1 className=" font-semibold text-3xl  md:text-4xl">
         Find more beautiful sections
       </h1>
 

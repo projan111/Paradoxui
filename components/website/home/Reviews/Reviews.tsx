@@ -1,11 +1,27 @@
 "use client";
-import React, { useRef } from "react";
-import Image from "next/image";
+import React, { useRef, useState } from "react";
 
 // icon
 import { Star } from "lucide-react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+// import required modules
+import {
+  Parallax,
+  Pagination,
+  Navigation,
+  FreeMode,
+  Autoplay,
+} from "swiper/modules";
 
 type Props = {};
 
@@ -65,27 +81,48 @@ function Reviews({}: Props) {
     });
   });
   return (
-    <div className="overflow-hidden w-[75vw] flex justify-center items-center text-secondary-400  flex-col mx-auto py-10">
+    <div className="overflow-hidden w-full  flex justify-center items-center text-secondary-400  flex-col mx-auto py-10">
       {/* header  */}
-      <span className="text-3xl  md:text-4xl xl:text-5xl font-semibold">Reviews</span>
+      <span className="text-3xl  md:text-4xl font-semibold">Reviews</span>
 
-      {/* reviews  */}
-      <div
-        ref={reviewRef}
-        className="flex justify-center items-center gap-2 mt-8 mx-auto"
+      <Swiper
+        autoplay={{
+          delay: 2000,
+          disableOnInteraction: false,
+        }}
+        loop={true}
+        breakpoints={{
+          924: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+
+          1256: {
+            slidesPerView: 3,
+            spaceBetween: 10,
+          },
+          1576: {
+            slidesPerView: 4,
+            spaceBetween: 10,
+          },
+        }}
+        spaceBetween={30}
+        freeMode={true}
+        pagination={{
+          dynamicBullets: true,
+          // clickable: true,
+        }}
+        modules={[FreeMode, Pagination, Autoplay]}
+        className="mySwiper w-full  h-[30vh] mt-4"
       >
         {reviews.map((item, index) => (
-          <div
+          <SwiperSlide
             key={index}
-            className="p-3 rounded-lg w-[24rem]   xl:w-[24rem]  border-primary-700 hover:border-green-default border-[1px]"
+            className="p-4 rounded-lg  max-h-[80%]    border-primary-700 hover:border-green-default border-[1px]"
           >
-            <div className="flex flex-col gap-3">
-              <span className="font-semibold text-[19px] xl:text-[20px]">
-                {item.name}
-              </span>
-              <p className=" text-[15px] xl:text-[18px] text-secondary-400">
-                {item.review}
-              </p>
+            <div className="flex flex-col gap-2">
+              <span className="font-semibold text-[16px]">{item.name}</span>
+              <p className=" text-[15px] text-primary-300">{item.review}</p>
               <div className="flex gap-1 justify-start items-center">
                 <Star width={18} />
                 <Star width={18} />
@@ -94,9 +131,9 @@ function Reviews({}: Props) {
                 <Star width={18} />
               </div>
             </div>
-          </div>
+          </SwiperSlide>
         ))}
-      </div>
+      </Swiper>
     </div>
   );
 }
