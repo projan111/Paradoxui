@@ -2,7 +2,12 @@ import type { Config } from "tailwindcss";
 
 const config = {
   darkMode: ["class"],
-  content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
+  content: [
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   prefix: "",
   theme: {
     container: {
@@ -17,7 +22,7 @@ const config = {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-       // background: "hsl(var(--background))",
+        // background: "hsl(var(--background))",
         background: "#0d0d0d",
         foreground: "hsl(var(--foreground))",
         primary: {
@@ -40,19 +45,31 @@ const config = {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
           //  text
-          "50": "#fff8db",
-          "100": "#fff4c0",
-          "200": "#ffe785",
-          "300": "#ffd23f",
-          "400": "#ffb90b",
-          "500": "#f49f00",
-          "600": "#d37700",
-          "700": "#a85200",
-          "800": "#8a4009",
-          "900": "#75340e",
-          "950": "#451903",
+          "50": "#FFFFFC",
+          "100": "#FFFFFC",
+          "200": "#FFFEF7",
+          "300": "#FFFDF0",
+          "400": "#FFFBE6",
+          "500": "#FFF8DB",
+          "600": "#E6D9B1",
+          "700": "#BFAB7A",
+          "800": "#997E50",
+          "900": "#73562D",
+          "950": "#4A2F12",
         },
-
+        green: {
+          default: "#32CD32",
+          "50": "#F5FDF5",
+          "100": "#EBFAEB",
+          "200": "#CCF3CC",
+          "300": "#ADEBAD",
+          "400": "#70DC70",
+          "500": "#32CD32",
+          "600": "#2DB92D",
+          "700": "#1E7B1E",
+          "800": "#175C17",
+          "900": "#0F3E0F",
+        },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
@@ -107,7 +124,10 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    require("tailwindcss-debug-screens"),
+  ],
 } satisfies Config;
 
 export default config;
