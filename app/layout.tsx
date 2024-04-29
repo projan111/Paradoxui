@@ -17,16 +17,16 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body className={josefin.className}>
-        <div className=" w-10/12 mx-auto ">
+        {/* <div className=" w-10/12 mx-auto  ">
           <Navbar />
-        </div>
+        </div> */}
 
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange>
-          <div className=" w-10/12 mx-auto  overflow-hidden overflow-y-scroll">{children}</div>
+          <div className=" w-10/12 mx-auto  overflow-hidden  overflow-y-scroll">{children}</div>
         </ThemeProvider>
         <Toaster />
       </body>
