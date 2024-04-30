@@ -89,7 +89,7 @@ export default function CreateComponentDialog({ setRefreshNow }: Props) {
     };
     fetch();
   }, []);
-  console.log(categories);
+  // console.log(categories);
 
   const [subCategories, setSubCategories] = React.useState<any[]>([]);
   React.useEffect(() => {
@@ -115,7 +115,15 @@ export default function CreateComponentDialog({ setRefreshNow }: Props) {
     setIsCreating(true);
     const { data, error, status } = await supabase
       .from("Component")
-      .insert([{ ...values, description: value }])
+      .insert([
+        {
+          ...values,
+          description: value,
+          auth_user: {
+            email: "lokichaulagain1@gmail.com",
+          },
+        },
+      ])
       .select()
       .single();
 
