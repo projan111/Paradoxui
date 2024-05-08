@@ -25,5 +25,19 @@ export const SessionContextProvider = ({ children }: any) => {
     };
   }, []);
 
-  return <SessionContext.Provider value={{ loki, session }}>{children}</SessionContext.Provider>;
+  const [currentUser, setCurrentUser] = useState<any>();
+  const [currentUserRole, setcurrentUserRole] = useState<string>("");
+  useEffect(() => {
+    const fetch = async () => {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      setCurrentUser(user);
+      setcurrentUserRole(user?.user_metadata.role);
+    };
+
+    fetch();
+  }, []);
+
+  return <SessionContext.Provider value={{ loki, session, currentUser, currentUserRole }}>{children}</SessionContext.Provider>;
 };

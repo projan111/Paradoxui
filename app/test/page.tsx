@@ -10,18 +10,17 @@ export default function Page() {
   useEffect(() => {
     const fetch = async () => {
       const { data, error, status } = await supabase.from("Component").select().eq("id", 67).single();
-    //   const { data, error, status } = await supabase
-    //     .from("Component")
-    //     .select(
-    //       `
-      
-    //   user_id(*)
-      
-      
-    //   `
-    //     )
-    //     .eq("id", 66)
-    //     .single();
+      //   const { data, error, status } = await supabase
+      //     .from("Component")
+      //     .select(
+      //       `
+
+      //   user_id(*)
+
+      //   `
+      //     )
+      //     .eq("id", 66)
+      //     .single();
 
       //       let { data, error, status } = await supabase.from("Component").select(`
       //   some_column,
@@ -45,16 +44,29 @@ export default function Page() {
   console.log(component);
 
   const handleRegister = async () => {
-    const { data, error } = await supabase.auth.signUp({
-      email: "lokichaulagain1@gmail.com",
+    const { data, error } = await supabase.auth.admin.createUser({
+      email: "lokichaulagain@gmail.com",
       password: "Password",
-      options: {
-        data: {
-          key: "value",
-          role: "adminhai",
-        },
+      // role: "superadmin",
+      email_confirm:true,
+      user_metadata: {
+        full_name: "Loki Chaulagain",
+        username: "lokichaulagain",
+        role:"superadmin"
+
       },
     });
+
+    // const { data, error } = await supabase.auth.signUp({
+    //   email: "lokichaulagain1@gmail.com",
+    //   password: "Password",
+    //   options: {
+    //     data: {
+    //       key: "value",
+    //       role: "adminhai",
+    //     },
+    //   },
+    // });
     // console.log(data);
     // console.log(error);
   };
@@ -69,8 +81,8 @@ export default function Page() {
   };
 
   const { loki, session } = useContext(SessionContext);
-//   console.log(loki);
-//   console.log(session);
+  //   console.log(loki);
+  //   console.log(session);
 
   const handleLogout = async () => {
     const { error } = await supabase.auth.signOut();

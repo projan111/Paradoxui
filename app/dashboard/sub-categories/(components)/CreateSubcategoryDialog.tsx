@@ -12,6 +12,7 @@ import { ReloadIcon } from "@radix-ui/react-icons";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { supabase } from "@/utils/supabase/clientRepository";
 import OptionalLabel from "@/components/dashboard/OptionalLabel";
+import { SessionContext } from "@/app/context/SessionContext";
 
 type Props = {
   setRefreshNow: React.Dispatch<React.SetStateAction<boolean>>;
@@ -30,6 +31,9 @@ const formSchema = z.object({
 });
 
 export default function CreateSubcategoryDialog({ setRefreshNow }: Props) {
+
+
+
   // Define your form
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),

@@ -1,5 +1,5 @@
 "use client";
-import { CodeBlock } from "react-code-block";
+// import { CodeBlock } from "react-code-block";
 import { useCopyToClipboard } from "react-use";
 import { themes } from "prism-react-renderer";
 import { Resizable } from "re-resizable";
@@ -8,11 +8,13 @@ import { MonitorSmartphone, CodeXml, Clipboard, ClipboardList, CheckCheck } from
 import { useEffect, useState } from "react";
 import { supabase } from "@/utils/supabase/clientRepository";
 import { useParams } from "next/navigation";
-import { Timeline } from "rsuite";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import parse from 'html-react-parser';
+import parse from "html-react-parser";
+import Timeline from "rsuite/Timeline";
+import "rsuite/Timeline/styles/index.css";
+import { CodeBlock, dracula, oneDark } from "@react-email/code-block";
 
 type Props = {};
 
@@ -78,7 +80,7 @@ export default function Page({}: Props) {
       // id,
       // name,
       // previewUrl,
-      // subcategory 
+      // subcategory
       // `
       //   )
       //   .eq("subcategory", id);
@@ -96,11 +98,21 @@ export default function Page({}: Props) {
 
   console.log(components);
 
+  const code = `export default async (req, res) => {
+    try {
+      const html = await renderAsync(
+        EmailTemplate({ firstName: 'John' })
+      );
+      return NextResponse.json({ html });
+    } catch (error) {
+      return NextResponse.json({ error });
+    }
+
+    
+  }`;
+
   return (
     <div className=" ">
-      {/* <Timeline>
-        <Timeline.Item> */}
-
       {currentSubcategory && (
         <div className=" my-8">
           <p className=" text-2xl font-medium text-secondary-400">{currentSubcategory.name}</p>
@@ -154,16 +166,87 @@ export default function Page({}: Props) {
                       View code
                     </Button>
                   </DialogTrigger>
+
                   <DialogContent className="sm:max-w-[1024px]">
                     <DialogHeader>
-                      <DialogTitle className="  text-secondary-400">Something Instruction Here</DialogTitle>
-                      <DialogDescription className="post-blog-style text-primary-300">
-                        {/* {parse(component?.description)} */}
-                        {component?.description}
-                      </DialogDescription>
+                      <DialogTitle className="  text-xl text-secondary-400">{component.name}</DialogTitle>
                     </DialogHeader>
 
-                    <CodeBlock
+                    <Timeline className=" h-[70vh] overflow-y-scroll">
+                      <Timeline.Item className="pb-8">
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque atque, possimus natus vitae quasi fugiat expedita quis quos, maxime voluptatem eum hic illum sunt qui. Ipsum perferendis officiis reiciendis similique optio illum quaerat molestias beatae quam deserunt ducimus, facere saepe!</p>
+                        <div className=" flex items-center justify-between mt-4">
+                          <p className=" text-accent-600">{component.filePathname}</p>
+                          <Button
+                            className=" bg-primary-800/80"
+                            variant={"outline"}
+                            onClick={() => copyCode(component?.code)}>
+                            {state.value ? <CheckCheck size={18} /> : <Clipboard size={18} />}
+                          </Button>
+                        </div>
+
+                        <CodeBlock
+                          code={code}
+                          theme={oneDark}
+                          lineNumbers={true}
+                          language="javascript"
+                        />
+                      </Timeline.Item>
+                      <Timeline.Item className="pb-8">
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque atque, possimus natus vitae quasi fugiat expedita quis quos, maxime voluptatem eum hic illum sunt qui. Ipsum perferendis officiis reiciendis similique optio illum quaerat molestias beatae quam deserunt ducimus, facere saepe!</p>
+                        <div className=" flex items-center justify-between mt-4">
+                          <p className=" text-accent-600">{component.filePathname}</p>
+                          <Button
+                            className=" bg-primary-800/80"
+                            variant={"outline"}
+                            onClick={() => copyCode(component?.code)}>
+                            {state.value ? <CheckCheck size={18} /> : <Clipboard size={18} />}
+                          </Button>
+                        </div>
+
+                        <CodeBlock
+                          code={code}
+                          theme={oneDark}
+                          lineNumbers={true}
+                          language="javascript"
+                        />
+                      </Timeline.Item>
+                      <Timeline.Item className="pb-8">
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque atque, possimus natus vitae quasi fugiat expedita quis quos, maxime voluptatem eum hic illum sunt qui. Ipsum perferendis officiis reiciendis similique optio illum quaerat molestias beatae quam deserunt ducimus, facere saepe!</p>
+                        <div className=" flex items-center justify-between mt-4">
+                          <p className=" text-accent-600">{component.filePathname}</p>
+                          <Button
+                            className=" bg-primary-800/80"
+                            variant={"outline"}
+                            onClick={() => copyCode(component?.code)}>
+                            {state.value ? <CheckCheck size={18} /> : <Clipboard size={18} />}
+                          </Button>
+                        </div>
+
+                        <CodeBlock
+                          code={code}
+                          theme={oneDark}
+                          lineNumbers={true}
+                          language="javascript"
+                        />
+                      </Timeline.Item>
+                      <Timeline.Item>15:05:29 Sending you a piece</Timeline.Item>
+                    </Timeline>
+
+                    <DialogFooter></DialogFooter>
+                  </DialogContent>
+                </Dialog>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+{
+  /* <CodeBlock
                       code={component?.code}
                       language={"jsx"}
                       theme={themes.oneDark}>
@@ -185,15 +268,5 @@ export default function Page({}: Props) {
                           </CodeBlock.LineContent>
                         </div>
                       </CodeBlock.Code>
-                    </CodeBlock>
-                    <DialogFooter></DialogFooter>
-                  </DialogContent>
-                </Dialog>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+                    </CodeBlock> */
 }

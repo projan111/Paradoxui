@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
@@ -15,8 +15,9 @@ import { themes } from "prism-react-renderer";
 import { RotateCw } from "lucide-react";
 import { supabase } from "@/utils/supabase/clientRepository";
 import OptionalLabel from "@/components/dashboard/OptionalLabel";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
+// import ReactQuill from "react-quill";
+// import "react-quill/dist/quill.snow.css";
+import { SessionContext } from "@/app/context/SessionContext";
 
 type Props = {
   setRefreshNow: React.Dispatch<React.SetStateAction<boolean>>;
@@ -48,9 +49,17 @@ const formSchema = z.object({
   filePathname: z.string().min(6, {
     message: "File pathname is required.",
   }),
+
+  profile: z.string().min(1, {
+    message: "Profile is required.",
+  }),
 });
 
 export default function CreateComponentDialog({ setRefreshNow }: Props) {
+  const { session } = React.useContext(SessionContext);
+  const id: any = session?.user?.id;
+  console.log(session, "hari");
+
   // Define your form
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -62,6 +71,7 @@ export default function CreateComponentDialog({ setRefreshNow }: Props) {
       category: "",
       subcategory: "",
       filePathname: "",
+      profile: id,
     },
   });
 
@@ -113,19 +123,7 @@ export default function CreateComponentDialog({ setRefreshNow }: Props) {
   const [isCreating, setIsCreating] = useState<boolean>(false);
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setIsCreating(true);
-    const { data, error, status } = await supabase
-      .from("Component")
-      .insert([
-        {
-          ...values,
-          description: value,
-          auth_user: {
-            email: "lokichaulagain1@gmail.com",
-          },
-        },
-      ])
-      .select()
-      .single();
+    const { data, error, status } = id && (await supabase.from("Component").insert([values]).select().single());
 
     if (error) {
       toast.error(error.details || "An error occurred during create. Please try again.");

@@ -17,18 +17,27 @@ const formSchema = z.object({
     message: "Email be at least 10 characters.",
   }),
 
+  full_name: z.string().min(10, {
+    message: "Email be at least 10 characters.",
+  }),
+
+  username: z.string().min(10, {
+    message: "Email be at least 10 characters.",
+  }),
+
   password: z.string().min(5, {
     message: "Password be at least 5 characters.",
   }),
 });
 
-export default function LoginSection() {
+export default function RegisterSection() {
   // Define your form
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: "",
       password: "",
+      full_name: "",
     },
   });
 
@@ -36,7 +45,16 @@ export default function LoginSection() {
   const [isLoging, setIsLoging] = useState<boolean>(false);
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setIsLoging(true);
-    const { data, error } = await supabase.auth.signInWithPassword(values);
+    const { data, error } = await supabase.auth.signUp({
+      email: values.email,
+      password: values.password,
+      options: {
+        data: {
+          full_name: values.full_name,
+          username: values.username,
+        },
+      },
+    });
 
     if (error) {
       console.error("Login failed:", error.message);
@@ -54,47 +72,18 @@ export default function LoginSection() {
   };
 
   const loginWithGoogle = async () => {
-    // const { data, error } = await supabase.auth.signInWithOAuth({
-    //   provider: "google",
-    //   options: {
-    //     redirectTo: "http://localhost:3000/dashboard",
-    //   },
-
-    //   // options: {
-    //   //   queryParams: {
-    //   //     access_type: "offline",
-    //   //     prompt: "consent",
-    //   //   },
-    //   // },
-    // });
-
-    //  Register super admin
-    const { data, error } = await supabase.auth.signUp({
-      email: "lokichaulagain@gmail.com",
-      password: "Password",
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
       options: {
-        data: {
-          role: "super-admin",
-          full_name: "Loki Chaulagain",
-          username: "lokichaulagain",
-        },
+        redirectTo: "http://localhost:3000/dashboard",
       },
-    });
-  };
 
-  //  Register super admin
-  const registerSuperAdmin = async () => {
-    const { data, error } = await supabase.auth.signUp({
-      email: "lokichaulagain@gmail.com",
-      password: "Password",
-      options: {
-        data: {
-          role: "super-admin",
-          full_name: "Loki Chaulagain",
-          username: "lokichaulagain",
-        },
-        emailRedirectTo: "http://localhost:3000/dashboard",
-      },
+      // options: {
+      //   queryParams: {
+      //     access_type: "offline",
+      //     prompt: "consent",
+      //   },
+      // },
     });
   };
 
@@ -162,19 +151,12 @@ export default function LoginSection() {
                 {isLoging && <LoaderIcon />}
                 Login
               </Button>
-              <Button
+              {/* <Button
                 onClick={loginWithGoogle}
                 variant="outline"
                 className="w-full">
                 Login with Google
-              </Button>
-
-              <Button
-                onClick={registerSuperAdmin}
-                variant="outline"
-                className="w-full">
-                Register Super Admin
-              </Button>
+              </Button> */}
 
               {/* <div className="mt-4 text-center text-sm">
                 Don&apos;t have an account?{" "}
