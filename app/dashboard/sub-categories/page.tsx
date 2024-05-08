@@ -14,6 +14,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import CreateSubcategoryDialog from "./(components)/CreateSubcategoryDialog";
 import EditSubcategoryDialog from "./(components)/EditSubcategoryDialog";
+import { SessionContext } from "@/app/context/SessionContext";
 
 export default function Page() {
   const [sorting, setSorting] = React.useState<SortingState>([]);
@@ -22,6 +23,7 @@ export default function Page() {
   const [rowSelection, setRowSelection] = React.useState({});
   const [currentPage, setCurrentPage] = useState(1);
 
+  const { currentUserRole } = React.useContext(SessionContext);
 
   const [refreshNow, setRefreshNow] = useState(false);
   const [subCategories, setSubCategories] = React.useState<any[]>([]);
@@ -112,6 +114,7 @@ export default function Page() {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button
+                disabled={currentUserRole !== "superadmin"}
                 variant="ghost"
                 className="h-8 w-8 p-0">
                 <span className="sr-only">Open menu</span>
@@ -175,12 +178,13 @@ export default function Page() {
       <div className="flex items-center justify-between py-4">
         <Input
           placeholder="Search by name ..."
-          value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
-          onChange={(event) => table.getColumn("email")?.setFilterValue(event.target.value)}
+          value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
+          onChange={(event) => table.getColumn("name")?.setFilterValue(event.target.value)}
           className="max-w-sm"
         />
+
         <div className=" space-x-2">
-          <CreateSubcategoryDialog setRefreshNow={setRefreshNow} />
+          {currentUserRole === "superadmin" && <CreateSubcategoryDialog setRefreshNow={setRefreshNow} />}
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -245,24 +249,24 @@ export default function Page() {
       </div>
       <div className="flex items-center justify-end space-x-2 py-4">
         <div className="flex-1 text-sm text-muted-foreground">
-          {table.getFilteredSelectedRowModel().rows.length} of {table.getFilteredRowModel().rows.length} row(s) selected.
+        {table.getFilteredSelectedRowModel().rows.length} of{" "}
+          {table.getFilteredRowModel().rows.length} row(s) selected.
         </div>
 
         <div className="space-x-2">
           <Button
             variant="outline"
             size="sm"
-            onClick={() => setCurrentPage(currentPage - 1)}
-            // onClick={handlePreviousPage}
-            // disabled={currentPage === 1}
+            onClick={() => table.previousPage()}
+            disabled={!table.getCanPreviousPage()}
           >
             Previous
           </Button>
           <Button
             variant="outline"
             size="sm"
-            onClick={() => setCurrentPage(currentPage + 1)}
-            // disabled={currentPage === totalPages}
+            onClick={() => table.nextPage()}
+            disabled={!table.getCanNextPage()}
           >
             Next
           </Button>

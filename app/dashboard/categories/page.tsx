@@ -13,6 +13,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import CategoryCreateDialog from "./(components)/CategoryCreateDialog";
 import CategoryEditDialog from "./(components)/CategoryEditDialog";
+import { SessionContext } from "@/app/context/SessionContext";
 
 export default function Page() {
   const [sorting, setSorting] = React.useState<SortingState>([]);
@@ -20,6 +21,8 @@ export default function Page() {
   const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = React.useState({});
   const [currentPage, setCurrentPage] = useState(1);
+
+  const { currentUserRole } = React.useContext(SessionContext);
 
   const [refreshNow, setRefreshNow] = useState(false);
   const [categories, setCategories] = React.useState<any[]>([]);
@@ -91,8 +94,6 @@ export default function Page() {
       cell: ({ row }) => <div>{row.getValue("name")}</div>,
     },
 
-   
-
     {
       id: "actions",
       enableHiding: false,
@@ -105,6 +106,7 @@ export default function Page() {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button
+                disabled={currentUserRole !== "superadmin"}
                 variant="ghost"
                 className="h-8 w-8 p-0">
                 <span className="sr-only">Open menu</span>
@@ -166,17 +168,15 @@ export default function Page() {
   return (
     <div className="w-full">
       <div className="flex items-center justify-between py-4">
-      <Input
-          placeholder="Search by name ..."
-          value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
-          onChange={(event) =>
-            table.getColumn("email")?.setFilterValue(event.target.value)
-          }
+        <Input
+          placeholder="Search by category name ..."
+          value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
+          onChange={(event) => table.getColumn("name")?.setFilterValue(event.target.value)}
           className="max-w-sm"
         />
 
         <div className=" space-x-2">
-          <CategoryCreateDialog setRefreshNow={setRefreshNow} />
+          {currentUserRole === "superadmin" && <CategoryCreateDialog setRefreshNow={setRefreshNow} />}
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -248,18 +248,15 @@ export default function Page() {
           <Button
             variant="outline"
             size="sm"
-            onClick={() => setCurrentPage(currentPage - 1)}
-            // onClick={handlePreviousPage}
-            // disabled={currentPage === 1}
-          >
+            onClick={() => table.previousPage()}
+            disabled={!table.getCanPreviousPage()}>
             Previous
           </Button>
           <Button
             variant="outline"
             size="sm"
-            onClick={() => setCurrentPage(currentPage + 1)}
-            // disabled={currentPage === totalPages}
-          >
+            onClick={() => table.nextPage()}
+            disabled={!table.getCanNextPage()}>
             Next
           </Button>
         </div>
