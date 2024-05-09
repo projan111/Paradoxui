@@ -15,6 +15,7 @@ import parse from "html-react-parser";
 import Timeline from "rsuite/Timeline";
 import "rsuite/Timeline/styles/index.css";
 import { CodeBlock, dracula, oneDark } from "@react-email/code-block";
+import { Separator } from "@/components/ui/separator";
 
 type Props = {};
 
@@ -173,7 +174,7 @@ export default function Page({}: Props) {
                     </DialogHeader>
 
                     <Timeline className=" h-[70vh] overflow-y-scroll">
-                      <Timeline.Item className="pb-8">
+                      <Timeline.Item dot={<CustomDot/>} className="pb-8">
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque atque, possimus natus vitae quasi fugiat expedita quis quos, maxime voluptatem eum hic illum sunt qui. Ipsum perferendis officiis reiciendis similique optio illum quaerat molestias beatae quam deserunt ducimus, facere saepe!</p>
                         <div className=" flex items-center justify-between mt-4">
                           <p className=" text-accent-600">{component.filePathname}</p>
@@ -211,6 +212,7 @@ export default function Page({}: Props) {
                           language="javascript"
                         />
                       </Timeline.Item>
+
                       <Timeline.Item className="pb-8">
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque atque, possimus natus vitae quasi fugiat expedita quis quos, maxime voluptatem eum hic illum sunt qui. Ipsum perferendis officiis reiciendis similique optio illum quaerat molestias beatae quam deserunt ducimus, facere saepe!</p>
                         <div className=" flex items-center justify-between mt-4">
@@ -230,7 +232,37 @@ export default function Page({}: Props) {
                           language="javascript"
                         />
                       </Timeline.Item>
-                      <Timeline.Item>15:05:29 Sending you a piece</Timeline.Item>
+
+                      <Timeline.Item>
+                        <p className=" text-xl font-medium tracking-wide">Available Props</p>
+                        <Separator className=" mt-2 mb-8" />
+
+                        <table className="border-collapse  w-full ">
+                          <thead>
+                            <tr className=" grid grid-cols-4 ">
+                              <th className="border  p-2  ">Prop</th>
+                              <th className="border border-l-0 p-2  ">Type</th>
+                              <th className="border border-l-0 p-2  ">Default</th>
+                              <th className="border p-2  border-l-0">Description</th>
+                            </tr>
+                          </thead>
+
+                          <tbody>
+                            {dummyData.map((dummy, index) => (
+                              <tr
+                                key={index}
+                                className=" grid grid-cols-4 text-white/80 ">
+                                <td className=" border-l border-r border-b p-2 ">{dummy.Prop}</td>
+                                <td className="  border-r border-b p-2  ">{dummy.Type}</td>
+                                <td className="  border-r border-b p-2 ">{dummy.Default}</td>
+                                <td className=" p-2  border-r border-b ">{dummy.Description}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </Timeline.Item>
+
+                      <Timeline.Item> </Timeline.Item>
                     </Timeline>
 
                     <DialogFooter></DialogFooter>
@@ -244,6 +276,64 @@ export default function Page({}: Props) {
     </div>
   );
 }
+
+const dummyData = [
+  {
+    Prop: "Indiana",
+    Type: "Indiana",
+    Default: "String",
+    Description: "Indianapolis",
+  },
+
+  {
+    Prop: "Indiana",
+    Type: "Indiana",
+    Default: "String",
+    Description: "Indianapolis",
+  },
+
+  {
+    Prop: "Indiana",
+    Type: "Indiana",
+    Default: "String",
+    Description: "Indianapolis",
+  },
+
+  {
+    Prop: "Indiana",
+    Type: "Indiana",
+    Default: "String",
+    Description: "Indianapolis",
+  },
+
+  {
+    Prop: "Indiana",
+    Type: "Indiana",
+    Default: "String",
+    Description: "Indianapolis",
+  },
+
+  {
+    Prop: "Indiana",
+    Type: "Indiana",
+    Default: "String",
+    Description: "Indianapolis",
+  },
+
+  {
+    Prop: "Indiana",
+    Type: "Indiana",
+    Default: "String",
+    Description: "Indianapolis",
+  },
+];
+
+ function CustomDot() {
+  return (
+    <div className=" h-5 w-5 bg-red-500 rounded-full flex items-center justify-center absolute ">1</div>
+  )
+}
+
 
 {
   /* <CodeBlock

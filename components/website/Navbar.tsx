@@ -16,16 +16,10 @@ function Navbar({}: Props) {
     const handleScroll = () => {
       const currentYPosition = window.scrollY;
 
-      if (
-        prevYPosition > currentYPosition &&
-        prevYPosition - currentYPosition > 10
-      ) {
+      if (prevYPosition > currentYPosition && prevYPosition - currentYPosition > 10) {
         setVisible(true);
       }
-      if (
-        currentYPosition > prevYPosition &&
-        currentYPosition - prevYPosition > 10
-      ) {
+      if (currentYPosition > prevYPosition && currentYPosition - prevYPosition > 10) {
         setVisible(false);
       }
 
@@ -56,35 +50,29 @@ function Navbar({}: Props) {
   // console.log(mobileNav);
   return (
     <>
-      <div
-        className={`w-full gap-10 mx-auto h-[4rem] border-b-[1px] overflow-hidden  hover:text-secondary-400 duration-500   border-x-primary-400 flex justify-between items-center  fixed top-0 left-[50%] -translate-x-[50%] backdrop-blur-sm    transition  shadow-sm  text-md z-[999]  font-poppins px-2 py-4  ${
-          visible ? `` : ` -translate-y-[100%]`
-        } `}
-      >
+      <div className={`w-full px-2  gap-10 mx-auto h-[4rem] border-b-[1px] overflow-hidden  hover:text-secondary-400 duration-500   border-x-primary-400 flex justify-between items-center  fixed top-0 left-[50%] -translate-x-[50%] backdrop-blur-sm    transition  shadow-sm  text-md z-[999]  font-poppins  py-4  ${visible ? `` : ` -translate-y-[100%]`} `}>
         {/* logo  */}
-        <div className="flex justify-between items-center w-full px-5 md:px-[7.5rem]">
+        {/* <div className="flex justify-between items-center w-full  "> */}
+        <div className="flex justify-between items-center w-full md:w-10/12 mx-auto  ">
           <Link href="./">
             <Image
               src={ParadoxuiLogo}
               alt="paradoxui-logo"
-              className="w-[6rem] md:w-[12rem] "
+              className="w-[8rem] md:w-[12rem] "
             />
           </Link>
           {/* nav link  */}
           <div
             className="w-full 
-        hidden md:flex ml-20 text-[14px] justify-start items-center font-bold  gap-10"
-          >
+        hidden md:flex ml-20 text-[14px] justify-start items-center font-bold  gap-10">
             <Link
               href="/docs"
-              className="cursor-pointer text-secondary-500 hover:text-secondary-400 duration-500 "
-            >
+              className="cursor-pointer text-secondary-500 hover:text-secondary-400 duration-500 ">
               Components
             </Link>
             <Link
               href="/pricing"
-              className="text-secondary-500 hover:text-secondary-400 duration-500"
-            >
+              className="text-secondary-500 hover:text-secondary-400 duration-500">
               <span>Pricing</span>
             </Link>
           </div>
@@ -103,14 +91,23 @@ function Navbar({}: Props) {
             />
           </div>
 
-          <div onClick={handelHam} className="scale-[0.5] md:hidden">
-            <label className="burger" htmlFor="burger">
-              <input type="checkbox" id="burger" />
+          <div
+            onClick={handelHam}
+            className="scale-[0.5] md:hidden">
+            <label
+              className="burger"
+              htmlFor="burger">
+              <input
+                type="checkbox"
+                id="burger"
+              />
               <span className="bg-secondary-400"></span>
               <span className="bg-secondary-400"></span>
               <span className="bg-secondary-400"></span>
             </label>
           </div>
+
+         
         </div>
       </div>
 
@@ -118,20 +115,15 @@ function Navbar({}: Props) {
 
       <div
         ref={dropNav}
-        className={` "md:hidden  fixed top-[4rem] ${
-          mobileNav ? "opacity-1" : "opacity-0"
-        } w-full left-0 h-0 z-[10] text-xl flex flex-col gap-5 justify-center items-center bg-black custom-shadow`}
-      >
+        className={` "md:hidden  fixed top-[4rem] ${mobileNav ? "opacity-1" : "opacity-0"} w-full left-0 h-0 z-[10] text-xl flex flex-col gap-5 justify-center items-center bg-black custom-shadow`}>
         <Link
           href="/docs"
-          className="cursor-pointer text-secondary-500 hover:text-secondary-400 duration-500 "
-        >
+          className="cursor-pointer text-secondary-500 hover:text-secondary-400 duration-500 ">
           Components
         </Link>
         <Link
           href="/pricing"
-          className="text-secondary-500 hover:text-secondary-400 duration-500"
-        >
+          className="text-secondary-500 hover:text-secondary-400 duration-500">
           <span>Pricing</span>
         </Link>
       </div>

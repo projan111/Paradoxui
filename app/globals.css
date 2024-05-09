@@ -622,3 +622,16 @@ body {
 
 
 background-image: linear-gradient(45deg, hsl(0deg 0% 3%) 0%, hsl(165deg 2% 5%) 10%, hsl(165deg 5% 7%) 20%, hsl(165deg 8% 9%) 30%, hsl(165deg 11% 11%) 40%, hsl(165deg 14% 12%) 50%, hsl(165deg 17% 14%) 60%, hsl(165deg 20% 15%) 70%, hsl(165deg 24% 17%) 80%, hsl(165deg 28% 18%) 90%, hsl(165deg 32% 19%) 100%);
+
+
+/* .rs-timeline-item-dot::before{
+  height:  30px !important;
+  width: 30px !important;
+  background-color: #04b360 !important;
+} */
+
+/* .rs-timeline-align-left .rs-timeline-item-dot::before {
+  height:  1000px !important;
+  width: 1000px !important;
+  background-color: #04b360 !important;
+} */

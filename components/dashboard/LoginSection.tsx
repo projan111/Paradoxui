@@ -82,21 +82,21 @@ export default function LoginSection() {
     });
   };
 
-  //  Register super admin
-  const registerSuperAdmin = async () => {
-    const { data, error } = await supabase.auth.signUp({
-      email: "lokichaulagain@gmail.com",
-      password: "Password",
-      options: {
-        data: {
-          role: "super-admin",
-          full_name: "Loki Chaulagain",
-          username: "lokichaulagain",
-        },
-        emailRedirectTo: "http://localhost:3000/dashboard",
-      },
-    });
-  };
+  // //  Register super admin
+  // const registerSuperAdmin = async () => {
+  //   const { data, error } = await supabase.auth.signUp({
+  //     email: "lokichaulagain@gmail.com",
+  //     password: "Password",
+  //     options: {
+  //       data: {
+  //         role: "super-admin",
+  //         full_name: "Loki Chaulagain",
+  //         username: "lokichaulagain",
+  //       },
+  //       emailRedirectTo: "http://localhost:3000/dashboard",
+  //     },
+  //   });
+  // };
 
   useEffect(() => {
     const fetchAllUsers = async () => {
@@ -107,23 +107,23 @@ export default function LoginSection() {
   }, []);
 
   return (
-    <section className=" h-screen flex items-center justify-center">
-      <Card className=" p-8 bg-primary-900/90 ">
+    <section className=" h-screen flex items-center justify-center px-2  ">
+      <Card className=" p-8 bg-primary-900/90 w-[350px] md:w-[420px]">
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="w-[350px]">
+            className=" ">
             <div className=" space-y-4 ">
               <div className="grid gap-2 text-center">
                 <h1 className="text-3xl font-bold">Login</h1>
-                <p className="text-balance text-muted-foreground">Enter your email below to login to your account</p>
+                <p className="text-balance text-muted-foreground">Enter your credentials to login to your account</p>
               </div>
 
               <FormField
                 control={form.control}
                 name="email"
                 render={({ field }) => (
-                  <FormItem>
+                  <FormItem className=" w-full">
                     <FormLabel>Email </FormLabel>
                     <Input
                       {...field}
@@ -141,11 +141,11 @@ export default function LoginSection() {
                   <FormItem>
                     <div className="flex items-center">
                       <FormLabel>Password</FormLabel>
-                      <Link
+                      {/* <Link
                         href="/forgot-password"
                         className="ml-auto inline-block text-sm underline">
                         Forgot your password?
-                      </Link>
+                      </Link> */}
                     </div>
                     <Input
                       {...field}
@@ -162,19 +162,20 @@ export default function LoginSection() {
                 {isLoging && <LoaderIcon />}
                 Login
               </Button>
-              <Button
+
+              {/* <Button
                 onClick={loginWithGoogle}
                 variant="outline"
                 className="w-full">
                 Login with Google
-              </Button>
+              </Button> */}
 
-              <Button
+              {/* <Button
                 onClick={registerSuperAdmin}
                 variant="outline"
                 className="w-full">
                 Register Super Admin
-              </Button>
+              </Button> */}
 
               {/* <div className="mt-4 text-center text-sm">
                 Don&apos;t have an account?{" "}

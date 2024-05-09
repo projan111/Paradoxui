@@ -20,14 +20,18 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body
-        className={cn(josefin.className, {
-          "debug-screens": process.env.NODE_ENV === "development",
-        })}>
+        // className={cn(josefin.className, {
+        //   "debug-screens": process.env.NODE_ENV === "development",
+        // })}
+        
+        >
+
+
         {/* <div className="fixed top-0 left-0 z-[-20] h-screen w-full bg-primary-900">
           <div className="absolute top-0 left-0 bottom-0 right-0 h-screen w-full bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"></div>
           <div className="absolute left-0 right-0 top-0   h-screen w-full bg-[radial-gradient(circle_400px_at_50%_350px,#fbfbfb36,#000)]"></div>
         </div> */}
-        <div className="w-full mx-auto">
+        <div className="">
           <Navbar />
         </div>
 
