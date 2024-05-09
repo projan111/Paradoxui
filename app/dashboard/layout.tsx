@@ -8,6 +8,7 @@ import LoginSection from "@/components/dashboard/LoginSection";
 import { supabase } from "@/utils/supabase/clientRepository";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -34,13 +35,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   if (session) {
     return (
-      <section className=" flex gap-4  overflow-y-hidden  ">
-        <div className=" flex flex-col  w-2/12 gap-3     pt-[5rem]  ">
+      <section className=" flex  gap-2  ">
+        <div className=" hidden lg:block w-2/12 pt-[6rem]  ">
           {navItems.map((item: any, index: number) => (
             <Link
               href={item.href}
               key={index}
-              className={`link ${pathname === item.href ? "bg-primary-400/15 text-accent-500   " : "hover:bg-primary-400/10"}   tracking-wider  flex items-center gap-1  py-1.5 px-3  opacity-85 `}>
+              className={`link ${pathname === item.href ? "bg-accent-600/80 text-white   " : "hover:bg-primary-400/10"} rounded-sm mb-2 transition-all ease-out duration-200   tracking-wider  flex items-center gap-2  py-1.5 px-3  opacity-85 `}>
               {item.icon} {item.name}
             </Link>
           ))}
@@ -56,7 +57,36 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </div>
         </div>
 
-        <div className=" w-10/12 bg-primary-400/5 p-8  h-[100vh] overflow-auto pt-[5rem] ">{children}</div>
+        <div className=" w-12 lg:hidden  ">
+          <TooltipProvider>
+            <aside className="fixed inset-y-0 left-0 z-10    flex-col border-r bg-background sm:flex pt-[6rem]">
+              <nav className="flex flex-col items-center gap-4 px-2 sm:py-5">
+                <Tooltip>
+                  {navItems.map((item, index) => (
+                    <TooltipTrigger
+                      key={index}
+                      asChild>
+                      <Link
+                        href={item.href}
+                        className={`${pathname == item.href ? "bg-accent-600 text-white/90" : " text-white  "} flex h-9 w-9 items-center justify-center rounded-lg    md:h-8 md:w-8`}>
+                        {item.icon}
+                        <span className="sr-only">{item.name}</span>
+                      </Link>
+                    </TooltipTrigger>
+                  ))}
+                </Tooltip>
+                <Button
+
+                  variant={"outline"}
+                  className=" text-white  absolute bottom-0 mb-2 h-8 w-8">
+                  <LogOut />
+                </Button>{" "}
+              </nav>
+            </aside>
+          </TooltipProvider>
+        </div>
+
+        <div className=" w-full bg-primary-400/5 px-2 py-3 h-[88.5vh] overflow-y-scroll  mt-[6rem] rounded-sm ">{children}</div>
       </section>
     );
   }

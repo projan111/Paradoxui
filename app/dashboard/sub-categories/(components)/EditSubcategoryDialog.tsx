@@ -132,7 +132,7 @@ export default function EditSubcategoryDialog({ id, setRefreshNow }: Props) {
 
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)}>
-            <div className=" grid grid-cols-2 gap-4">
+           <div className=" grid sm:grid-cols-2 gap-4">
               <FormField
                 control={form.control}
                 name="name"

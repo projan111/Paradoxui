@@ -81,13 +81,11 @@ export default function Page() {
 
   return (
     <div>
-   
-
       {profile && (
         <div className=" flex flex-col w-full min-w-0 mb-6 break-words border border-dashed bg-clip-border rounded-2xl  ">
-          <div className="px-9 pt-9 flex-auto  bg-transparent">
+          <div className=" p-4 md:p-8 flex-auto  bg-transparent">
             <div className="flex flex-wrap mb-6 xl:flex-nowrap">
-              <div className="mb-5 mr-5">
+              <div className="flex  mb-5 mr-5">
                 <div className=" inline-block shrink-0 rounded-2xl">
                   <Avatar className="inline-block shrink-0  w-[80px] h-[80px] lg:w-[160px] lg:h-[160px] border border-accent-600 rounded-full ">
                     <AvatarImage
@@ -98,6 +96,7 @@ export default function Page() {
                   </Avatar>
                 </div>
               </div>
+
               <div className="grow">
                 <div className="flex flex-wrap items-start justify-between mb-2">
                   <div className="flex flex-col">
@@ -137,31 +136,25 @@ export default function Page() {
                       </div>
                     </div>
                   </div>
-                  <div className="flex  gap-2">
+                  <div className="  gap-2 hidden sm:block">
                     <Button>Follow</Button>
-                    {/* <Button variant={"outline"}>Send Mail</Button> */}
                   </div>
                 </div>
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2 text-xs">
                   <Button
                     className=" rounded-full h-8 hover:border-accent-600"
                     variant={"outline"}>
-                    320 Following{" "}
+                    Conquerer{" "}
                   </Button>
                   <Button
                     className=" rounded-full h-8 hover:border-accent-600"
                     variant={"outline"}>
-                    2.5k Followers{" "}
-                  </Button>
-                  <Button
-                    className=" rounded-full h-8 hover:border-accent-600"
-                    variant={"outline"}>
-                    48 Deals{" "}
+                    2.5k contributions{" "}
                   </Button>
                 </div>
               </div>
             </div>
-            <Separator />
+            {currentUserRole !== "superadmin" && <Separator />}
           </div>
         </div>
       )}

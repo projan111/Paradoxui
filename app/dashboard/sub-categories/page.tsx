@@ -175,7 +175,7 @@ export default function Page() {
 
   return (
     <div className="w-full">
-      <div className="flex items-center justify-between py-4">
+       <div className="flex flex-col sm:flex-row gap-4 sm:items-center justify-between py-4">
         <Input
           placeholder="Search by name ..."
           value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
@@ -183,7 +183,7 @@ export default function Page() {
           className="max-w-sm"
         />
 
-        <div className=" space-x-2">
+       <div className=" flex items-center gap-4">
           {currentUserRole === "superadmin" && <CreateSubcategoryDialog setRefreshNow={setRefreshNow} />}
 
           <DropdownMenu>
