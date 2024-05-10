@@ -2,20 +2,18 @@
 import * as React from "react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
-import { title } from "process";
 import { supabase } from "@/utils/supabase/clientRepository";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { Dot } from "lucide-react";
 
-const tags = Array.from({ length: 50 }).map((_, i, a) => `v1.2.0-beta.${a.length - i}`);
 type Props = {};
 
 export function DocsSidebar({}: Props) {
   const [categories, setCategories] = React.useState<any[]>([]);
   React.useEffect(() => {
     const fetch = async () => {
-      let { data, error } = await supabase.from("Category").select("id , name");
+      let { data, error } = await supabase.from("Category").select("id , name").order('order', { ascending: true });
       setCategories(data || []);
     };
     fetch();
@@ -32,21 +30,12 @@ export function DocsSidebar({}: Props) {
     fetch();
   }, []);
 
-  console.log(subCategories);
-
   const [components, setComponents] = React.useState<any[]>([]);
   React.useEffect(() => {
     const fetch = async () => {
-      // let { data: Component, error } = await supabase.from("Component").select("id , name , category, subcategory").select(`
-      // *,
-      // category (id, name),
-      // subcategory (id, name)
-      // `);
-
       let { data: Component, error } = await supabase.from("Component").select(`
       id,
       name,
-    
       category (id, name),
       subcategory (id, name)
       `);
@@ -55,27 +44,8 @@ export function DocsSidebar({}: Props) {
     fetch();
   }, []);
 
-  console.log(components);
-
-  // // Organize categories, subcategories, and components into a nested structure
-  // const nestedData = categories.map((category) => {
-  //   const categoryData = {
-  //     ...category,
-  //     subcategories: subCategories
-  //       .filter((subCategory) => subCategory.category === category.id)
-  //       .map((subCategory) => {
-  //         return {
-  //           ...subCategory,
-  //           components: components.filter((component) => component.category.id === category.id && component.subcategory.id === subCategory.id),
-  //         };
-  //       }),
-  //   };
-  //   return categoryData;
-  // });
-
   const params = useParams();
   const currentSubCategoryId = params.id;
-
   const nestedData = categories.map((category) => {
     const categoryData = {
       ...category,
@@ -84,14 +54,11 @@ export function DocsSidebar({}: Props) {
         .map((subCategory) => {
           return {
             ...subCategory,
-            // Do not include components here
           };
         }),
     };
     return categoryData;
   });
-
-  console.log(nestedData);
 
   return (
     <ScrollArea className="h-screen rounded-md border">

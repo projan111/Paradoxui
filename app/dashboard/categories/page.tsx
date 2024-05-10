@@ -28,7 +28,7 @@ export default function Page() {
   const [categories, setCategories] = React.useState<any[]>([]);
   React.useEffect(() => {
     const fetch = async () => {
-      let { data, error } = await supabase.from("Category").select("*");
+      let { data, error } = await supabase.from("Category").select("*").order("order", { ascending: true });
       if (error) {
         throw new Error("Failed to fetch categories");
       }
@@ -131,11 +131,7 @@ export default function Page() {
                   </AlertDialogHeader>
                   <AlertDialogFooter>
                     <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction
-                      className=" bg-red-500/90"
-                      onClick={() => deleteCatgory(item.id)}>
-                      Continue
-                    </AlertDialogAction>
+                    <AlertDialogAction onClick={() => deleteCatgory(item.id)}>Continue</AlertDialogAction>
                   </AlertDialogFooter>
                 </AlertDialogContent>
               </AlertDialog>
@@ -167,7 +163,7 @@ export default function Page() {
 
   return (
     <div className="w-full">
-       <div className="flex flex-col sm:flex-row gap-4 sm:items-center justify-between py-4">
+      <div className="flex flex-col sm:flex-row gap-4 sm:items-center justify-between py-4">
         <Input
           placeholder="Search by category name ..."
           value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
@@ -175,7 +171,7 @@ export default function Page() {
           className="max-w-sm"
         />
 
-       <div className=" flex items-center gap-4">
+        <div className=" flex items-center gap-4">
           {currentUserRole === "superadmin" && <CategoryCreateDialog setRefreshNow={setRefreshNow} />}
 
           <DropdownMenu>

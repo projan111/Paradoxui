@@ -177,7 +177,7 @@ export default function Page() {
   ];
 
   const table = useReactTable({
-    data: components && components  || [],
+    data: (components && components) || [],
     columns,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
@@ -197,20 +197,19 @@ export default function Page() {
 
   return (
     <div className="w-full">
-       <div className="flex flex-col sm:flex-row gap-4 sm:items-center justify-between py-4">
-
-      <Input
+      <div className="flex flex-col sm:flex-row gap-4 sm:items-center justify-between py-4">
+        <Input
           placeholder="Search by name ..."
           value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
-          onChange={(event) =>
-            table.getColumn("name")?.setFilterValue(event.target.value)
-          }
+          onChange={(event) => table.getColumn("name")?.setFilterValue(event.target.value)}
           className="max-w-sm"
         />
 
-       <div className=" flex items-center gap-4">
-          <CreateComponentDialog setRefreshNow={setRefreshNow} />
-
+        <div className=" flex items-center gap-4">
+          {/* <CreateComponentDialog setRefreshNow={setRefreshNow} /> */}
+          <Link href="/dashboard/components/create">
+            <Button>Create Component</Button>
+          </Link>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button
@@ -282,16 +281,14 @@ export default function Page() {
             variant="outline"
             size="sm"
             onClick={() => table.previousPage()}
-            disabled={!table.getCanPreviousPage()}
-          >
+            disabled={!table.getCanPreviousPage()}>
             Previous
           </Button>
           <Button
             variant="outline"
             size="sm"
             onClick={() => table.nextPage()}
-            disabled={!table.getCanNextPage()}
-          >
+            disabled={!table.getCanNextPage()}>
             Next
           </Button>
         </div>

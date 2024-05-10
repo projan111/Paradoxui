@@ -28,6 +28,9 @@ const formSchema = z.object({
       message: "Name must be between 2-20 characters.",
     }),
 
+  order: z.string().min(1, {
+    message: "Order is required.",
+  }),
 });
 
 export default function CategoryEditDialog({ id, setRefreshNow }: Props) {
@@ -36,6 +39,7 @@ export default function CategoryEditDialog({ id, setRefreshNow }: Props) {
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
+      order: "",
     },
   });
 
@@ -65,6 +69,7 @@ export default function CategoryEditDialog({ id, setRefreshNow }: Props) {
     if (category) {
       form.reset({
         name: category.name || "",
+        order: category.order || "",
       });
     }
   }, [form, category]);
@@ -105,7 +110,7 @@ export default function CategoryEditDialog({ id, setRefreshNow }: Props) {
 
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)}>
-           <div className=" grid sm:grid-cols-2 gap-4">
+            <div className=" grid sm:grid-cols-2 gap-4">
               <FormField
                 control={form.control}
                 name="name"
@@ -121,7 +126,20 @@ export default function CategoryEditDialog({ id, setRefreshNow }: Props) {
                 )}
               />
 
-           
+              <FormField
+                control={form.control}
+                name="order"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Order *</FormLabel>
+                    <Input
+                      placeholder="1"
+                      {...field}
+                    />
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
             </div>
 
             <div className=" flex justify-end mt-8">
