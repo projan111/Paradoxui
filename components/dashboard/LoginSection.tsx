@@ -11,6 +11,7 @@ import { Form, FormField, FormItem, FormLabel, FormMessage } from "@/components/
 import { supabase } from "@/utils/supabase/clientRepository";
 import { z } from "zod";
 import LoaderIcon from "./LoaderIcon";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   email: z.string().min(10, {
@@ -32,6 +33,8 @@ export default function LoginSection() {
     },
   });
 
+  const router = useRouter();
+
   // Define a submit handler
   const [isLoging, setIsLoging] = useState<boolean>(false);
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
@@ -48,6 +51,7 @@ export default function LoginSection() {
     if (data) {
       form.reset();
       setIsLoging(false);
+      router.push("/dashboard/categories");
       toast.success("Login successful.");
       return;
     }
