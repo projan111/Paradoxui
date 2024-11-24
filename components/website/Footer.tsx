@@ -64,7 +64,7 @@ function Footer({}: Props) {
         <div className="flex  justify-center items-start md:items-center w-full flex-col gap-2 mt-7  md:mt-0">
           <span className="">Our team</span>
 
-          <div className="flex  justify-center items-center gap-1">
+          {/* <div className="flex  justify-center items-center gap-1">
             {teamImage.map((item, index) => (
               <div
                 key={index}
@@ -79,7 +79,7 @@ function Footer({}: Props) {
                 <span>Loki Chaulagain</span>
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
         {/* right part  */}
         <div className="w-full lg:w-[30%] mt-10 text-start md:text-right text-lg flex flex-col gap-2 md:gap-3">
