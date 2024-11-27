@@ -57,7 +57,7 @@ function Navbar({}: Props) {
       >
         {/* logo  */}
         {/* <div className="flex justify-between items-center w-full  "> */}
-        <div className="flex justify-between items-center w-full md:w-10/12 mx-auto  ">
+        <div className="flex justify-between items-center w-full md:w-11/12 mx-auto  ">
           <Link href="./">
             <Image
               src={WebxuiLogo}

@@ -6,6 +6,7 @@ import { supabase } from "@/utils/supabase/clientRepository";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { Dot } from "lucide-react";
+import { Icon } from "@iconify/react/dist/iconify.js";
 
 type Props = {};
 
@@ -66,19 +67,19 @@ export function DocsSidebar({}: Props) {
   });
 
   return (
-    <ScrollArea className="h-screen rounded-md border">
-      <div className="px-4">
+    <ScrollArea className="h-screen rounded-md border-r">
+      <div className="px-1">
         <h4 className="font-medium  mt-6 mb-2 text-lg">Getting Started</h4>
         <div className="flex flex-col ">
           <Link
             href={"/introduction"}
-            className="text-sm mb-2 ml-2 font-medium opacity-85 cursor-pointer hover:text-green-500"
+            className="text-sm mb-2 ml-2 font-medium opacity-85 cursor-pointer hover:text-sky-500 text-sky-500"
           >
             Introduction
           </Link>
           <Link
-            href={"/introduction"}
-            className="text-sm mb-2 ml-2 font-medium opacity-85 cursor-pointer hover:text-green-500"
+            href={"/installation"}
+            className="text-sm mb-2 ml-2 font-medium opacity-85 cursor-pointer hover:text-sky-500"
           >
             Installation
           </Link>
@@ -127,47 +128,89 @@ export function DocsSidebar({}: Props) {
           </>
         ))}
       </div>
-      <div className="px-4">
+      <div className="px-1">
         <h4 className="font-medium  mt-6 mb-2 text-lg">Pages</h4>
         <div className="flex flex-col ">
           <Link
             href={"/introduction"}
-            className="text-sm mb-2 ml-2 font-medium opacity-85 cursor-pointer hover:text-green-500"
+            className="flex items-center gap-1 text-sm mb-2 ml-2 font-normal opacity-85 cursor-pointer hover:text-sky-500"
           >
+            <span>
+              <Icon
+                icon="eva:folder-fill"
+                fontSize={18}
+                className="text-zinc-400"
+              />
+            </span>
             Hero Section
           </Link>
           <Link
             href={"/introduction"}
-            className="text-sm mb-2 ml-2 font-medium opacity-85 cursor-pointer hover:text-green-500"
+            className="text-sm flex items-center gap-1 mb-2 ml-2 font-normal opacity-85 cursor-pointer hover:text-sky-500"
           >
+            <span>
+              <Icon
+                icon="eva:folder-fill"
+                fontSize={18}
+                className="text-zinc-400"
+              />
+            </span>
             About Us
           </Link>
           <Link
             href={"/introduction"}
-            className="text-sm mb-2 ml-2 font-medium opacity-85 cursor-pointer hover:text-green-500"
+            className="text-sm flex items-center gap-1 mb-2 ml-2 font-normal opacity-85 cursor-pointer hover:text-sky-500"
           >
-           Contact Us
+            <span>
+              <Icon
+                icon="eva:folder-fill"
+                fontSize={18}
+                className="text-zinc-400"
+              />
+            </span>
+            Contact Us
           </Link>
           <Link
             href={"/introduction"}
-            className="text-sm mb-2 ml-2 font-medium opacity-85 cursor-pointer hover:text-green-500"
+            className="text-sm flex items-center gap-1 mb-2 ml-2 font-normal opacity-85 cursor-pointer hover:text-sky-500"
           >
+            <span>
+              <Icon
+                icon="eva:folder-fill"
+                fontSize={18}
+                className="text-zinc-400"
+              />
+            </span>
             Gallery
           </Link>
           <Link
             href={"/introduction"}
-            className="text-sm mb-2 ml-2 font-medium opacity-85 cursor-pointer hover:text-green-500"
+            className="text-sm flex items-center gap-1 mb-2 ml-2 font-normal opacity-85 cursor-pointer hover:text-sky-500"
           >
+            <span>
+              <Icon
+                icon="eva:folder-fill"
+                fontSize={18}
+                className="text-zinc-400"
+              />
+            </span>
             Events
           </Link>
           <Link
             href={"/introduction"}
-            className="text-sm mb-2 ml-2 font-medium opacity-85 cursor-pointer hover:text-green-500"
+            className="text-sm flex items-center gap-1 mb-2 ml-2 font-normal opacity-85 cursor-pointer hover:text-sky-500"
           >
+            <span>
+              <Icon
+                icon="eva:folder-fill"
+                fontSize={18}
+                className="text-zinc-400"
+              />
+            </span>
             Our Services
           </Link>
         </div>
-      
+
         {/* <p className="text-sm mb-2 ml-2 font-medium opacity-85 cursor-pointer">Installation</p> */}
 
         {nestedData.map((category, index) => (
@@ -212,48 +255,90 @@ export function DocsSidebar({}: Props) {
           </>
         ))}
       </div>
-      <div className="px-4">
+      <div className="px-1">
         <h4 className="font-medium  mt-6 mb-2 text-lg">Components</h4>
         <div className="flex flex-col ">
           <Link
             href={"/introduction"}
-            className="text-sm mb-2 ml-2 font-medium opacity-85 cursor-pointer hover:text-green-500"
+            className="flex item-center gap-1 text-sm mb-2 ml-2 font-medium opacity-85 cursor-pointer hover:text-sky-500"
           >
+            <span>
+              <Icon
+                icon="eva:folder-fill"
+                fontSize={18}
+                className="text-zinc-400"
+              />
+            </span>
             Carousel
           </Link>
           <Link
             href={"/introduction"}
-            className="text-sm mb-2 ml-2 font-medium opacity-85 cursor-pointer hover:text-green-500"
+            className="flex item-center gap-1 text-sm mb-2 ml-2 font-medium opacity-85 cursor-pointer hover:text-sky-500"
           >
+            <span>
+              <Icon
+                icon="eva:folder-fill"
+                fontSize={18}
+                className="text-zinc-400"
+              />
+            </span>
             Card
           </Link>
           <Link
             href={"/introduction"}
-            className="text-sm mb-2 ml-2 font-medium opacity-85 cursor-pointer hover:text-green-500"
+            className="flex item-center gap-1 text-sm mb-2 ml-2 font-medium opacity-85 cursor-pointer hover:text-sky-500"
           >
-           Navbar
+            <span>
+              <Icon
+                icon="eva:folder-fill"
+                fontSize={18}
+                className="text-zinc-400"
+              />
+            </span>
+            Navbar
           </Link>
           <Link
             href={"/introduction"}
-            className="text-sm mb-2 ml-2 font-medium opacity-85 cursor-pointer hover:text-green-500"
+            className="flex item-center gap-1 text-sm mb-2 ml-2 font-medium opacity-85 cursor-pointer hover:text-sky-500"
           >
+            <span>
+              <Icon
+                icon="eva:folder-fill"
+                fontSize={18}
+                className="text-zinc-400"
+              />
+            </span>
             Button
           </Link>
           <Link
             href={"/introduction"}
-            className="text-sm mb-2 ml-2 font-medium opacity-85 cursor-pointer hover:text-green-500"
+            className="flex item-center gap-1 text-sm mb-2 ml-2 font-medium opacity-85 cursor-pointer hover:text-sky-500"
           >
+            <span>
+              <Icon
+                icon="eva:folder-fill"
+                fontSize={18}
+                className="text-zinc-400"
+              />
+            </span>
             Parallax
           </Link>
           <Link
             href={"/introduction"}
-            className="text-sm mb-2 ml-2 font-medium opacity-85 cursor-pointer hover:text-green-500"
+            className="flex item-center gap-1 text-sm mb-2 ml-2 font-medium opacity-85 cursor-pointer hover:text-sky-500"
           >
+            <span>
+              <Icon
+                icon="eva:folder-fill"
+                fontSize={18}
+                className="text-zinc-400"
+              />
+            </span>
             Scroll Animation
           </Link>
         </div>
-      
-        {/* <p className="text-sm mb-2 ml-2 font-medium opacity-85 cursor-pointer">Installation</p> */}
+
+        {/* <p className="flex item-center gap-1 text-sm mb-2 ml-2 font-medium opacity-85 cursor-pointer">Installation</p> */}
 
         {nestedData.map((category, index) => (
           <>
