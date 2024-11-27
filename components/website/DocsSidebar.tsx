@@ -67,12 +67,12 @@ export function DocsSidebar({}: Props) {
   });
 
   return (
-    <ScrollArea className="h-screen rounded-md border-r">
+    <ScrollArea className="h-screen border-r border-zinc-700">
       <div className="px-1">
         <h4 className="font-medium  mt-6 mb-2 text-lg">Getting Started</h4>
         <div className="flex flex-col ">
           <Link
-            href={"/introduction"}
+            href={"/docs"}
             className="text-sm mb-2 ml-2 font-medium opacity-85 cursor-pointer hover:text-sky-500 text-sky-500"
           >
             Introduction

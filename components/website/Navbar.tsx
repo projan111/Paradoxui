@@ -51,7 +51,7 @@ function Navbar({}: Props) {
   return (
     <>
       <div
-        className={`w-full px-2  gap-10 mx-auto h-[4rem] border-b-[1px] overflow-hidden  hover:text-secondary-400 duration-500   border-x-primary-400 flex justify-between items-center  fixed top-0 left-[50%] -translate-x-[50%] backdrop-blur-sm    transition  shadow-sm  text-md z-[999]  font-poppins  py-4  ${
+        className={`w-full px-2  gap-10 mx-auto h-[4rem] border-b-[1px] border-zinc-700 overflow-hidden  hover:text-secondary-400 duration-500   border-x-primary-400 flex justify-between items-center  fixed top-0 left-[50%] -translate-x-[50%] backdrop-blur-sm    transition  shadow-sm  text-md z-[999]  font-poppins  py-4  ${
           visible ? `` : ` -translate-y-[100%]`
         } `}
       >
