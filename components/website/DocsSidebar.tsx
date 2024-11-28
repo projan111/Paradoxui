@@ -137,14 +137,14 @@ export function DocsSidebar({}: Props) {
         <h4 className="font-medium  mt-6 mb-2 text-lg">Pages</h4>
         <div className="flex flex-col ">
           <Link
-            href={"/introduction"}
+            href={"/hero-section"}
             className="flex items-center gap-1 text-sm mb-2 ml-2 font-normal opacity-85 cursor-pointer hover:text-sky-500"
           >
             <span>
               <Icon
                 icon="eva:folder-fill"
                 fontSize={18}
-                className="text-zinc-400"
+                className="text-sky-400"
               />
             </span>
             Hero Section
