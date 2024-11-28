@@ -12,6 +12,7 @@ type Props = {};
 
 export function DocsSidebar({}: Props) {
   const [categories, setCategories] = React.useState<any[]>([]);
+  const [activeTab, setActiveTab] = React.useState("Introduction");
   React.useEffect(() => {
     const fetch = async () => {
       let { data, error } = await supabase
@@ -73,13 +74,17 @@ export function DocsSidebar({}: Props) {
         <div className="flex flex-col ">
           <Link
             href={"/docs"}
-            className="text-sm mb-2 ml-2 font-medium opacity-85 cursor-pointer hover:text-sky-500 text-sky-500"
+            className={`text-sm mb-2 ml-2 font-medium opacity-85 cursor-pointer hover:text-sky-500 ${
+              activeTab === "Introduction" ? "text-sky-500" : "text-zinc-300"
+            } `}
           >
             Introduction
           </Link>
           <Link
             href={"/installation"}
-            className="text-sm mb-2 ml-2 font-medium opacity-85 cursor-pointer hover:text-sky-500"
+            className={`text-sm mb-2 ml-2 font-medium opacity-85 cursor-pointer hover:text-sky-500 ${
+              activeTab === "Installation" ? "text-sky-500" : "text-zinc-300"
+            } `}
           >
             Installation
           </Link>

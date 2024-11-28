@@ -11,15 +11,22 @@ type Props = {};
 function Navbar({}: Props) {
   const [prevYPosition, setPreviousYPosition] = useState(0);
   const [visible, setVisible] = useState(true);
+  
 
   useEffect(() => {
     const handleScroll = () => {
       const currentYPosition = window.scrollY;
 
-      if (prevYPosition > currentYPosition && prevYPosition - currentYPosition > 10) {
+      if (
+        prevYPosition > currentYPosition &&
+        prevYPosition - currentYPosition > 10
+      ) {
         setVisible(true);
       }
-      if (currentYPosition > prevYPosition && currentYPosition - prevYPosition > 10) {
+      if (
+        currentYPosition > prevYPosition &&
+        currentYPosition - prevYPosition > 10
+      ) {
         setVisible(false);
       }
 
