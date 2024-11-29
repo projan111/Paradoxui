@@ -68,10 +68,10 @@ export function DocsSidebar({}: Props) {
   });
 
   return (
-    <ScrollArea className="h-screen border-r border-zinc-700">
-      <div className="px-1">
+    <ScrollArea className="h-screen border-r w-full pr-10">
+      <div className="">
         <h4 className="font-medium  mt-6 mb-2 text-lg">Getting Started</h4>
-        <div className="flex flex-col ">
+        <div className="flex flex-col">
           <Link
             href={"/docs"}
             className={`text-sm mb-2 ml-2 font-medium opacity-85 cursor-pointer hover:text-sky-500 ${
@@ -134,11 +134,11 @@ export function DocsSidebar({}: Props) {
         ))}
       </div>
       <div className="px-1">
-        <h4 className="font-medium  mt-6 mb-2 text-lg">Pages</h4>
+        <h4 className="font-medium  mt-6 mb-2 text-lg">Sections</h4>
         <div className="flex flex-col ">
           <Link
             href={"/hero-section"}
-            className="flex items-center gap-1 text-sm mb-2 ml-2 font-normal opacity-85 cursor-pointer hover:text-sky-500"
+            className="flex items-center gap-1 text-sm mb-2 ml-2 font-semibold opacity-85 cursor-pointer text-sky-500 hover:text-sky-500"
           >
             <span>
               <Icon

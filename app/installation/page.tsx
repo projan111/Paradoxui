@@ -15,7 +15,7 @@ export default function Page() {
 
   return (
     <div className="p-6">
-      <div className="flex flex-col mt-6">
+      <div className="flex flex-col">
         <h2 className="text-xl font-semibold text-zinc-300">Installation</h2>
         <p className="text-sm text-zinc-400 py-2">
           Simply copy and paste the best ui design direct to your files.

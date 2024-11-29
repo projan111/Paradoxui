@@ -34,7 +34,7 @@ export default OnOffButton;`;
 
   return (
     <div className="p-6">
-      <div className="flex flex-col mt-6">
+      <div className="flex flex-col">
         <h2 className="text-xl font-semibold text-zinc-300">Introduction</h2>
         <p className="text-sm text-zinc-400 py-2">
           Simply copy and paste the best ui design direct to your files.
@@ -46,16 +46,6 @@ export default OnOffButton;`;
         <div className="flex gap-1 bg-zinc-800 rounded-md border w-fit">
           <button
             className={`px-3 py-1 rounded-md cursor-pointer border transition-colors ${
-              activeTab === "code"
-                ? "bg-zinc-900 border-zinc-500 text-sky-500"
-                : "hover:text-sky-500 text-zinc-300"
-            }`}
-            onClick={() => setActiveTab("code")}
-          >
-            Code
-          </button>
-          <button
-            className={`px-3 py-1 rounded-md cursor-pointer border transition-colors ${
               activeTab === "preview"
                 ? "bg-zinc-900 border-zinc-500 text-sky-500"
                 : "hover:text-sky-500 text-zinc-300"
@@ -63,6 +53,16 @@ export default OnOffButton;`;
             onClick={() => setActiveTab("preview")}
           >
             Preview
+          </button>
+          <button
+            className={`px-3 py-1 rounded-md cursor-pointer border transition-colors ${
+              activeTab === "code"
+                ? "bg-zinc-900 border-zinc-500 text-sky-500"
+                : "hover:text-sky-500 text-zinc-300"
+            }`}
+            onClick={() => setActiveTab("code")}
+          >
+            Code
           </button>
         </div>
         {!copied && activeTab === "code" && (
