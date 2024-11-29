@@ -68,7 +68,9 @@ function Hero({}: Props) {
         ))}
         <div className="flex text-zinc-200 justify-center items-center gap-1 md:gap-2 border border-zinc-700 px-2 py-1 bg-zinc-800 rounded-md">
           <Image className="" src={gsapLogo} alt="gsap-logo" width={20} />
-          <span className="text-lg pt-1">GSAP</span>
+          <span className="text-[15px] md:text-[17px] pt-1 text-nowrap">
+            GSAP
+          </span>
         </div>
       </div>
     </div>
