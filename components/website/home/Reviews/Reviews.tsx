@@ -81,7 +81,7 @@ function Reviews({}: Props) {
     });
   });
   return (
-    <div className="overflow-hidden w-full  flex justify-center items-center text-secondary-400  flex-col mx-auto py-10">
+    <div className="overflow-hidden w-full  flex justify-center items-center text-zinc-200  flex-col mx-auto py-10">
       {/* header  */}
       <span className="text-3xl  md:text-4xl font-semibold">Reviews</span>
 
@@ -118,17 +118,17 @@ function Reviews({}: Props) {
         {reviews.map((item, index) => (
           <SwiperSlide
             key={index}
-            className="p-4 rounded-lg  max-h-[80%]    border-primary-700 hover:border-green-default border-[1px]"
+            className="p-4 rounded-lg  max-h-[80%]    border-primary-700 hover:border-sky-500 border-[1px]"
           >
             <div className="flex flex-col gap-2">
               <span className="font-semibold text-[16px]">{item.name}</span>
               <p className=" text-[15px] text-primary-300">{item.review}</p>
               <div className="flex gap-1 justify-start items-center">
-                <Star width={18} />
-                <Star width={18} />
-                <Star width={18} />
-                <Star width={18} />
-                <Star width={18} />
+                <Star width={18} className="text-sky-500"/>
+                <Star width={18} className="text-sky-500"/>
+                <Star width={18} className="text-sky-500"/>
+                <Star width={18} className="text-sky-500"/>
+                <Star width={18} className="text-sky-500"/>
               </div>
             </div>
           </SwiperSlide>

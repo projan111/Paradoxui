@@ -6,12 +6,12 @@ import WebxuiLogo from "@/public/images/logo/webxui.png";
 import { Menu, Search } from "lucide-react";
 import Link from "next/link";
 import gsap from "gsap";
+import { Icon } from "@iconify/react/dist/iconify.js";
 type Props = {};
 
 function Navbar({}: Props) {
   const [prevYPosition, setPreviousYPosition] = useState(0);
   const [visible, setVisible] = useState(true);
-  
 
   useEffect(() => {
     const handleScroll = () => {
@@ -58,7 +58,7 @@ function Navbar({}: Props) {
   return (
     <>
       <div
-        className={`w-full px-2  gap-10 mx-auto h-[4rem] border-b-[1px] border-zinc-700 overflow-hidden  hover:text-secondary-400 duration-500   border-x-primary-400 flex justify-between items-center  fixed top-0 left-[50%] -translate-x-[50%] backdrop-blur-sm    transition  shadow-sm  text-md z-[999]  font-poppins  py-4  ${
+        className={`w-full px-2  gap-10 mx-auto h-[4rem] overflow-hidden  hover:text-secondary-400 duration-500   border-x-primary-400 flex justify-between items-center fixed top-0 left-[50%] -translate-x-[50%] backdrop-blur-sm    transition  shadow-sm  text-md z-[999]  font-poppins  py-4  ${
           visible ? `` : ` -translate-y-[100%]`
         } `}
       >
@@ -73,15 +73,18 @@ function Navbar({}: Props) {
             />
           </Link>
           {/* nav link  */}
-          <div
-            className="w-full 
-        hidden md:flex ml-20 text-[14px] justify-start items-center font-bold  gap-10"
-          >
+          <div className="w-full hidden md:flex ml-16 text-[14px] justify-start items-center font-bold  gap-8">
             <Link
               href="/docs"
               className="cursor-pointer text-zinc-400 hover:text-zinc-200 duration-500 "
             >
               Components
+            </Link>
+            <Link
+              href="/docs"
+              className="cursor-pointer text-zinc-400 hover:text-zinc-200 duration-500 "
+            >
+              Templates
             </Link>
             <Link
               href="/pricing"
@@ -94,15 +97,19 @@ function Navbar({}: Props) {
           {/* nav link  */}
           <div className="fixed top-[10rem] left-0 w-full h-[50vh] bg-black"></div>
           {/* search  */}
-          <div className="px-3 hidden  py-[10px] w-[20rem]  rounded-full border-[1px] text-primary-60 font-bold  border-primary-700 md:flex justify-between gap-3 items-center">
+          <div className="px-2 hidden  py-2 w-[20rem]  rounded-xl border text-primary-60 font-bold  border-primary-700 md:flex justify-between gap-3 items-center">
             <div className="w-[20px] h-[20px] cursor-pointer flex justify-center items-center">
-              <Search className="w-full h-full object-cover object-center" />
+              <Icon icon="weui:search-outlined" fontSize={18} />
             </div>
             <input
               type="text"
               placeholder="Search Components"
-              className="bg-transparent outline-none w-full h-full  text-zinc-400 text-[12px]"
-            />
+              className="bg-transparent outline-none w-full h-full  text-zinc-400 text-[12px] font-normal"
+            ></input>
+            <div className="flex items-center justify-center gap-1 bg-zinc-800 px-3 py-1 rounded-md">
+              <Icon icon="ph:command-light" color="white" fontSize={18} />
+              <span className="text-sm font-normal">K</span>
+            </div>
           </div>
 
           <div onClick={handelHam} className="scale-[0.5] md:hidden">

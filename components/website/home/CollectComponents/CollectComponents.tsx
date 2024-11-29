@@ -2,7 +2,7 @@
 import React from "react";
 import Navbar from "../../Navbar";
 // import ParadoxuiLogo from "@/public/newlogo-removebg-preview.png";
-import ParadoxuiLogo from "@/public/images/logo/paradox-logo-cream.png";
+import webxui from "@/public/images/logo/webxui.png";
 import { ChevronsDown, Menu } from "lucide-react";
 
 import Image from "next/image";
@@ -27,7 +27,7 @@ function CollectComponents({ collectContainerRef }: any) {
     <>
       <div
         ref={collectContainerRef}
-        className="text-[#FFFCE1] relative  text-center mx-auto h-[120vh]  z-[-2] py-10 "
+        className="text-zinc-100 relative  text-center mx-auto h-[120vh]  z-[-2] py-10 "
       >
         {/* heading  */}
         <h1 className="font-semibold text-3xl  md:text-4xl mt-[5rem] mb-4">
@@ -58,7 +58,7 @@ function CollectComponents({ collectContainerRef }: any) {
               Explore components
             </button>
             {/* button search components  */}
-            <button className="w-[11rem] md:w-[12rem] h-[2rem] md:h-[3rem] text-sm flex justify-center items-center gap-2  text-center border-primary-700 bg-primary-900 hover:border-green-500 border-[1px]  rounded-full p-2 text-primary-100">
+            <button className="w-[11rem] md:w-[12rem] h-[2rem] md:h-[3rem] text-sm flex justify-center items-center gap-2  text-center border-primary-700 bg-primary-900 hover:border-green-500 border-[1px]  rounded-full p-2 text-zinc-100">
               {/* icon search  */}
               <div className="md:w-[20px] w-[15px] h-[15px] md:h-[20px] cursor-pointer flex justify-center items-center">
                 <Search className="w-full h-full object-cover object-center" />
@@ -70,11 +70,11 @@ function CollectComponents({ collectContainerRef }: any) {
 
         {/* navbar comp  */}
         <div className="collect-nav absolute top-[25%] bg-primary-900 hover:border-[1px] custom-shadow  rotate-[-2deg]  w-full scale-[0.8]  md:scale-[0.6] border-[3px]  rounded-xl">
-          <div className="gap-10 mx-auto h-[5rem] border-b-[1px] text-secondary-400   border-x-primary-400 flex justify-between items-center">
+          <div className="gap-10 mx-auto h-[5rem] border-b-[1px] text-zinc-200   border-x-primary-400 flex justify-between items-center">
             {/* logo  */}
             <div className="flex justify-between items-center w-full px-5 md:px-[7.5rem]">
               <Image
-                src={ParadoxuiLogo}
+                src={webxui}
                 alt="paradoxui-logo"
                 className="w-[6rem] md:w-[12rem] "
               />
@@ -84,10 +84,10 @@ function CollectComponents({ collectContainerRef }: any) {
                 className="w-full 
         hidden md:flex ml-20 text-[16px] justify-start items-center font-bold  gap-10"
               >
-                <span className="cursor-pointer text-secondary-500 hover:text-secondary-400 duration-500 ">
+                <span className="cursor-pointer text-zinc-200 hover:text-zinc-200 duration-500 ">
                   Components
                 </span>
-                <div className="text-secondary-500 hover:text-secondary-400 duration-500">
+                <div className="text-zinc-200 hover:text-zinc-200 duration-500">
                   <span>Pricing</span>
                 </div>
               </div>
@@ -99,11 +99,11 @@ function CollectComponents({ collectContainerRef }: any) {
                 <input
                   type="text"
                   placeholder="Search Components"
-                  className="bg-transparent outline-none w-full h-full  text-secondary-400 text-[12px]"
+                  className="bg-transparent outline-none w-full h-full  text-zinc-200 text-[12px]"
                 />
               </div>
 
-              <div className="text-secondary-500 md:hidden">
+              <div className="text-zinc-200 md:hidden">
                 <Menu />
               </div>
             </div>
@@ -114,7 +114,7 @@ function CollectComponents({ collectContainerRef }: any) {
         <div className="absolute collect-news translate-x-[-50%] top-[50%] rotate-[-12deg] left-[20%] z-20">
           <div className=" flex  justify-center w-[25rem] absolute top-[20%] left-9   flex-col p-3 rounded-2xl  items-start border-[2px] bg-primary-900 hover:border-[1px] custom-shadow ">
             <span className="text-[16px]">Newsletter</span>
-            <span className="text-[13px] text-primary-300">
+            <span className="text-[13px] text-zinc-200">
               Last message sent an hour ago
             </span>
             <span className="mt-3 text-[11px] font-semibold">1060 users</span>

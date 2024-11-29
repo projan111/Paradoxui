@@ -11,6 +11,7 @@ import Image from "next/image";
 
 // icon
 import { ChevronsDown, MoveRight, Search } from "lucide-react";
+import Link from "next/link";
 
 type Props = {};
 
@@ -48,7 +49,7 @@ const featuredHero = [
 ];
 function FeaturedHero({}: Props) {
   return (
-    <div className="text-secondary-400  flex justify-center items-center flex-col text-center  mx-auto py-10">
+    <div className="text-zinc-200  flex justify-center items-center flex-col text-center  mx-auto py-10">
       {/* heading  */}
       <h1 className=" font-semibold text-3xl  md:text-4xl">
         Find more beautiful sections
@@ -76,9 +77,9 @@ function FeaturedHero({}: Props) {
                 {/* here give w-full line only  */}
                 <hr className="flex-grow  border-primary-700 h-0.1" />
                 <button className="px-5 py-[4px] rounded-full bg-primary-800 text-[12px]  text-center">
-                  <span className="bg-gradient-to-r  from-[#58FF0A] to-blue-300 bg-clip-text text-transparent">
+                  <Link href={'/docs'} className="bg-gradient-to-r  from-[#58FF0A] to-blue-300 bg-clip-text text-transparent">
                     View code
-                  </span>
+                  </Link>
                 </button>
               </div>
             </div>
@@ -88,10 +89,10 @@ function FeaturedHero({}: Props) {
 
       {/* see more  */}
       <div className="w-full mb-10 mx-auto mt-14 flex justify-center items-center gap-2">
-        <span className="text-[16px] md:text-[18px]">Paradox Hero Page</span>
+        <span className="text-[16px] md:text-[18px]">WebXui Hero Page</span>
         <hr className="flex-grow  border-primary-700 h-0.1" />
         <div className="flex justify-center cursor-pointer items-center gap-2">
-          <span className="text-[13px] md:text-[15px]">See more</span>
+          <Link href={'/docs'} className="text-[13px] md:text-[15px]">See more</Link>
           <MoveRight width={15} />
         </div>
       </div>

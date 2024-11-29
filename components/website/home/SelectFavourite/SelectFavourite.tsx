@@ -10,7 +10,7 @@ function SelectFavourite({ selectContainerRef }: any) {
   return (
     <div
       ref={selectContainerRef}
-      className="text-[#FFFCE1] z-[-1] h-[100vh] flex justify-center items-center flex-col gap-5   text-center mx-auto py-10"
+      className="text-zinc-100 z-[-1] h-[100vh] flex justify-center items-center flex-col gap-5   text-center mx-auto py-10"
     >
       {/* heading  */}
       <h1 className="select-container font-semibold mt-[5rem] text-3xl  md:text-4xl">
@@ -37,7 +37,7 @@ function SelectFavourite({ selectContainerRef }: any) {
         {/* buttons  */}
         <div className="flex md:flex-row flex-col justify-center  items-center gap-2 text-[15px] font-semibold">
           {/* button explore  */}
-          <button className="w-[11rem] md:w-[11rem] h-[2rem] md:h-[2.5rem] text-[12px] text-center bg-secondary-400 rounded-full p-2 text-primary-800">
+          <button className="w-[11rem] md:w-[11rem] h-[2rem] md:h-[2.5rem] text-[12px] text-center bg-zinc-100 rounded-full p-2 text-primary-800">
             Explore components
           </button>
           {/* button search components  */}
