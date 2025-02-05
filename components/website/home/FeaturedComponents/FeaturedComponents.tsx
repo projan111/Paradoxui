@@ -9,9 +9,9 @@ function FeaturedComponents({ featureContainerRef }: any) {
   return (
     <div
       ref={featureContainerRef}
-      className="text-[#FFFCE1] text-center mx-auto py-10">
+      className="text-zinc-100 text-center mx-auto py-10">
       {/* heading  */}
-      <span className="text-3xl  md:text-4xl font-semibold">Paradoxui Components</span>
+      <span className="text-3xl  md:text-4xl font-bold">WebXui Components</span>
 
       {/* components  */}
       <div className="w-full md:flex  mt-10 justify-center items-center gap-3">

@@ -40,7 +40,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange>
-          <div className="xl:w-10/12 lg:w-12/12 overflow-hidden mx-auto">
+          <div className="xl:w-11/12 lg:w-12/12 overflow-hidden mx-auto">
             <SessionContextProvider>{children}</SessionContextProvider>
           </div>
           <Toaster />
